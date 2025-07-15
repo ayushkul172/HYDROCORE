@@ -7,14 +7,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+      /* Define the scrolling animation */
+      @keyframes scroll-background {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          /* This creates a slow diagonal scroll */
+          background-position: -500px -500px;
+        }
+      }
+
       body {
-        /* --- CHANGE HERE --- */
-        /* Using the pump.png file from your GitHub as a fixed, repeating background texture. */
-        background-image: url('https://raw.githubusercontent.com/ayushkul172/Ashish-website/main/Ashish/pump.png');
+        /* Using the pump.png file from your GitHub as a fixed, repeating, and animated background texture. */
+        background-image: url('https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/pump.png');
         background-attachment: fixed; /* Keeps the background in place while scrolling */
         background-repeat: repeat;   /* This will tile the image */
-        background-size: auto;       /* Use the image's original size */
+        
+        /* Apply the animation */
+        animation: scroll-background 40s linear infinite;
       }
+      
+      /* Accessibility: Disable animation for users who prefer reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        body {
+          animation: none;
+        }
+      }
+
       .animated-section {
         opacity: 0;
         transform: translateY(2rem);
@@ -380,15 +400,14 @@
         
         // --- Curves Grid ---
         const curvesGrid = document.getElementById('curves-grid');
-        // Replaced sprite-based logic with a more flexible individual image approach.
         const CURVES = [
-          { title: 'Size: 100mm @ 2900 RPM', imageUrl: 'https://i.imgur.com/W2oW6H3.png' },
-          { title: 'Size: 150mm @ 1450 RPM (Medium Head)', imageUrl: null },
-          { title: 'Size: 150mm @ 1450 RPM (High Head)', imageUrl: null },
-          { title: 'Size: 200mm @ 1450 RPM (Medium Head)', imageUrl: null },
-          { title: 'Size: 200mm @ 1450 RPM (High Head)', imageUrl: null },
-          { title: 'Size: 250mm @ 1450 RPM', imageUrl: null },
-          { title: 'Size: 300mm @ 1450 RPM', imageUrl: null },
+          { title: 'Size: 100mm @ 2900 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA%201.png' },
+          { title: 'Size: 150mm @ 1450 RPM (Medium Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA2.png' },
+          { title: 'Size: 150mm @ 1450 RPM (High Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA3.png' },
+          { title: 'Size: 200mm @ 1450 RPM (Medium Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA4.png' },
+          { title: 'Size: 200mm @ 1450 RPM (High Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA5.png' },
+          { title: 'Size: 250mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA6.png' },
+          { title: 'Size: 300mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA7.png' },
           { title: 'Size: 350mm @ 970 RPM', imageUrl: null },
           { title: 'Size: 450mm @ 970 RPM', imageUrl: null },
         ];
@@ -397,14 +416,27 @@
         
         CURVES.forEach((curve, index) => {
             const curveDiv = document.createElement('div');
-            curveDiv.className = 'bg-white rounded-lg shadow-lg overflow-hidden border transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl animated-item';
+            // Added 'group' class for hover effects on child elements
+            curveDiv.className = 'bg-white rounded-lg shadow-lg overflow-hidden border transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl animated-item group';
             curveDiv.style.transitionDelay = `${index * 100}ms`;
             
             let imageHTML = '';
             if (curve.imageUrl) {
-                imageHTML = `<img src="${curve.imageUrl}" alt="${curve.title}" class="w-full h-auto object-cover">`;
+                // The image container is now relative and clips overflowing content
+                // The overlay is positioned absolutely within this container
+                imageHTML = `
+                    <div class="relative overflow-hidden cursor-pointer">
+                        <img src="${curve.imageUrl}" alt="${curve.title}" class="w-full h-auto object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                           <div class="text-white text-center transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                                <i class="fas fa-search-plus text-4xl"></i>
+                                <p class="font-bold mt-2">View Details</p>
+                           </div>
+                        </div>
+                    </div>
+                `;
             } else {
-                // Display a placeholder if no image is available
+                // Placeholder remains the same
                 imageHTML = `<div class="bg-gray-200 flex items-center justify-center" style="min-height: 250px;"><span class="text-gray-500 p-4 text-center">Curve not available</span></div>`;
             }
             

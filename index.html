@@ -53,6 +53,35 @@
         opacity: 1;
         transform: translateY(0);
       }
+      
+      /* --- NEW ANIMATION FOR IMAGE REVEAL --- */
+      .image-container {
+        position: relative;
+        overflow: hidden;
+      }
+      /* The reveal mask */
+      .image-container::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #e5e7eb; /* bg-gray-200 */
+        transform: scaleX(1);
+        transform-origin: right;
+        transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      /* The image itself, starting slightly zoomed */
+      .image-container > img {
+        transform: scale(1.1);
+        transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      /* When the parent card is visible, trigger the animations */
+      .animated-item.is-visible .image-container::after {
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+      .animated-item.is-visible .image-container > img {
+        transform: scale(1);
+      }
     </style>
   <script type="importmap">
 {
@@ -408,7 +437,8 @@
           { title: 'Size: 200mm @ 1450 RPM (High Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA5.png' },
           { title: 'Size: 250mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA6.png' },
           { title: 'Size: 300mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA7.png' },
-   
+          { title: 'Size: 350mm @ 970 RPM', imageUrl: null },
+          { title: 'Size: 450mm @ 970 RPM', imageUrl: null },
         ];
         
         curvesGrid.innerHTML = ''; // Clear existing grid content
@@ -417,14 +447,14 @@
             const curveDiv = document.createElement('div');
             // Added 'group' class for hover effects on child elements
             curveDiv.className = 'bg-white rounded-lg shadow-lg overflow-hidden border transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl animated-item group';
+            // The transition-delay is inherited by the child animations
             curveDiv.style.transitionDelay = `${index * 100}ms`;
             
             let imageHTML = '';
             if (curve.imageUrl) {
-                // The image container is now relative and clips overflowing content
-                // The overlay is positioned absolutely within this container
+                // Added 'image-container' for the reveal animation and hover effect
                 imageHTML = `
-                    <div class="relative overflow-hidden cursor-pointer">
+                    <div class="image-container relative cursor-pointer">
                         <img src="${curve.imageUrl}" alt="${curve.title}" class="w-full h-auto object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                            <div class="text-white text-center transform scale-90 group-hover:scale-100 transition-transform duration-300">

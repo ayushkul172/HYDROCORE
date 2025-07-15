@@ -207,16 +207,25 @@
       
       <!-- Standard Curves Section -->
        <section id="standard-curves" class="py-20 bg-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12 animated-section">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Reference Performance Curves</h2>
-                    <p class="text-lg text-gray-600 mt-2">Standard selection charts for our pump range.</p>
-                </div>
-                <div id="curves-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animated-section">
-                    <!-- Curves injected by JS -->
-                </div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 animated-section">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Reference Performance Curves</h2>
+                <p class="text-lg text-gray-600 mt-2">Standard selection charts for our pump range.</p>
             </div>
-        </section>
+            <div class="relative max-w-3xl mx-auto animated-section">
+                <div class="overflow-hidden rounded-lg shadow-xl border">
+                  <div id="curves-carousel" class="flex transition-transform duration-500 ease-in-out bg-white">
+                    <!-- Curve slides will be injected here by JS -->
+                  </div>
+                </div>
+                <button id="curve-prev-btn" class="absolute top-1/2 left-0 md:-left-6 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Previous curve"><i class="fas fa-chevron-left"></i></button>
+                <button id="curve-next-btn" class="absolute top-1/2 right-0 md:-right-6 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Next curve"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div id="curves-dots" class="flex justify-center mt-8 space-x-2">
+                <!-- Dots will be injected by JS -->
+            </div>
+        </div>
+      </section>
 
       <!-- Excellence In Motion Section -->
       <section id="excellence" class="py-20 bg-gray-100">
@@ -359,12 +368,12 @@
         updateApplicationContent(0);
 
         // --- Specs Carousel ---
-        const carousel = document.getElementById('specs-carousel');
-        const dotsContainer = document.getElementById('specs-dots');
+        const specsCarousel = document.getElementById('specs-carousel');
+        const specsDotsContainer = document.getElementById('specs-dots');
         let currentSpecIndex = 0;
 
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentSpecIndex * 100}%)`;
+        function updateSpecsCarousel() {
+            specsCarousel.style.transform = `translateX(-${currentSpecIndex * 100}%)`;
             document.querySelectorAll('#specs-dots button').forEach((dot, index) => {
                 dot.classList.toggle('bg-cyan-400', index === currentSpecIndex);
                 dot.classList.toggle('bg-blue-700', index !== currentSpecIndex);
@@ -379,27 +388,30 @@
                 detailsHTML = `<ul class="space-y-2 text-sm border-t border-blue-700 pt-4">${spec.details.map(d => `<li class="flex justify-between"><strong class="text-blue-100">${d.name}:</strong><span class="text-right">${d.value}</span></li>`).join('')}</ul>`;
             }
             specDiv.innerHTML = `<div class="bg-blue-800 rounded-lg p-8 shadow-xl mx-auto max-w-2xl"><div class="flex items-center mb-4"><i class="fas ${spec.icon} text-3xl text-cyan-400"></i><h3 class="text-2xl font-bold ml-4 text-white">${spec.title}</h3></div><p class="text-blue-200 mb-6 min-h-[4rem]">${spec.description}</p>${detailsHTML}</div>`;
-            carousel.appendChild(specDiv);
+            specsCarousel.appendChild(specDiv);
             
             const dot = document.createElement('button');
             dot.className = 'w-3 h-3 rounded-full transition-colors hover:bg-blue-600';
-            dot.onclick = () => { currentSpecIndex = index; updateCarousel(); };
-            dotsContainer.appendChild(dot);
+            dot.onclick = () => { currentSpecIndex = index; updateSpecsCarousel(); };
+            specsDotsContainer.appendChild(dot);
         });
         
         document.getElementById('spec-prev-btn').onclick = () => {
             currentSpecIndex = (currentSpecIndex === 0) ? SPECS.length - 1 : currentSpecIndex - 1;
-            updateCarousel();
+            updateSpecsCarousel();
         };
         document.getElementById('spec-next-btn').onclick = () => {
             currentSpecIndex = (currentSpecIndex === SPECS.length - 1) ? 0 : currentSpecIndex + 1;
-            updateCarousel();
+            updateSpecsCarousel();
         };
 
-        updateCarousel();
+        updateSpecsCarousel();
         
-        // --- Curves Grid ---
-        const curvesGrid = document.getElementById('curves-grid');
+        // --- Curves Carousel ---
+        const curvesCarousel = document.getElementById('curves-carousel');
+        const curvesDotsContainer = document.getElementById('curves-dots');
+        let currentCurveIndex = 0;
+
         const CURVES = [
           { title: 'Size: 100mm @ 2900 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA%201.png' },
           { title: 'Size: 150mm @ 1450 RPM (Medium Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA2.png' },
@@ -408,21 +420,30 @@
           { title: 'Size: 200mm @ 1450 RPM (High Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA5.png' },
           { title: 'Size: 250mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA6.png' },
           { title: 'Size: 300mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA7.png' },
-      
         ];
+
+        function updateCurvesCarousel() {
+            if (curvesCarousel) {
+                curvesCarousel.style.transform = `translateX(-${currentCurveIndex * 100}%)`;
+            }
+            document.querySelectorAll('#curves-dots button').forEach((dot, index) => {
+                dot.classList.toggle('bg-blue-600', index === currentCurveIndex);
+                dot.classList.toggle('bg-gray-300', index !== currentCurveIndex);
+            });
+        }
         
-        curvesGrid.innerHTML = ''; // Clear existing grid content
-        
+        curvesCarousel.innerHTML = '';
+        curvesDotsContainer.innerHTML = '';
+
         CURVES.forEach((curve, index) => {
-            const curveDiv = document.createElement('div');
-            // Added 'group' class for hover effects on child elements
-            curveDiv.className = 'bg-white rounded-lg shadow-lg overflow-hidden border transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl animated-item group';
-            curveDiv.style.transitionDelay = `${index * 100}ms`;
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'w-full flex-shrink-0';
             
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'bg-white overflow-hidden group';
+
             let imageHTML = '';
             if (curve.imageUrl) {
-                // The image container is now relative and clips overflowing content
-                // The overlay is positioned absolutely within this container
                 imageHTML = `
                     <div class="relative overflow-hidden cursor-pointer">
                         <img src="${curve.imageUrl}" alt="${curve.title}" class="w-full h-auto object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
@@ -435,15 +456,38 @@
                     </div>
                 `;
             } else {
-                // Placeholder remains the same
                 imageHTML = `<div class="bg-gray-200 flex items-center justify-center" style="min-height: 250px;"><span class="text-gray-500 p-4 text-center">Curve not available</span></div>`;
             }
             
             const titleHTML = `<div class="p-4 bg-gray-50 border-t"><h3 class="text-center font-semibold text-gray-800 text-sm">${curve.title}</h3></div>`;
             
-            curveDiv.innerHTML = imageHTML + titleHTML;
-            curvesGrid.appendChild(curveDiv);
+            cardDiv.innerHTML = imageHTML + titleHTML;
+            slideDiv.appendChild(cardDiv);
+            curvesCarousel.appendChild(slideDiv);
+
+            // Create dot
+            const dot = document.createElement('button');
+            dot.className = 'w-3 h-3 rounded-full transition-colors hover:bg-blue-500';
+            dot.setAttribute('aria-label', `Go to curve ${index + 1}`);
+            dot.onclick = () => {
+                currentCurveIndex = index;
+                updateCurvesCarousel();
+            };
+            curvesDotsContainer.appendChild(dot);
         });
+
+        document.getElementById('curve-prev-btn').onclick = () => {
+            currentCurveIndex = (currentCurveIndex === 0) ? CURVES.length - 1 : currentCurveIndex - 1;
+            updateCurvesCarousel();
+        };
+        document.getElementById('curve-next-btn').onclick = () => {
+            currentCurveIndex = (currentCurveIndex === CURVES.length - 1) ? 0 : currentCurveIndex + 1;
+            updateCurvesCarousel();
+        };
+        
+        if (CURVES.length > 0) {
+            updateCurvesCarousel();
+        }
 
         // --- Contact Form ---
         const contactForm = document.getElementById('contact-form');

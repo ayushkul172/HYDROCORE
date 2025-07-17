@@ -7,31 +7,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-      /* Define the scrolling animation */
-      @keyframes scroll-background {
-        from {
-          background-position: 0 0;
-        }
-        to {
-          /* This creates a slow diagonal scroll */
-          background-position: -500px -500px;
-        }
+      /* Full-screen background video styling */
+      #background-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        filter: brightness(0.6); /* Dims the video for better text readability */
       }
 
-      body {
-        /* Using the pump.png file from your GitHub as a fixed, repeating, and animated background texture. */
-        background-image: url('https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/pump.png');
-        background-attachment: fixed; /* Keeps the background in place while scrolling */
-        background-repeat: repeat;   /* This will tile the image */
-        
-        /* Apply the animation */
-        animation: scroll-background 40s linear infinite;
-      }
-      
-      /* Accessibility: Disable animation for users who prefer reduced motion */
+      /* Accessibility: Provide a fallback for users who prefer reduced motion */
       @media (prefers-reduced-motion: reduce) {
+        #background-video {
+          display: none;
+        }
         body {
-          animation: none;
+          /* Provide a static dark background as a fallback */
+          background-color: #1e3a8a; 
         }
       }
 
@@ -64,7 +60,13 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-gray-50 text-gray-800">
+  <body class="text-gray-800">
+
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="background-video">
+      <source src="https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/Generated%20File%20July%2017%2C%202025%20-%2011_20AM.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-40">

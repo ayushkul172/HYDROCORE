@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flowcore Hydropumps - Official Website</title>
+    <title>Flowcore Hydropumps | Engineered Pumping Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-      /* Full-screen background video styling */
+      :root {
+        --color-primary: #0d47a1; /* Deep Blue */
+        --color-secondary: #1e3a8a;
+        --color-accent: #2563eb; /* Bright Blue */
+        --color-dark: #0f172a; /* Navy/Charcoal */
+        --font-heading: 'Teko', sans-serif;
+        --font-body: 'Poppins', sans-serif;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background-color: #f8fafc; /* Light gray background */
+        color: #334155; /* Slate gray text */
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+        color: var(--color-dark);
+      }
+
       #background-video {
         position: fixed;
         right: 0;
@@ -17,50 +39,62 @@
         width: auto;
         height: auto;
         z-index: -100;
-        filter: brightness(0.6); /* Dims the video for better text readability */
+        filter: brightness(0.5);
       }
 
-      /* Accessibility: Provide a fallback for users who prefer reduced motion */
-      @media (prefers-reduced-motion: reduce) {
-        #background-video {
-          display: none;
-        }
-        body {
-          /* Provide a static dark background as a fallback */
-          background-color: #1e3a8a; 
-        }
+      /* Header Styling */
+      header {
+        transition: background-color 0.4s ease, box-shadow 0.4s ease;
+      }
+      header.scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
       }
 
-      .animated-section {
+      /* Animation Styling */
+      .animate-on-scroll {
         opacity: 0;
-        transform: translateY(2rem);
-        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
       }
-      .animated-section.is-visible {
+      .animate-on-scroll.is-visible {
         opacity: 1;
         transform: translateY(0);
       }
-      .animated-item {
-        opacity: 0;
-        transform: translateY(1rem);
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+
+      /* Custom CTA Button */
+      .cta-button {
+        @apply bg-blue-600 text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-blue-700 shadow-lg hover:shadow-xl;
       }
-      .animated-section.is-visible .animated-item {
-        opacity: 1;
-        transform: translateY(0);
+      
+      /* Active state for navigation */
+      .nav-link {
+        @apply relative text-gray-700 hover:text-blue-600 transition-colors duration-300;
       }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--color-accent);
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Custom form inputs */
+      .form-input {
+        @apply w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-700 focus:outline-none focus:border-blue-500 transition-colors;
+      }
+      
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.1.0",
-    "react/": "https://esm.sh/react@^19.1.0/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
 </head>
-  <body class="text-gray-800">
+<body class="bg-slate-50">
 
     <!-- Background Video -->
     <video autoplay muted loop playsinline id="background-video">
@@ -69,70 +103,112 @@
     </video>
 
     <!-- Header -->
-    <!-- Header -->
-<header class="bg-white shadow-md sticky top-0 z-50">
-      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
+      <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
         <div>
           <a href="#">
-            <!-- MODIFIED THIS LINE -->
-            <img src="https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/logo.563Z.png" alt="Flowcore Hydropumps Logo" class="h-[70px] w-auto">
+            <img src="https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/logo.563Z.png" alt="Flowcore Hydropumps Logo" class="h-16 w-auto">
           </a>
         </div>
-        <div class="hidden md:flex items-center space-x-6">
-          <a href="#applications" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Applications</a>
-          <a href="#features" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Product Range</a>
-          <a href="#specifications" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Specifications</a>
-          <a href="#standard-curves" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Curves</a>
-          <a href="#excellence" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Excellence</a>
-          <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Contact</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#applications" class="nav-link">Applications</a>
+          <a href="#products" class="nav-link">Products</a>
+          <a href="#advantage" class="nav-link">Advantage</a>
+          <a href="#specs" class="nav-link">Specifications</a>
+          <a href="#curves" class="nav-link">Performance</a>
         </div>
+        <div class="hidden md:block">
+            <a href="#contact" class="bg-white text-blue-600 font-semibold py-2 px-6 border-2 border-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
+                Contact Us
+            </a>
+        </div>
+        <!-- Mobile Menu Button can be added here -->
       </nav>
-</header>
+    </header>
 
-    <main class="flex-grow">
+    <main>
       <!-- Hero Section -->
-      <div class="relative bg-cover bg-center h-[60vh] text-white" style="background-image: url('https://images.unsplash.com/photo-1549402586-351594e99557?q=80&w=2070&auto=format&fit=crop');">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-start">
-          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 tracking-wide">
-            Flowcore Hydropumps
+      <section class="relative h-screen flex items-center justify-center text-white text-center">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        <div class="relative z-10 px-6 animate-on-scroll is-visible">
+          <h1 class="text-6xl md:text-8xl font-bold uppercase tracking-wider" style="font-family: var(--font-heading);">
+            Unrivaled Pumping Power
           </h1>
-          <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl">
-            Engineered for superior performance and steadfast reliability, our surface dewatering pumps are the definitive solution for demanding industries.
+          <h2 class="text-4xl md:text-6xl font-semibold text-blue-400 mt-2" style="font-family: var(--font-heading);">
+            Unwavering Reliability
+          </h2>
+          <p class="text-xl md:text-2xl font-light mt-6 max-w-4xl mx-auto text-gray-200">
+            Flowcore delivers premier surface dewatering pumps, engineered for extreme conditions and peak performance across demanding industries.
           </p>
-          <div>
-            <a href="#applications" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 duration-300 shadow-lg">
-              Explore Applications
+          <div class="mt-12">
+            <a href="#applications" class="cta-button">
+              Discover Our Solutions <i class="fas fa-arrow-right ml-2"></i>
             </a>
           </div>
         </div>
-      </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
+            <a href="#intro" class="animate-bounce block">
+                <i class="fas fa-chevron-down text-3xl text-white/50 hover:text-white transition-colors"></i>
+            </a>
+        </div>
+      </section>
 
-      <!-- Applications Section -->
-      <section id="applications" class="py-20 bg-gray-100">
+      <!-- Intro / Mission Section -->
+      <section id="intro" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-          <div class="text-center mb-12 animated-section">
-              <h2 class="text-3xl md:text-4xl font-bold text-blue-900">One Pump, Endless Applications</h2>
-              <p class="text-lg text-gray-600 mt-2">Explore the diverse industries our pumps serve.</p>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <h2 class="text-5xl lg:text-6xl font-bold leading-tight">PRECISION IN <span class="text-blue-600">EVERY DROP.</span></h2>
+                    <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+                        Flowcore Hydropumps isn't just a manufacturer; we are your partners in fluid management. We combine robust engineering with innovative technology to create pumps that not only perform but endure. Our commitment is to provide solutions that guarantee operational efficiency and peace of mind, no matter the challenge.
+                    </p>
+                    <div class="mt-8 pt-6 border-t border-gray-200 flex space-x-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-600" style="font-family: var(--font-heading);">20+</div>
+                            <div class="text-sm text-slate-500">Years of Expertise</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-600" style="font-family: var(--font-heading);">99%</div>
+                            <div class="text-sm text-slate-500">Uptime Reliability</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-600" style="font-family: var(--font-heading);">1000+</div>
+                            <div class="text-sm text-slate-500">Global Deployments</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-on-scroll" style="transition-delay: 200ms;">
+                    <img src="https://i.imgur.com/x4R7ezt.png" alt="Flowcore Pumps" class="rounded-xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+      </section>
+      
+      <!-- Applications Section -->
+      <section id="applications" class="py-24 bg-slate-100">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16 animate-on-scroll">
+              <h2 class="text-5xl md:text-6xl font-bold">ONE PUMP, <span class="text-blue-600">ENDLESS APPLICATIONS</span></h2>
+              <p class="text-xl text-slate-600 mt-4 max-w-3xl mx-auto">From rugged mines to critical infrastructure, our pumps provide reliable dewatering solutions where they matter most.</p>
           </div>
-          <div class="bg-white rounded-xl shadow-2xl overflow-hidden animated-section">
-              <div class="grid grid-cols-1 md:grid-cols-12 min-h-[60vh]">
-                  <div class="md:col-span-4 lg:col-span-3 bg-gray-50 p-6 border-r border-gray-200">
-                      <h3 class="text-lg font-semibold text-gray-700 mb-4 text-center md:text-left">Select an Industry</h3>
-                      <div id="applications-selector" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl shadow-xl overflow-hidden animate-on-scroll">
+              <div class="grid grid-cols-1 lg:grid-cols-12">
+                  <div class="lg:col-span-4 bg-slate-50 p-8 border-b lg:border-b-0 lg:border-r border-gray-200">
+                      <h3 class="text-3xl font-semibold mb-6">SELECT INDUSTRY</h3>
+                      <div id="applications-selector" class="space-y-2">
                           <!-- App buttons will be injected by JS -->
                       </div>
                   </div>
-                  <div class="md:col-span-8 lg:col-span-9 p-8 md:p-12 flex flex-col justify-center bg-white">
+                  <div class="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center">
                      <div class="transition-opacity duration-500">
                         <div class="flex items-center mb-6">
-                            <i id="app-details-icon" class="text-5xl text-blue-600"></i>
-                            <h3 id="app-details-title" class="text-3xl md:text-4xl font-extrabold text-blue-900 ml-4"></h3>
+                            <i id="app-details-icon" class="text-6xl text-blue-600 w-16"></i>
+                            <h3 id="app-details-title" class="text-5xl font-extrabold ml-6"></h3>
                         </div>
-                        <p id="app-details-description" class="text-gray-600 text-base md:text-lg mb-8 leading-relaxed"></p>
+                        <p id="app-details-description" class="text-gray-600 text-lg mb-8 leading-relaxed"></p>
                         <div>
-                            <h4 class="font-bold text-gray-800 mb-4 text-lg border-b pb-2">Key Uses:</h4>
-                            <ul id="app-details-uses" class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                            <h4 class="text-2xl font-bold mb-4 border-b-2 border-blue-200 pb-2">Key Uses:</h4>
+                            <ul id="app-details-uses" class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                                 <!-- Uses will be injected by JS -->
                             </ul>
                         </div>
@@ -144,135 +220,148 @@
       </section>
 
       <!-- Product Range Section -->
-      <section id="features" class="py-20 bg-white">
+      <section id="products" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12 animated-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Our Product Range</h2>
-                <p class="text-lg text-gray-600 mt-2">A showcase of our submersible and autoprime surface pumps.</p>
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-5xl md:text-6xl font-bold">OUR PRODUCT <span class="text-blue-600">PORTFOLIO</span></h2>
+                <p class="text-xl text-slate-600 mt-4">A showcase of our submersible and autoprime surface pumps.</p>
             </div>
-            <div class="flex justify-center animated-section">
-                <img src="https://i.imgur.com/x4R7ezt.png" 
-                     alt="A display of Flowcore pumps, showing a row of Submersible Pumps and a row of AutoPrime Surface Pumps." 
-                     class="rounded-xl shadow-2xl max-w-full h-auto">
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <!-- Autoprime Pumps Card -->
+                <div class="bg-slate-50 rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll">
+                    <h3 class="text-4xl font-bold text-blue-700">AutoPrime Surface Pumps</h3>
+                    <p class="text-slate-600 mt-2 mb-6 flex-grow">The workhorse of dewatering. Designed for portability, reliability, and automatic priming for "set and forget" operation.</p>
+                    <div class="bg-white p-4 rounded-lg shadow-inner">
+                        <img src="https://i.imgur.com/e4744xQ.png" alt="AutoPrime Surface Pump" class="w-full h-auto object-contain rounded-md">
+                    </div>
+                </div>
+                <!-- Submersible Pumps Card -->
+                <div class="bg-slate-50 rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll" style="transition-delay: 200ms;">
+                    <h3 class="text-4xl font-bold text-blue-700">Submersible Pumps</h3>
+                    <p class="text-slate-600 mt-2 mb-6 flex-grow">For applications where suction lift is a challenge. These pumps are built to be submerged and handle tough, abrasive slurries with ease.</p>
+                    <div class="bg-white p-4 rounded-lg shadow-inner">
+                         <img src="https://i.imgur.com/vH1T8iT.png" alt="Submersible Pump" class="w-full h-auto object-contain rounded-md">
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- The Flowcore Advantage Section -->
+      <section id="advantage" class="py-24" style="background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), url('https://www.toptal.com/designers/subtlepatterns/uploads/double-bubble-outline.png');">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-5xl md:text-6xl font-bold text-white">THE FLOWCORE <span class="text-blue-400">ADVANTAGE</span></h2>
+                <p class="text-xl text-slate-300 mt-4">Core benefits engineered into every pump we build.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
+                <!-- Advantage Cards -->
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 100ms;"><div class="mb-4"><i class="fas fa-plug text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">PLUG & PLAY</h3><p class="text-slate-300">Galvanized steel quick-release couplings for easy, leak-proof connections.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 200ms;"><div class="mb-4"><i class="fas fa-cogs text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">MODULAR SEALING</h3><p class="text-slate-300">Twin SS tandem seals (TC vs TC) for superior sealing in abrasive environments.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 300ms;"><div class="mb-4"><i class="fas fa-shield-alt text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">ABRASION RESISTANCE</h3><p class="text-slate-300">Nitride hardened impellers & CF8M components for extended life in muddy applications.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 400ms;"><div class="mb-4"><i class="fas fa-car-battery text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">CORROSION RESISTANCE</h3><p class="text-slate-300">FRP Coated Casing and SS 304 shaft for maximum longevity against corrosion.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 500ms;"><div class="mb-4"><i class="fas fa-trailer text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">TRULY PORTABLE</h3><p class="text-slate-300">Heavy-duty 4-wheeled trolley for effortless towing to multiple site locations.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 600ms;"><div class="mb-4"><i class="fas fa-hand-rock text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">EASY OPERATION</h3><p class="text-slate-300">Tyre coupling ensures consistent performance on any surface, a true site pump.</p></div>
             </div>
         </div>
       </section>
 
       <!-- Technical Specifications Section -->
-      <section id="specifications" class="bg-blue-900 text-white py-20 overflow-hidden">
-        <div class="container mx-auto px-6 animated-section">
-          <div class="text-center mb-12">
-              <h2 class="text-3xl md:text-4xl font-bold">Core Technical Specifications</h2>
-              <p class="text-lg text-blue-200 mt-2">The engineering details that guarantee performance.</p>
+      <section id="specs" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16 animate-on-scroll">
+              <h2 class="text-5xl md:text-6xl font-bold">CORE TECHNICAL <span class="text-blue-600">SPECIFICATIONS</span></h2>
+              <p class="text-xl text-slate-600 mt-4">The engineering details that guarantee performance.</p>
           </div>
-          <div class="relative">
-            <div class="overflow-hidden">
-              <div id="specs-carousel" class="flex transition-transform duration-500 ease-in-out">
-                <!-- Carousel items injected by JS -->
+          <div class="grid md:grid-cols-12 gap-8 max-w-6xl mx-auto animate-on-scroll">
+            <div class="md:col-span-4">
+              <div id="specs-selector" class="space-y-3">
+                <!-- Spec selectors injected by JS -->
               </div>
             </div>
-            <button id="spec-prev-btn" class="absolute top-1/2 left-0 md:-left-4 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all z-10" aria-label="Previous specification"><i class="fas fa-chevron-left"></i></button>
-            <button id="spec-next-btn" class="absolute top-1/2 right-0 md:-right-4 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all z-10" aria-label="Next specification"><i class="fas fa-chevron-right"></i></button>
+            <div class="md:col-span-8">
+              <div id="specs-content-area">
+                <!-- Spec content injected by JS -->
+              </div>
+            </div>
           </div>
-           <div id="specs-dots" class="flex justify-center mt-8 space-x-2">
-              <!-- Dots injected by JS -->
-           </div>
         </div>
       </section>
-      
+
       <!-- Standard Curves Section -->
-       <section id="standard-curves" class="py-20 bg-gray-100">
+       <section id="curves" class="py-24 bg-slate-100">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12 animated-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Reference Performance Curves</h2>
-                <p class="text-lg text-gray-600 mt-2">Standard selection charts for our pump range.</p>
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-5xl md:text-6xl font-bold">REFERENCE PERFORMANCE <span class="text-blue-600">CURVES</span></h2>
+                <p class="text-xl text-slate-600 mt-4">Standard selection charts for our pump range.</p>
             </div>
-            <div class="relative max-w-3xl mx-auto animated-section">
-                <div class="overflow-hidden rounded-lg shadow-xl border">
+            <div class="relative max-w-4xl mx-auto animate-on-scroll">
+                <div class="overflow-hidden rounded-xl shadow-2xl border-4 border-white">
                   <div id="curves-carousel" class="flex transition-transform duration-500 ease-in-out bg-white">
                     <!-- Curve slides will be injected here by JS -->
                   </div>
                 </div>
-                <button id="curve-prev-btn" class="absolute top-1/2 left-0 md:-left-6 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Previous curve"><i class="fas fa-chevron-left"></i></button>
-                <button id="curve-next-btn" class="absolute top-1/2 right-0 md:-right-6 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Next curve"><i class="fas fa-chevron-right"></i></button>
+                <button id="curve-prev-btn" class="absolute top-1/2 -left-5 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Previous curve"><i class="fas fa-chevron-left"></i></button>
+                <button id="curve-next-btn" class="absolute top-1/2 -right-5 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Next curve"><i class="fas fa-chevron-right"></i></button>
             </div>
-            <div id="curves-dots" class="flex justify-center mt-8 space-x-2">
+            <div id="curves-dots" class="flex justify-center mt-8 space-x-3">
                 <!-- Dots will be injected by JS -->
             </div>
         </div>
       </section>
 
-      <!-- Excellence In Motion Section -->
-      <section id="excellence" class="py-20 bg-gray-100">
+      <!-- Contact Section -->
+      <section id="contact" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12 animated-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Excellence in Motion</h2>
-                <p class="text-lg text-gray-600 mt-2">Core advantages that define our engineering.</p>
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-5xl md:text-6xl font-bold">GET IN <span class="text-blue-600">TOUCH</span></h2>
+                <p class="text-xl text-slate-600 mt-4">Have a question or need a custom quote? We're ready to help.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-section">
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl animated-item" style="transition-delay: 100ms;"><div class="mb-4"><i class="fas fa-plug text-5xl text-blue-600"></i></div><h3 class="text-xl font-bold text-blue-900 mb-2">PLUG & PLAY</h3><p class="text-gray-600">Galvanized steel quick-release coupling which makes for easy & leak-proof connections.</p></div>
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl animated-item" style="transition-delay: 200ms;"><div class="mb-4"><i class="fas fa-cogs text-5xl text-blue-600"></i></div><h3 class="text-xl font-bold text-blue-900 mb-2">MODULAR SEALING</h3><p class="text-gray-600">Twin SS seal in tandem (TC vs TC) for best sealing against water leakage in abrasive & muddy environments.</p></div>
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl animated-item" style="transition-delay: 300ms;"><div class="mb-4"><i class="fas fa-hand-rock text-5xl text-blue-600"></i></div><h3 class="text-xl font-bold text-blue-900 mb-2">EASE OF OPERATION</h3><p class="text-gray-600">Tyre coupling makes it truly a site pump, performance uneffected on any surface.</p></div>
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl animated-item" style="transition-delay: 400ms;"><div class="mb-4"><i class="fas fa-shield-alt text-5xl text-blue-600"></i></div><h3 class="text-xl font-bold text-blue-900 mb-2">ABRASIVE RESISTANCE</h3><p class="text-gray-600">Nitride hardened impellers, Stuffing Box & Wear Ring all in CF8M for more life in abrasive & muddy applications.</p></div>
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl animated-item" style="transition-delay: 500ms;"><div class="mb-4"><i class="fas fa-car-battery text-5xl text-blue-600"></i></div><h3 class="text-xl font-bold text-blue-900 mb-2">HIGH CORROSION RESISTANCE</h3><p class="text-gray-600">FRP Coated Casing in Cast Iron & Shaft in SS 304 for maximum corrosion resistance & life longevity.</p></div>
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl animated-item" style="transition-delay: 600ms;"><div class="mb-4"><i class="fas fa-trailer text-5xl text-blue-600"></i></div><h3 class="text-xl font-bold text-blue-900 mb-2">TRULY PORTABLE</h3><p class="text-gray-600">Heavy Duty 4-wheeled trolley, easy to tow to multiple site locations in no time.</p></div>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 bg-slate-50 p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll">
+                <div class="flex flex-col justify-center">
+                     <h3 class="text-4xl font-bold text-blue-800 mb-6">Contact Information</h3>
+                     <div class="space-y-6 text-slate-700 text-lg">
+                         <p class="flex items-start"><i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-4 w-5 text-center"></i><span>PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, NEAR JAIBIR FARM HOUSE, FARIDABAD, Haryana, India - 121005</span></p>
+                         <p class="flex items-center"><i class="fas fa-phone-alt text-blue-600 mr-4 w-5 text-center"></i><span>+91-123-456-7890 (Sales)</span></p>
+                         <p class="flex items-center"><i class="fas fa-envelope text-blue-600 mr-4 w-5 text-center"></i><span>sales@flowcorehydropumps.com</span></p>
+                     </div>
+                     <div class="mt-8 pt-6 border-t border-gray-200">
+                        <h4 class="text-2xl font-bold text-slate-800 mb-4">Connect With Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" aria-label="Facebook" class="text-slate-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter" class="text-slate-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="text-slate-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="YouTube" class="text-slate-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
+                        </div>
+                     </div>
+                </div>
+                <form id="contact-form" class="space-y-8">
+                    <div><label for="name" class="block font-medium text-slate-700 mb-1">Full Name</label><input type="text" name="name" id="name" required class="form-input" placeholder="John Doe" /></div>
+                    <div><label for="email" class="block font-medium text-slate-700 mb-1">Email Address</label><input type="email" name="email" id="email" required class="form-input" placeholder="john.doe@example.com" /></div>
+                    <div><label for="company" class="block font-medium text-slate-700 mb-1">Company (Optional)</label><input type="text" name="company" id="company" class="form-input" placeholder="Your Company Inc." /></div>
+                    <div><label for="message" class="block font-medium text-slate-700 mb-1">Message</label><textarea name="message" id="message" rows="4" required class="w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-700 focus:outline-none focus:border-blue-500 transition-colors" placeholder="How can we help you?"></textarea></div>
+                    <div><button type="submit" class="w-full cta-button">Send Inquiry</button></div>
+                </form>
             </div>
         </div>
       </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12 animated-section">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Get In Touch</h2>
-                    <p class="text-lg text-gray-600 mt-2">Have a question or need a quote? We're here to help.</p>
-                </div>
-                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 bg-gray-50 p-8 rounded-xl shadow-lg animated-section">
-                    <div class="flex flex-col justify-center">
-                         <h3 class="text-2xl font-bold text-blue-800 mb-6">Contact Information</h3>
-                         <div class="space-y-4 text-gray-700">
-                             <p class="flex items-start"><i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-4 w-4 text-center"></i><span>PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, NEAR JAIBIR FARM HOUSE, FARIDABAD, Haryana, India - 121005</span></p>
-                             <p class="flex items-center"><i class="fas fa-phone-alt text-blue-600 mr-4 w-4 text-center"></i><span>+91-123-456-7890 (Sales)</span></p>
-                             <p class="flex items-center"><i class="fas fa-envelope text-blue-600 mr-4 w-4 text-center"></i><span>sales@flowcorehydropumps.com</span></p>
-                         </div>
-                         <div class="mt-8 pt-6 border-t border-gray-200">
-                            <h4 class="font-bold text-gray-800 mb-4">Connect With Us</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
-                                <a href="#" aria-label="Twitter" class="text-gray-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-twitter"></i></a>
-                                <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" aria-label="YouTube" class="text-gray-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
-                            </div>
-                         </div>
-                    </div>
-                    <form id="contact-form" class="space-y-6">
-                        <div><label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label><input type="text" name="name" id="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" /></div>
-                        <div><label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label><input type="email" name="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" /></div>
-                        <div><label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label><input type="text" name="company" id="company" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" /></div>
-                        <div><label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label><textarea name="message" id="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea></div>
-                        <div><button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition-transform transform hover:scale-105 duration-300 shadow-lg">Send Message</button></div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <!-- Footer -->
-    <footer id="footer" class="bg-blue-900 text-white">
-      <div class="container mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div><h3 class="text-xl font-bold mb-4">FLOWCORE HYDROPUMPS PVT. LTD.</h3><p class="text-blue-200">PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, <br />NEAR JAIBIR FARM HOUSE, FARIDABAD, <br />Haryana, India - 121005</p></div>
-          <div><h3 class="text-xl font-bold mb-4">Quick Links</h3><ul class="space-y-2"><li><a href="#applications" class="text-blue-200 hover:text-white transition-colors">Applications</a></li><li><a href="#features" class="text-blue-200 hover:text-white transition-colors">Product Range</a></li><li><a href="#specifications" class="text-blue-200 hover:text-white transition-colors">Specifications</a></li><li><a href="#standard-curves" class="text-blue-200 hover:text-white transition-colors">Curves</a></li><li><a href="#excellence" class="text-blue-200 hover:text-white transition-colors">Excellence</a></li><li><a href="#contact" class="text-blue-200 hover:text-white transition-colors">Contact</a></li></ul></div>
-          <div><h3 class="text-xl font-bold mb-4">Connect With Us</h3><div class="flex space-x-4"><a href="#" class="text-blue-200 hover:text-white text-2xl transition-colors"><i class="fab fa-facebook"></i></a><a href="#" class="text-blue-200 hover:text-white text-2xl transition-colors"><i class="fab fa-twitter"></i></a><a href="#" class="text-blue-200 hover:text-white text-2xl transition-colors"><i class="fab fa-linkedin"></i></a><a href="#" class="text-blue-200 hover:text-white text-2xl transition-colors"><i class="fab fa-youtube"></i></a></div></div>
+    <footer class="bg-slate-900 text-white">
+      <div class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+          <div class="md:col-span-2"><h3 class="text-3xl font-bold mb-4 text-blue-300">FLOWCORE HYDROPUMPS PVT. LTD.</h3><p class="text-slate-400">PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, <br />NEAR JAIBIR FARM HOUSE, FARIDABAD, <br />Haryana, India - 121005</p></div>
+          <div><h3 class="text-2xl font-bold mb-4 text-blue-300">Quick Links</h3><ul class="space-y-2"><li class="text-slate-400 hover:text-white transition-colors"><a href="#applications">Applications</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#products">Products</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#advantage">Advantage</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#specs">Specifications</a></li></ul></div>
+          <div><h3 class="text-2xl font-bold mb-4 text-blue-300">Connect</h3><div class="flex space-x-4 justify-center md:justify-start"><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-facebook"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-twitter"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-linkedin"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-youtube"></i></a></div></div>
         </div>
-        <div class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-300 text-sm"><p>© <span id="footer-year"></span> Flowcore Hydropumps Private Limited. All Rights Reserved.</p></div>
+        <div class="border-t border-slate-800 mt-12 pt-8 text-center text-slate-500 text-sm"><p>© <span id="footer-year"></span> Flowcore Hydropumps Private Limited. All Rights Reserved.</p></div>
       </div>
     </footer>
 
     <script>
-      // The entire script block remains the same
-      document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
 
         // --- Data ---
         const APPLICATIONS = [
@@ -287,105 +376,14 @@
         ];
         
         const SPECS = [
-            { icon: 'fa-retweet', title: 'Priming System', description: 'Flood lubricated rotary vacuum pump of minimum displacement 70 CFM incorporating a non-return valve for reliable, automatic priming.', details: [] },
-            { icon: 'fa-ring', title: 'Shaft Sealing', description: 'Double-sided, spring-loaded bellow-type mechanical seal with oil bath cooling for maximum durability and leak prevention.', details: [] },
-            { icon: 'fa-cogs', title: 'Materials of Construction', description: 'Built with high-grade materials to withstand demanding environments and ensure long service life.', details: [
+            { id: 'priming', icon: 'fa-retweet', title: 'Priming System', description: 'Features a flood-lubricated rotary vacuum pump with a minimum displacement of 70 CFM, incorporating a non-return valve for reliable, fully automatic priming and re-priming capabilities.', details: [] },
+            { id: 'sealing', icon: 'fa-ring', title: 'Shaft Sealing', description: 'Utilizes a double-sided, spring-loaded bellow-type mechanical seal. This advanced system is cooled by an oil bath to ensure maximum durability, prevent leaks, and withstand abrasive conditions.', details: [] },
+            { id: 'materials', icon: 'fa-cogs', title: 'Materials of Construction', description: 'Engineered with high-grade, corrosion-resistant materials to guarantee long service life in the most demanding industrial and environmental conditions.', details: [
                 { name: 'Impeller & Wear Plate', value: 'SS316 (CF8M)' }, { name: 'Pump Shaft', value: 'SS410' },
-                { name: 'Volute Casing', value: 'CI (Cast Iron)' }, { name: 'Stuffing Box', value: 'CI (Cast Iron)' },
+                { name: 'Volute Casing', value: 'CI (Cast Iron), FRP Coated' }, { name: 'Stuffing Box', value: 'CI (Cast Iron)' },
                 { name: 'Vacuum Pump', value: 'CI (Cast Iron)' }, { name: 'N.R.V.', value: 'Ball Type Rubber' }
             ]}
         ];
-
-        // --- Animations ---
-        const animatedSections = document.querySelectorAll('.animated-section');
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        animatedSections.forEach(section => observer.observe(section));
-
-        // --- Applications Section ---
-        const appSelector = document.getElementById('applications-selector');
-        const appIcon = document.getElementById('app-details-icon');
-        const appTitle = document.getElementById('app-details-title');
-        const appDesc = document.getElementById('app-details-description');
-        const appUses = document.getElementById('app-details-uses');
-
-        function updateApplicationContent(index) {
-          const app = APPLICATIONS[index];
-          appIcon.className = `${app.icon} text-5xl text-blue-600`;
-          appTitle.textContent = app.title;
-          appDesc.textContent = app.description;
-          appUses.innerHTML = app.uses.map(use => `<li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span class="text-gray-700">${use}</span></li>`).join('');
-          
-          document.querySelectorAll('#applications-selector button').forEach((btn, i) => {
-             btn.classList.toggle('bg-blue-600', i === index);
-             btn.classList.toggle('text-white', i === index);
-             btn.classList.toggle('shadow-lg', i === index);
-             btn.classList.toggle('bg-white', i !== index);
-             btn.classList.toggle('text-gray-700', i !== index);
-          });
-        }
-        
-        APPLICATIONS.forEach((app, index) => {
-            const button = document.createElement('button');
-            button.className = `flex flex-col items-center justify-center p-4 rounded-lg text-center cursor-pointer transition-all duration-300 transform hover:-translate-y-1 hover:bg-blue-50 hover:shadow-md`;
-            button.setAttribute('data-index', index);
-            button.innerHTML = `<i class="${app.icon} text-3xl mb-2"></i><span class="text-xs font-bold">${app.title}</span>`;
-            button.onclick = () => updateApplicationContent(index);
-            appSelector.appendChild(button);
-        });
-
-        updateApplicationContent(0);
-
-        // --- Specs Carousel ---
-        const specsCarousel = document.getElementById('specs-carousel');
-        const specsDotsContainer = document.getElementById('specs-dots');
-        let currentSpecIndex = 0;
-
-        function updateSpecsCarousel() {
-            specsCarousel.style.transform = `translateX(-${currentSpecIndex * 100}%)`;
-            document.querySelectorAll('#specs-dots button').forEach((dot, index) => {
-                dot.classList.toggle('bg-cyan-400', index === currentSpecIndex);
-                dot.classList.toggle('bg-blue-700', index !== currentSpecIndex);
-            });
-        }
-        
-        SPECS.forEach((spec, index) => {
-            const specDiv = document.createElement('div');
-            specDiv.className = 'w-full flex-shrink-0 px-2 md:px-4';
-            let detailsHTML = '';
-            if (spec.details.length > 0) {
-                detailsHTML = `<ul class="space-y-2 text-sm border-t border-blue-700 pt-4">${spec.details.map(d => `<li class="flex justify-between"><strong class="text-blue-100">${d.name}:</strong><span class="text-right">${d.value}</span></li>`).join('')}</ul>`;
-            }
-            specDiv.innerHTML = `<div class="bg-blue-800 rounded-lg p-8 shadow-xl mx-auto max-w-2xl"><div class="flex items-center mb-4"><i class="fas ${spec.icon} text-3xl text-cyan-400"></i><h3 class="text-2xl font-bold ml-4 text-white">${spec.title}</h3></div><p class="text-blue-200 mb-6 min-h-[4rem]">${spec.description}</p>${detailsHTML}</div>`;
-            specsCarousel.appendChild(specDiv);
-            
-            const dot = document.createElement('button');
-            dot.className = 'w-3 h-3 rounded-full transition-colors hover:bg-blue-600';
-            dot.onclick = () => { currentSpecIndex = index; updateSpecsCarousel(); };
-            specsDotsContainer.appendChild(dot);
-        });
-        
-        document.getElementById('spec-prev-btn').onclick = () => {
-            currentSpecIndex = (currentSpecIndex === 0) ? SPECS.length - 1 : currentSpecIndex - 1;
-            updateSpecsCarousel();
-        };
-        document.getElementById('spec-next-btn').onclick = () => {
-            currentSpecIndex = (currentSpecIndex === SPECS.length - 1) ? 0 : currentSpecIndex + 1;
-            updateSpecsCarousel();
-        };
-
-        updateSpecsCarousel();
-        
-        // --- Curves Carousel ---
-        const curvesCarousel = document.getElementById('curves-carousel');
-        const curvesDotsContainer = document.getElementById('curves-dots');
-        let currentCurveIndex = 0;
 
         const CURVES = [
           { title: 'Size: 100mm @ 2900 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA%201.png' },
@@ -397,13 +395,116 @@
           { title: 'Size: 300mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA7.png' },
         ];
 
+        // --- Animations on Scroll ---
+        const animatedSections = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.1 });
+        animatedSections.forEach(section => observer.observe(section));
+        
+        // --- Header Scroll Effect ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- Applications Section ---
+        const appSelector = document.getElementById('applications-selector');
+        const appIcon = document.getElementById('app-details-icon');
+        const appTitle = document.getElementById('app-details-title');
+        const appDesc = document.getElementById('app-details-description');
+        const appUses = document.getElementById('app-details-uses');
+
+        function updateApplicationContent(index) {
+          const app = APPLICATIONS[index];
+          appIcon.className = `${app.icon} text-6xl text-blue-600 w-16`;
+          appTitle.textContent = app.title;
+          appDesc.textContent = app.description;
+          appUses.innerHTML = app.uses.map(use => `<li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span class="text-gray-700">${use}</span></li>`).join('');
+          
+          document.querySelectorAll('#applications-selector button').forEach((btn, i) => {
+             btn.classList.toggle('bg-blue-600', i === index);
+             btn.classList.toggle('text-white', i === index);
+             btn.classList.toggle('bg-white', i !== index);
+             btn.classList.toggle('text-slate-600', i !== index);
+          });
+        }
+        
+        APPLICATIONS.forEach((app, index) => {
+            const button = document.createElement('button');
+            button.className = 'w-full flex items-center p-4 rounded-lg text-left cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md hover:bg-blue-50';
+            button.setAttribute('data-index', index);
+            button.innerHTML = `<i class="${app.icon} text-2xl w-10 text-center"></i><span class="ml-4 font-semibold">${app.title}</span>`;
+            button.onclick = () => updateApplicationContent(index);
+            appSelector.appendChild(button);
+        });
+
+        if(APPLICATIONS.length > 0) updateApplicationContent(0);
+
+        // --- NEW Specs Selector Logic ---
+        const specsSelector = document.getElementById('specs-selector');
+        const specsContentArea = document.getElementById('specs-content-area');
+        
+        function updateSpecsContent(specId) {
+            // Update button active state
+            document.querySelectorAll('#specs-selector button').forEach(btn => {
+                btn.classList.toggle('bg-blue-600', btn.dataset.id === specId);
+                btn.classList.toggle('text-white', btn.dataset.id === specId);
+                 btn.classList.toggle('bg-slate-100', btn.dataset.id !== specId);
+                btn.classList.toggle('text-slate-700', btn.dataset.id !== specId);
+            });
+
+            // Update content display
+             document.querySelectorAll('#specs-content-area > div').forEach(contentDiv => {
+                contentDiv.classList.toggle('hidden', contentDiv.dataset.id !== `content-${specId}`);
+             });
+        }
+
+        SPECS.forEach((spec, index) => {
+            // Create selector button
+            const button = document.createElement('button');
+            button.className = 'w-full flex items-center p-4 rounded-lg text-left font-semibold cursor-pointer transition-colors duration-300';
+            button.dataset.id = spec.id;
+            button.innerHTML = `<i class="fas ${spec.icon} text-2xl w-10 text-center"></i><span class="ml-4 text-xl">${spec.title}</span>`;
+            button.onclick = () => updateSpecsContent(spec.id);
+            specsSelector.appendChild(button);
+            
+            // Create content panel
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'bg-slate-50 p-8 rounded-xl border border-slate-200';
+            contentDiv.dataset.id = `content-${spec.id}`;
+            let detailsHTML = '';
+            if (spec.details.length > 0) {
+                detailsHTML = `<ul class="space-y-3 mt-6 pt-6 border-t border-slate-200">${spec.details.map(d => `<li class="flex justify-between items-center text-md"><strong class="text-slate-800">${d.name}</strong><span class="text-right text-slate-600 bg-slate-200 px-3 py-1 rounded-full text-sm">${d.value}</span></li>`).join('')}</ul>`;
+            }
+            contentDiv.innerHTML = `<h3 class="text-4xl font-bold text-blue-700">${spec.title}</h3><p class="mt-4 text-lg text-slate-600 leading-relaxed">${spec.description}</p>${detailsHTML}`;
+            specsContentArea.appendChild(contentDiv);
+        });
+        
+        if (SPECS.length > 0) updateSpecsContent(SPECS[0].id);
+
+        // --- Curves Carousel ---
+        const curvesCarousel = document.getElementById('curves-carousel');
+        const curvesDotsContainer = document.getElementById('curves-dots');
+        let currentCurveIndex = 0;
+
         function updateCurvesCarousel() {
             if (curvesCarousel) {
                 curvesCarousel.style.transform = `translateX(-${currentCurveIndex * 100}%)`;
             }
             document.querySelectorAll('#curves-dots button').forEach((dot, index) => {
                 dot.classList.toggle('bg-blue-600', index === currentCurveIndex);
+                dot.classList.toggle('w-8', index === currentCurveIndex);
                 dot.classList.toggle('bg-gray-300', index !== currentCurveIndex);
+                dot.classList.toggle('w-3', index !== currentCurveIndex);
             });
         }
         
@@ -413,41 +514,18 @@
         CURVES.forEach((curve, index) => {
             const slideDiv = document.createElement('div');
             slideDiv.className = 'w-full flex-shrink-0';
-            
-            const cardDiv = document.createElement('div');
-            cardDiv.className = 'bg-white overflow-hidden group';
-
-            let imageHTML = '';
-            if (curve.imageUrl) {
-                imageHTML = `
-                    <div class="relative overflow-hidden cursor-pointer">
-                        <img src="${curve.imageUrl}" alt="${curve.title}" class="w-full h-auto object-cover transition-transform duration-300 ease-in-out group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                           <div class="text-white text-center transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-4xl"></i>
-                                <p class="font-bold mt-2">View Details</p>
-                           </div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                imageHTML = `<div class="bg-gray-200 flex items-center justify-center" style="min-height: 250px;"><span class="text-gray-500 p-4 text-center">Curve not available</span></div>`;
-            }
-            
-            const titleHTML = `<div class="p-4 bg-gray-50 border-t"><h3 class="text-center font-semibold text-gray-800 text-sm">${curve.title}</h3></div>`;
-            
-            cardDiv.innerHTML = imageHTML + titleHTML;
-            slideDiv.appendChild(cardDiv);
+            slideDiv.innerHTML = `
+              <div class="bg-white overflow-hidden group">
+                  <div class="p-4 bg-slate-800"><h3 class="text-center font-semibold text-white text-lg tracking-wider">${curve.title}</h3></div>
+                  <img src="${curve.imageUrl}" alt="${curve.title}" class="w-full h-auto object-cover">
+              </div>
+            `;
             curvesCarousel.appendChild(slideDiv);
 
-            // Create dot
             const dot = document.createElement('button');
-            dot.className = 'w-3 h-3 rounded-full transition-colors hover:bg-blue-500';
+            dot.className = 'h-3 rounded-full transition-all duration-300 hover:bg-blue-400';
             dot.setAttribute('aria-label', `Go to curve ${index + 1}`);
-            dot.onclick = () => {
-                currentCurveIndex = index;
-                updateCurvesCarousel();
-            };
+            dot.onclick = () => { currentCurveIndex = index; updateCurvesCarousel(); };
             curvesDotsContainer.appendChild(dot);
         });
 
@@ -460,22 +538,20 @@
             updateCurvesCarousel();
         };
         
-        if (CURVES.length > 0) {
-            updateCurvesCarousel();
-        }
+        if (CURVES.length > 0) updateCurvesCarousel();
 
         // --- Contact Form ---
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', (e) => {
           e.preventDefault();
+          // Replace with actual form submission logic (e.g., fetch to an API)
           alert("Thank you for your message! We will get back to you shortly.");
           contactForm.reset();
         });
 
         // --- Footer Year ---
         document.getElementById('footer-year').textContent = new Date().getFullYear();
-      });
+    });
     </script>
-  <script type="module" src="/index.tsx"></script>
 </body>
 </html>

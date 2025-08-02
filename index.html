@@ -111,21 +111,6 @@
           position: relative;
           height: 400px;
       }
-
-      /* Fancy Carousel Navigation Button */
-      .carousel-nav-button {
-        @apply absolute top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-orange-700 text-white shadow-lg transition-all duration-300 ease-in-out;
-      }
-      .carousel-nav-button:hover {
-        @apply scale-105 shadow-xl shadow-orange-500/30;
-      }
-      .carousel-nav-button i {
-        @apply text-2xl transition-transform duration-300;
-      }
-      .carousel-nav-button:hover i {
-        @apply scale-110;
-      }
-      
     </style>
 </head>
 <body class="bg-white">
@@ -398,12 +383,12 @@
                     </div>
                   </div>
                 </div>
-                <!-- *** NEW FANCY BUTTONS WITH PROFESSIONAL SPACING *** -->
-                <button id="curve-prev-btn" class="carousel-nav-button -left-4 lg:-left-20" aria-label="Previous curve">
-                    <i class="fas fa-chevron-left"></i>
+                <!-- *** NEW FANCY BUTTONS *** -->
+                <button id="curve-prev-btn" class="absolute top-1/2 -left-6 lg:-left-24 z-20 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-slate-800 to-black shadow-xl transition-all duration-300 ease-in-out focus:outline-none hover:scale-110 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]" aria-label="Previous curve">
+                    <i class="fa-solid fa-chevron-left text-2xl text-orange-400"></i>
                 </button>
-                <button id="curve-next-btn" class="carousel-nav-button -right-4 lg:-right-20" aria-label="Next curve">
-                    <i class="fas fa-chevron-right"></i>
+                <button id="curve-next-btn" class="absolute top-1/2 -right-6 lg:-right-24 z-20 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-slate-800 to-black shadow-xl transition-all duration-300 ease-in-out focus:outline-none hover:scale-110 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]" aria-label="Next curve">
+                    <i class="fa-solid fa-chevron-right text-2xl text-orange-400"></i>
                 </button>
             </div>
             <div id="curves-dots" class="flex justify-center mt-8 space-x-3"></div>
@@ -460,7 +445,6 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // --- Data ---
         const APPLICATIONS = [
           {title: 'Oil & Gas', description: 'Pipelines for crude oil or natural gas are dewatered to ensure quality, prevent hydrates, and protect from corrosion. Robust pumps are also used for ballasting.', icon: 'fa-solid fa-gas-pump', uses: ['Ballasting', 'Pipeline hydrostatic test', 'Drilling', 'Pipeline flushing']},
           {title: 'Mining & Quarry', description: 'For dewatering applications in mines post-dredging, our pumps offer effective and efficient solutions due to their solids handling capability.', icon: 'fa-solid fa-mountain-sun', uses: ['Sewage bypass', 'Dewatering', 'Emergency water treatment']},
@@ -482,7 +466,6 @@
             ]}
         ];
 
-        // --- Animations on Scroll ---
         const animatedSections = document.querySelectorAll('.animate-on-scroll');
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -493,92 +476,80 @@
         }, { threshold: 0.1 });
         animatedSections.forEach(section => observer.observe(section));
         
-        // --- Header Scroll Effect ---
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // --- Applications Section ---
         const appSelector = document.getElementById('applications-selector');
-        const appIcon = document.getElementById('app-details-icon');
-        const appTitle = document.getElementById('app-details-title');
-        const appDesc = document.getElementById('app-details-description');
-        const appUses = document.getElementById('app-details-uses');
+        if (appSelector) {
+            const appIcon = document.getElementById('app-details-icon');
+            const appTitle = document.getElementById('app-details-title');
+            const appDesc = document.getElementById('app-details-description');
+            const appUses = document.getElementById('app-details-uses');
 
-        function updateApplicationContent(index) {
-          if (!appSelector) return;
-          const app = APPLICATIONS[index];
-          appIcon.className = `${app.icon} text-6xl text-orange-600 w-16`;
-          appTitle.textContent = app.title;
-          appDesc.textContent = app.description;
-          appUses.innerHTML = app.uses.map(use => `<li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span class="text-slate-700">${use}</span></li>`).join('');
-          
-          document.querySelectorAll('#applications-selector button').forEach((btn, i) => {
-             btn.classList.toggle('bg-orange-600', i === index);
-             btn.classList.toggle('text-white', i === index);
-             btn.classList.toggle('bg-white', i !== index);
-             btn.classList.toggle('text-slate-600', i !== index);
-          });
-        }
-        
-        APPLICATIONS.forEach((app, index) => {
-            if (!appSelector) return;
-            const button = document.createElement('button');
-            button.className = 'w-full flex items-center p-4 rounded-lg text-left cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md hover:bg-orange-50';
-            button.setAttribute('data-index', index);
-            button.innerHTML = `<i class="${app.icon} text-2xl w-10 text-center"></i><span class="ml-4 font-semibold">${app.title}</span>`;
-            button.onclick = () => updateApplicationContent(index);
-            appSelector.appendChild(button);
-        });
-
-        if(APPLICATIONS.length > 0) updateApplicationContent(0);
-
-        // --- NEW Specs Selector Logic ---
-        const specsSelector = document.getElementById('specs-selector');
-        const specsContentArea = document.getElementById('specs-content-area');
-        
-        function updateSpecsContent(specId) {
-            if (!specsSelector) return;
-            document.querySelectorAll('#specs-selector button').forEach(btn => {
-                btn.classList.toggle('bg-orange-600', btn.dataset.id === specId);
-                btn.classList.toggle('text-white', btn.dataset.id === specId);
-                btn.classList.toggle('bg-white', btn.dataset.id !== specId);
-                btn.classList.toggle('text-slate-700', btn.dataset.id !== specId);
-                btn.classList.toggle('shadow-md', btn.dataset.id === specId);
-            });
-             document.querySelectorAll('#specs-content-area > div').forEach(contentDiv => {
-                contentDiv.classList.toggle('hidden', contentDiv.dataset.id !== `content-${specId}`);
-             });
-        }
-
-        SPECS.forEach((spec) => {
-            if (!specsSelector) return;
-            const button = document.createElement('button');
-            button.className = 'w-full flex items-center p-4 rounded-lg text-left font-semibold cursor-pointer transition-all duration-300 border border-gray-200 hover:shadow-md';
-            button.dataset.id = spec.id;
-            button.innerHTML = `<i class="fas ${spec.icon} text-2xl w-10 text-center text-orange-600"></i><span class="ml-4 text-xl">${spec.title}</span>`;
-            button.onclick = () => updateSpecsContent(spec.id);
-            specsSelector.appendChild(button);
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'bg-white p-8 rounded-xl border border-gray-200 shadow-lg';
-            contentDiv.dataset.id = `content-${spec.id}`;
-            let detailsHTML = '';
-            if (spec.details.length > 0) {
-                detailsHTML = `<ul class="space-y-3 mt-6 pt-6 border-t border-gray-200">${spec.details.map(d => `<li class="flex justify-between items-center text-md"><strong class="text-slate-800">${d.name}</strong><span class="text-right text-slate-600 bg-gray-200 px-3 py-1 rounded-full text-sm font-medium">${d.value}</span></li>`).join('')}</ul>`;
+            function updateApplicationContent(index) {
+              const app = APPLICATIONS[index];
+              appIcon.className = `${app.icon} text-6xl text-orange-600 w-16`;
+              appTitle.textContent = app.title;
+              appDesc.textContent = app.description;
+              appUses.innerHTML = app.uses.map(use => `<li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span class="text-slate-700">${use}</span></li>`).join('');
+              
+              document.querySelectorAll('#applications-selector button').forEach((btn, i) => {
+                 btn.classList.toggle('bg-orange-600', i === index);
+                 btn.classList.toggle('text-white', i === index);
+                 btn.classList.toggle('bg-white', i !== index);
+                 btn.classList.toggle('text-slate-600', i !== index);
+              });
             }
-            contentDiv.innerHTML = `<h3 class="text-4xl font-bold text-slate-800">${spec.title}</h3><p class="mt-4 text-lg text-slate-600 leading-relaxed">${spec.description}</p>${detailsHTML}`;
-            specsContentArea.appendChild(contentDiv);
-        });
+            
+            APPLICATIONS.forEach((app, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-full flex items-center p-4 rounded-lg text-left cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md hover:bg-orange-50';
+                button.setAttribute('data-index', index);
+                button.innerHTML = `<i class="${app.icon} text-2xl w-10 text-center"></i><span class="ml-4 font-semibold">${app.title}</span>`;
+                button.onclick = () => updateApplicationContent(index);
+                appSelector.appendChild(button);
+            });
+            if(APPLICATIONS.length > 0) updateApplicationContent(0);
+        }
+
+        const specsSelector = document.getElementById('specs-selector');
+        if (specsSelector) {
+            const specsContentArea = document.getElementById('specs-content-area');
+            function updateSpecsContent(specId) {
+                document.querySelectorAll('#specs-selector button').forEach(btn => {
+                    btn.classList.toggle('bg-orange-600', btn.dataset.id === specId);
+                    btn.classList.toggle('text-white', btn.dataset.id === specId);
+                    btn.classList.toggle('bg-white', btn.dataset.id !== specId);
+                    btn.classList.toggle('text-slate-700', btn.dataset.id !== specId);
+                    btn.classList.toggle('shadow-md', btn.dataset.id === specId);
+                });
+                 document.querySelectorAll('#specs-content-area > div').forEach(contentDiv => {
+                    contentDiv.classList.toggle('hidden', contentDiv.dataset.id !== `content-${specId}`);
+                 });
+            }
+            SPECS.forEach((spec) => {
+                const button = document.createElement('button');
+                button.className = 'w-full flex items-center p-4 rounded-lg text-left font-semibold cursor-pointer transition-all duration-300 border border-gray-200 hover:shadow-md';
+                button.dataset.id = spec.id;
+                button.innerHTML = `<i class="fas ${spec.icon} text-2xl w-10 text-center text-orange-600"></i><span class="ml-4 text-xl">${spec.title}</span>`;
+                button.onclick = () => updateSpecsContent(spec.id);
+                specsSelector.appendChild(button);
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'bg-white p-8 rounded-xl border border-gray-200 shadow-lg';
+                contentDiv.dataset.id = `content-${spec.id}`;
+                let detailsHTML = '';
+                if (spec.details.length > 0) {
+                    detailsHTML = `<ul class="space-y-3 mt-6 pt-6 border-t border-gray-200">${spec.details.map(d => `<li class="flex justify-between items-center text-md"><strong class="text-slate-800">${d.name}</strong><span class="text-right text-slate-600 bg-gray-200 px-3 py-1 rounded-full text-sm font-medium">${d.value}</span></li>`).join('')}</ul>`;
+                }
+                contentDiv.innerHTML = `<h3 class="text-4xl font-bold text-slate-800">${spec.title}</h3><p class="mt-4 text-lg text-slate-600 leading-relaxed">${spec.description}</p>${detailsHTML}`;
+                specsContentArea.appendChild(contentDiv);
+            });
+            if (SPECS.length > 0) updateSpecsContent(SPECS[0].id);
+        }
         
-        if (SPECS.length > 0) updateSpecsContent(SPECS[0].id);
-        
-        // --- Curves Carousel ---
         const curvesCarousel = document.getElementById('curves-carousel');
         if (curvesCarousel) {
             const curvesDotsContainer = document.getElementById('curves-dots');
@@ -612,11 +583,9 @@
                 currentCurveIndex = (currentCurveIndex === totalSlides - 1) ? 0 : currentCurveIndex + 1;
                 updateCurvesCarousel();
             };
-            
             if (totalSlides > 0) updateCurvesCarousel();
         }
 
-        // --- Contact Form ---
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', (e) => {
           e.preventDefault();
@@ -624,10 +593,8 @@
           contactForm.reset();
         });
 
-        // --- Footer Year ---
         document.getElementById('footer-year').textContent = new Date().getFullYear();
     
-        // --- Initialize Charts ---
         const commonChartConfig = {
             type: 'scatter', 
             options: {
@@ -636,9 +603,7 @@
                     legend: { position: 'top', labels: { font: { family: "'Poppins', sans-serif" } } },
                     title: { display: true, text: 'Pump Performance (Max Flow vs. Max Head)', font: { size: 16, weight: 'bold', family: "'Poppins', sans-serif" } },
                     tooltip: {
-                        callbacks: {
-                            label: (c) => `${c.dataset.label || ''}: Flow: ${c.parsed.x} m³/hr, Head: ${c.parsed.y} m`
-                        }
+                        callbacks: { label: (c) => `${c.dataset.label || ''}: Flow: ${c.parsed.x} m³/hr, Head: ${c.parsed.y} m` }
                     }
                 },
                 scales: {

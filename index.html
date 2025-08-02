@@ -149,7 +149,6 @@
                 Contact Us
             </a>
         </div>
-        <!-- Mobile Menu Button can be added here -->
       </nav>
     </header>
 
@@ -222,9 +221,7 @@
               <div class="grid grid-cols-1 lg:grid-cols-12">
                   <div class="lg:col-span-4 bg-white p-8 border-b lg:border-b-0 lg:border-r border-gray-200">
                       <h3 class="text-3xl font-semibold mb-6">SELECT INDUSTRY</h3>
-                      <div id="applications-selector" class="space-y-2">
-                          <!-- App buttons will be injected by JS -->
-                      </div>
+                      <div id="applications-selector" class="space-y-2"></div>
                   </div>
                   <div class="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center bg-gray-50/50">
                      <div class="transition-opacity duration-500">
@@ -235,9 +232,7 @@
                         <p id="app-details-description" class="text-slate-600 text-lg mb-8 leading-relaxed"></p>
                         <div>
                             <h4 class="text-2xl font-bold mb-4 border-b-2 border-orange-200 pb-2">Key Uses:</h4>
-                            <ul id="app-details-uses" class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                                <!-- Uses will be injected by JS -->
-                            </ul>
+                            <ul id="app-details-uses" class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4"></ul>
                         </div>
                      </div>
                   </div>
@@ -254,7 +249,6 @@
                 <p class="text-xl text-slate-600 mt-4">A showcase of our submersible and autoprime surface pumps.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 items-stretch">
-                <!-- Autoprime Pumps Card -->
                 <div class="bg-gray-50 rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll border border-gray-200">
                     <h3 class="text-4xl font-bold text-slate-800">AutoPrime <span class="text-orange-600">Surface Pumps</span></h3>
                     <p class="text-slate-600 mt-2 mb-6 flex-grow">The workhorse of dewatering. Designed for portability, reliability, and automatic priming for "set and forget" operation.</p>
@@ -262,7 +256,6 @@
                         <img src="https://i.imgur.com/e4744xQ.png" alt="AutoPrime Surface Pump" class="w-full h-auto object-contain rounded-md">
                     </div>
                 </div>
-                <!-- Submersible Pumps Card -->
                 <div class="bg-gray-50 rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll border border-gray-200" style="transition-delay: 200ms;">
                     <h3 class="text-4xl font-bold text-slate-800"><span class="text-orange-600">Submersible</span> Pumps</h3>
                     <p class="text-slate-600 mt-2 mb-6 flex-grow">For applications where suction lift is a challenge. These pumps are built to be submerged and handle tough, abrasive slurries with ease.</p>
@@ -282,7 +275,6 @@
                 <p class="text-xl text-slate-300 mt-4">Core benefits engineered into every pump we build.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
-                <!-- Advantage Cards -->
                 <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 100ms;"><div class="mb-4"><i class="fas fa-plug text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">PLUG & PLAY</h3><p class="text-slate-300">Galvanized steel quick-release couplings for easy, leak-proof connections.</p></div>
                 <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 200ms;"><div class="mb-4"><i class="fas fa-cogs text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">MODULAR SEALING</h3><p class="text-slate-300">Twin SS tandem seals (TC vs TC) for superior sealing in abrasive environments.</p></div>
                 <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 300ms;"><div class="mb-4"><i class="fas fa-shield-alt text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">ABRASION RESISTANCE</h3><p class="text-slate-300">Nitride hardened impellers & CF8M components for extended life in muddy applications.</p></div>
@@ -302,14 +294,10 @@
           </div>
           <div class="grid md:grid-cols-12 gap-8 max-w-6xl mx-auto animate-on-scroll">
             <div class="md:col-span-4">
-              <div id="specs-selector" class="space-y-3">
-                <!-- Spec selectors injected by JS -->
-              </div>
+              <div id="specs-selector" class="space-y-3"></div>
             </div>
             <div class="md:col-span-8">
-              <div id="specs-content-area">
-                <!-- Spec content injected by JS -->
-              </div>
+              <div id="specs-content-area"></div>
             </div>
           </div>
         </div>
@@ -337,7 +325,7 @@
                             <table class="w-full text-left text-sm sm:text-base text-slate-600">
                                 <thead class="bg-orange-600 text-white uppercase text-xs">
                                     <tr>
-                                        <th scope="col" class="px-4 py-3">S.No</th><th scope="col" class="px-4 py-3">Model</th><th scope="col" class="px-4 py-3">Type</th><th scope="col" class="px-4 py-3">Size</th><th scope="col" class="px-4 py-3">HP</th><th scope="col" class="px-4 py-3">RPM</th><th scope="col" class="px-4 py-3">Max Flow (m³/hr)</th><th scope="col" class="px-4 py-3">Max Head (m)</th>
+                                        <th class="px-4 py-3">S.No</th><th class="px-4 py-3">Model</th><th class="px-4 py-3">Type</th><th class="px-4 py-3">Size</th><th class="px-4 py-3">HP</th><th class="px-4 py-3">RPM</th><th class="px-4 py-3">Max Flow (m³/hr)</th><th class="px-4 py-3">Max Head (m)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -360,7 +348,7 @@
                             <table class="w-full text-left text-sm sm:text-base text-slate-600">
                                 <thead class="bg-orange-600 text-white uppercase text-xs">
                                     <tr>
-                                        <th scope="col" class="px-4 py-3">S.No</th><th scope="col" class="px-4 py-3">Model</th><th scope="col" class="px-4 py-3">Type</th><th scope="col" class="px-4 py-3">Size</th><th scope="col" class="px-4 py-3">HP</th><th scope="col" class="px-4 py-3">RPM</th><th scope="col" class="px-4 py-3">Max Flow (m³/hr)</th><th scope="col" class="px-4 py-3">Max Head (m)</th>
+                                        <th class="px-4 py-3">S.No</th><th class="px-4 py-3">Model</th><th class="px-4 py-3">Type</th><th class="px-4 py-3">Size</th><th class="px-4 py-3">HP</th><th class="px-4 py-3">RPM</th><th class="px-4 py-3">Max Flow (m³/hr)</th><th class="px-4 py-3">Max Head (m)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -389,7 +377,7 @@
                             <table class="w-full text-left text-sm sm:text-base text-slate-600">
                                 <thead class="bg-orange-600 text-white uppercase text-xs">
                                     <tr>
-                                        <th scope="col" class="px-4 py-3">S.No</th><th scope="col" class="px-4 py-3">Model</th><th scope="col" class="px-4 py-3">Type</th><th scope="col" class="px-4 py-3">Size</th><th scope="col" class="px-4 py-3">HP</th><th scope="col" class="px-4 py-3">RPM</th><th scope="col" class="px-4 py-3">Max Flow (m³/hr)</th><th scope="col" class="px-4 py-3">Max Head (m)</th>
+                                        <th class="px-4 py-3">S.No</th><th class="px-4 py-3">Model</th><th class="px-4 py-3">Type</th><th class="px-4 py-3">Size</th><th class="px-4 py-3">HP</th><th class="px-4 py-3">RPM</th><th class="px-4 py-3">Max Flow (m³/hr)</th><th class="px-4 py-3">Max Head (m)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -401,15 +389,12 @@
                             </table>
                         </div>
                     </div>
-
                   </div>
                 </div>
                 <button id="curve-prev-btn" class="absolute top-1/2 -left-5 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Previous curve"><i class="fas fa-chevron-left"></i></button>
                 <button id="curve-next-btn" class="absolute top-1/2 -right-5 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Next curve"><i class="fas fa-chevron-right"></i></button>
             </div>
-            <div id="curves-dots" class="flex justify-center mt-8 space-x-3">
-                <!-- Dots will be injected by JS -->
-            </div>
+            <div id="curves-dots" class="flex justify-center mt-8 space-x-3"></div>
         </div>
       </section>
 
@@ -431,10 +416,7 @@
                      <div class="mt-8 pt-6 border-t border-gray-200">
                         <h4 class="text-2xl font-bold text-slate-800 mb-4">Connect With Us</h4>
                         <div class="flex space-x-4">
-                            <a href="#" aria-label="Facebook" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
-                            <a href="#" aria-label="Twitter" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="LinkedIn" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" aria-label="YouTube" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-facebook"></i></a><a href="#" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-twitter"></i></a><a href="#" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a><a href="#" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
                         </div>
                      </div>
                 </div>
@@ -517,6 +499,7 @@
         const appUses = document.getElementById('app-details-uses');
 
         function updateApplicationContent(index) {
+          if (!appSelector) return;
           const app = APPLICATIONS[index];
           appIcon.className = `${app.icon} text-6xl text-orange-600 w-16`;
           appTitle.textContent = app.title;
@@ -532,6 +515,7 @@
         }
         
         APPLICATIONS.forEach((app, index) => {
+            if (!appSelector) return;
             const button = document.createElement('button');
             button.className = 'w-full flex items-center p-4 rounded-lg text-left cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md hover:bg-orange-50';
             button.setAttribute('data-index', index);
@@ -547,6 +531,7 @@
         const specsContentArea = document.getElementById('specs-content-area');
         
         function updateSpecsContent(specId) {
+            if (!specsSelector) return;
             document.querySelectorAll('#specs-selector button').forEach(btn => {
                 btn.classList.toggle('bg-orange-600', btn.dataset.id === specId);
                 btn.classList.toggle('text-white', btn.dataset.id === specId);
@@ -559,7 +544,8 @@
              });
         }
 
-        SPECS.forEach((spec, index) => {
+        SPECS.forEach((spec) => {
+            if (!specsSelector) return;
             const button = document.createElement('button');
             button.className = 'w-full flex items-center p-4 rounded-lg text-left font-semibold cursor-pointer transition-all duration-300 border border-gray-200 hover:shadow-md';
             button.dataset.id = spec.id;
@@ -582,41 +568,41 @@
         
         // --- Curves Carousel ---
         const curvesCarousel = document.getElementById('curves-carousel');
-        const curvesDotsContainer = document.getElementById('curves-dots');
-        const totalSlides = curvesCarousel.children.length;
-        let currentCurveIndex = 0;
+        if (curvesCarousel) {
+            const curvesDotsContainer = document.getElementById('curves-dots');
+            const totalSlides = curvesCarousel.children.length;
+            let currentCurveIndex = 0;
 
-        function updateCurvesCarousel() {
-            if (curvesCarousel) {
+            function updateCurvesCarousel() {
                 curvesCarousel.style.transform = `translateX(-${currentCurveIndex * 100}%)`;
+                document.querySelectorAll('#curves-dots button').forEach((dot, index) => {
+                    dot.classList.toggle('bg-orange-600', index === currentCurveIndex);
+                    dot.classList.toggle('w-8', index === currentCurveIndex);
+                    dot.classList.toggle('bg-gray-300', index !== currentCurveIndex);
+                    dot.classList.toggle('w-3', index !== currentCurveIndex);
+                });
             }
-            document.querySelectorAll('#curves-dots button').forEach((dot, index) => {
-                dot.classList.toggle('bg-orange-600', index === currentCurveIndex);
-                dot.classList.toggle('w-8', index === currentCurveIndex);
-                dot.classList.toggle('bg-gray-300', index !== currentCurveIndex);
-                dot.classList.toggle('w-3', index !== currentCurveIndex);
-            });
-        }
-        
-        curvesDotsContainer.innerHTML = ''; // Clear any existing dots
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('button');
-            dot.className = 'h-3 rounded-full transition-all duration-300 hover:bg-orange-400';
-            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-            dot.onclick = () => { currentCurveIndex = i; updateCurvesCarousel(); };
-            curvesDotsContainer.appendChild(dot);
-        }
+            
+            curvesDotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'h-3 rounded-full transition-all duration-300 hover:bg-orange-400';
+                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                dot.onclick = () => { currentCurveIndex = i; updateCurvesCarousel(); };
+                curvesDotsContainer.appendChild(dot);
+            }
 
-        document.getElementById('curve-prev-btn').onclick = () => {
-            currentCurveIndex = (currentCurveIndex === 0) ? totalSlides - 1 : currentCurveIndex - 1;
-            updateCurvesCarousel();
-        };
-        document.getElementById('curve-next-btn').onclick = () => {
-            currentCurveIndex = (currentCurveIndex === totalSlides - 1) ? 0 : currentCurveIndex + 1;
-            updateCurvesCarousel();
-        };
-        
-        if (totalSlides > 0) updateCurvesCarousel();
+            document.getElementById('curve-prev-btn').onclick = () => {
+                currentCurveIndex = (currentCurveIndex === 0) ? totalSlides - 1 : currentCurveIndex - 1;
+                updateCurvesCarousel();
+            };
+            document.getElementById('curve-next-btn').onclick = () => {
+                currentCurveIndex = (currentCurveIndex === totalSlides - 1) ? 0 : currentCurveIndex + 1;
+                updateCurvesCarousel();
+            };
+            
+            if (totalSlides > 0) updateCurvesCarousel();
+        }
 
         // --- Contact Form ---
         const contactForm = document.getElementById('contact-form');
@@ -630,30 +616,16 @@
         document.getElementById('footer-year').textContent = new Date().getFullYear();
     
         // --- Initialize Charts ---
-        // Common configuration for all charts
         const commonChartConfig = {
             type: 'scatter', 
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true, maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        position: 'top', 
-                        labels: { font: { family: "'Poppins', sans-serif" } }
-                    },
-                    title: {
-                        display: true,
-                        text: 'Pump Performance (Max Flow vs. Max Head)',
-                        font: { size: 16, weight: 'bold', family: "'Poppins', sans-serif" }
-                    },
+                    legend: { position: 'top', labels: { font: { family: "'Poppins', sans-serif" } } },
+                    title: { display: true, text: 'Pump Performance (Max Flow vs. Max Head)', font: { size: 16, weight: 'bold', family: "'Poppins', sans-serif" } },
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
-                                const label = context.dataset.label || '';
-                                const flow = context.parsed.x;
-                                const head = context.parsed.y;
-                                return `${label}: Flow: ${flow} m³/hr, Head: ${head} m`;
-                            }
+                            label: (c) => `${c.dataset.label || ''}: Flow: ${c.parsed.x} m³/hr, Head: ${c.parsed.y} m`
                         }
                     }
                 },
@@ -664,7 +636,6 @@
             }
         };
 
-        // Data for LOW HEAD chart
         const lowHeadChartData = {
             datasets: [
                 { label: 'FCAP150H (1450 RPM)', data: [{ x: 389, y: 25 }], backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', pointRadius: 8, pointHoverRadius: 10 },
@@ -674,7 +645,6 @@
             ]
         };
 
-        // Data for MEDIUM HEAD chart
         const mediumHeadChartData = {
             datasets: [
                 { label: 'FCAP100HH (1450 RPM)', data: [{ x: 160, y: 40 }], backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', pointRadius: 8, pointHoverRadius: 10 },
@@ -690,7 +660,6 @@
             ]
         };
 
-        // Data for HIGH HEAD chart
         const highHeadChartData = {
             datasets: [
                 { label: 'FCAP150 3H (1450 RPM)', data: [{ x: 510, y: 50 }], backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', pointRadius: 8, pointHoverRadius: 10 },
@@ -700,7 +669,6 @@
             ]
         };
 
-        // Create the charts
         new Chart(document.getElementById('lowHeadChart'), { ...commonChartConfig, data: lowHeadChartData });
         new Chart(document.getElementById('mediumHeadChart'), { ...commonChartConfig, data: mediumHeadChartData });
         new Chart(document.getElementById('highHeadChart'), { ...commonChartConfig, data: highHeadChartData });

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flowcore Hydropumps | Engineered Pumping Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,6 +98,27 @@
         @apply w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-800 focus:outline-none focus:border-orange-500 transition-colors;
       }
       
+      /* Styles for new charts section */
+      table {
+          border-collapse: separate;
+          border-spacing: 0;
+      }
+      thead th:first-child {
+          border-top-left-radius: 0.5rem;
+      }
+      thead th:last-child {
+          border-top-right-radius: 0.5rem;
+      }
+      tbody tr:last-child td:first-child {
+          border-bottom-left-radius: 0.5rem;
+      }
+      tbody tr:last-child td:last-child {
+          border-bottom-right-radius: 0.5rem;
+      }
+      .chart-container {
+          position: relative;
+          height: 450px;
+      }
     </style>
 </head>
 <body class="bg-white">
@@ -300,18 +322,167 @@
                 <h2 class="text-5xl md:text-6xl font-bold">REFERENCE PERFORMANCE <span class="text-orange-600">CURVES</span></h2>
                 <p class="text-xl text-slate-600 mt-4">Standard selection charts for our pump range.</p>
             </div>
-            <div class="relative max-w-4xl mx-auto animate-on-scroll">
-                <div class="overflow-hidden rounded-xl shadow-2xl border-4 border-white">
-                  <div id="curves-carousel" class="flex transition-transform duration-500 ease-in-out bg-white">
-                    <!-- Curve slides will be injected here by JS -->
-                  </div>
+            
+            <!-- Section for LOW HEAD -->
+            <div class="bg-gray-50 p-6 sm:p-8 rounded-xl shadow-lg mb-12 animate-on-scroll">
+                <h3 class="text-3xl font-bold text-slate-800 mb-6 border-b pb-4">Low Head</h3>
+                <div class="chart-container mb-8">
+                    <canvas id="lowHeadChart"></canvas>
                 </div>
-                <button id="curve-prev-btn" class="absolute top-1/2 -left-5 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Previous curve"><i class="fas fa-chevron-left"></i></button>
-                <button id="curve-next-btn" class="absolute top-1/2 -right-5 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Next curve"><i class="fas fa-chevron-right"></i></button>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm sm:text-base text-slate-600">
+                        <thead class="bg-orange-600 text-white uppercase text-xs">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 sm:px-6">S.No</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Model</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Type</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Size</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">HP</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">RPM</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Max Flow (m³/hr)</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Max Head (m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">1</td>
+                                <td class="px-4 py-3 sm:px-6">FCAP150H</td>
+                                <td class="px-4 py-3 sm:px-6">125/260</td>
+                                <td class="px-4 py-3 sm:px-6">150X150</td>
+                                <td class="px-4 py-3 sm:px-6">32</td>
+                                <td class="px-4 py-3 sm:px-6">1450</td>
+                                <td class="px-4 py-3 sm:px-6">389</td>
+                                <td class="px-4 py-3 sm:px-6">25</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">2</td>
+                                <td class="px-4 py-3 sm:px-6">FCAP150H</td>
+                                <td class="px-4 py-3 sm:px-6">125/260</td>
+                                <td class="px-4 py-3 sm:px-6">150X150</td>
+                                <td class="px-4 py-3 sm:px-6">38</td>
+                                <td class="px-4 py-3 sm:px-6">1800</td>
+                                <td class="px-4 py-3 sm:px-6">482.90</td>
+                                <td class="px-4 py-3 sm:px-6">38.53</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">3</td>
+                                <td class="px-4 py-3 sm:px-6">FCAP200H</td>
+                                <td class="px-4 py-3 sm:px-6">150/260</td>
+                                <td class="px-4 py-3 sm:px-6">200X200</td>
+                                <td class="px-4 py-3 sm:px-6">43</td>
+                                <td class="px-4 py-3 sm:px-6">1450</td>
+                                <td class="px-4 py-3 sm:px-6">490</td>
+                                <td class="px-4 py-3 sm:px-6">23.3</td>
+                            </tr>
+                            <tr class="bg-white hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">4</td>
+                                <td class="px-4 py-3 sm:px-6">FCAP200H</td>
+                                <td class="px-4 py-3 sm:px-6">150/260</td>
+                                <td class="px-4 py-3 sm:px-6">200X200</td>
+                                <td class="px-4 py-3 sm:px-6">52</td>
+                                <td class="px-4 py-3 sm:px-6">1800</td>
+                                <td class="px-4 py-3 sm:px-6">608.28</td>
+                                <td class="px-4 py-3 sm:px-6">35.91</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div id="curves-dots" class="flex justify-center mt-8 space-x-3">
-                <!-- Dots will be injected by JS -->
+
+            <!-- Section for MEDIUM HEAD -->
+            <div class="bg-gray-50 p-6 sm:p-8 rounded-xl shadow-lg mb-12 animate-on-scroll" style="transition-delay: 200ms;">
+                <h3 class="text-3xl font-bold text-slate-800 mb-6 border-b pb-4">Medium Head</h3>
+                <div class="chart-container mb-8">
+                    <canvas id="mediumHeadChart"></canvas>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm sm:text-base text-slate-600">
+                        <thead class="bg-orange-600 text-white uppercase text-xs">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 sm:px-6">S.No</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Model</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Type</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Size</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">HP</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">RPM</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Max Flow (m³/hr)</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Max Head (m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">1</td><td class="px-4 py-3 sm:px-6">FCAP100HH</td><td class="px-4 py-3 sm:px-6">80/320</td><td class="px-4 py-3 sm:px-6">100X100</td><td class="px-4 py-3 sm:px-6">32</td><td class="px-4 py-3 sm:px-6">1450</td><td class="px-4 py-3 sm:px-6">160</td><td class="px-4 py-3 sm:px-6">40</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">2</td><td class="px-4 py-3 sm:px-6">FCAP100HH</td><td class="px-4 py-3 sm:px-6">80/320</td><td class="px-4 py-3 sm:px-6">100X100</td><td class="px-4 py-3 sm:px-6">38</td><td class="px-4 py-3 sm:px-6">1800</td><td class="px-4 py-3 sm:px-6">198.83</td><td class="px-4 py-3 sm:px-6">60.89</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">3</td><td class="px-4 py-3 sm:px-6">FCAP150HH</td><td class="px-4 py-3 sm:px-6">125/320</td><td class="px-4 py-3 sm:px-6">150X150</td><td class="px-4 py-3 sm:px-6">55</td><td class="px-4 py-3 sm:px-6">1450</td><td class="px-4 py-3 sm:px-6">300</td><td class="px-4 py-3 sm:px-6">55</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">4</td><td class="px-4 py-3 sm:px-6">FCAP150HH</td><td class="px-4 py-3 sm:px-6">125/320</td><td class="px-4 py-3 sm:px-6">150X150</td><td class="px-4 py-3 sm:px-6">65</td><td class="px-4 py-3 sm:px-6">1800</td><td class="px-4 py-3 sm:px-6">372.59</td><td class="px-4 py-3 sm:px-6">69.35</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">5</td><td class="px-4 py-3 sm:px-6">FCAP200HH</td><td class="px-4 py-3 sm:px-6">150/320</td><td class="px-4 py-3 sm:px-6">200X200</td><td class="px-4 py-3 sm:px-6">82</td><td class="px-4 py-3 sm:px-6">1450</td><td class="px-4 py-3 sm:px-6">600</td><td class="px-4 py-3 sm:px-6">45</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">6</td><td class="px-4 py-3 sm:px-6">FCAP200HH</td><td class="px-4 py-3 sm:px-6">150/320</td><td class="px-4 py-3 sm:px-6">200X200</td><td class="px-4 py-3 sm:px-6">98</td><td class="px-4 py-3 sm:px-6">1800</td><td class="px-4 py-3 sm:px-6">745.17</td><td class="px-4 py-3 sm:px-6">69.35</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">7</td><td class="px-4 py-3 sm:px-6">FCAP250HH</td><td class="px-4 py-3 sm:px-6">200/320</td><td class="px-4 py-3 sm:px-6">250X250</td><td class="px-4 py-3 sm:px-6">98</td><td class="px-4 py-3 sm:px-6">1450</td><td class="px-4 py-3 sm:px-6">890</td><td class="px-4 py-3 sm:px-6">32</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">8</td><td class="px-4 py-3 sm:px-6">FCAP250HH</td><td class="px-4 py-3 sm:px-6">200/320</td><td class="px-4 py-3 sm:px-6">250X250</td><td class="px-4 py-3 sm:px-6">98</td><td class="px-4 py-3 sm:px-6">1800</td><td class="px-4 py-3 sm:px-6">1228.97</td><td class="px-4 py-3 sm:px-6">46.23</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">9</td><td class="px-4 py-3 sm:px-6">FCAP300HH</td><td class="px-4 py-3 sm:px-6">300/320</td><td class="px-4 py-3 sm:px-6">300X300</td><td class="px-4 py-3 sm:px-6">127</td><td class="px-4 py-3 sm:px-6">1450</td><td class="px-4 py-3 sm:px-6">1350</td><td class="px-4 py-3 sm:px-6">30</td>
+                            </tr>
+                            <tr class="bg-white hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">10</td><td class="px-4 py-3 sm:px-6">FCAP300HH</td><td class="px-4 py-3 sm:px-6">300/320</td><td class="px-4 py-3 sm:px-6">300X300</td><td class="px-4 py-3 sm:px-6">133</td><td class="px-4 py-3 sm:px-6">1800</td><td class="px-4 py-3 sm:px-6">1675.86</td><td class="px-4 py-3 sm:px-6">46.23</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            <!-- Section for HIGH HEAD -->
+            <div class="bg-gray-50 p-6 sm:p-8 rounded-xl shadow-lg animate-on-scroll" style="transition-delay: 400ms;">
+                <h3 class="text-3xl font-bold text-slate-800 mb-6 border-b pb-4">High Head</h3>
+                <div class="chart-container mb-8">
+                    <canvas id="highHeadChart"></canvas>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm sm:text-base text-slate-600">
+                        <thead class="bg-orange-600 text-white uppercase text-xs">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 sm:px-6">S.No</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Model</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Type</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Size</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">HP</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">RPM</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Max Flow (m³/hr)</th>
+                                <th scope="col" class="px-4 py-3 sm:px-6">Max Head (m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">1</td><td class="px-4 py-3 sm:px-6">FCAP150 3H</td><td class="px-4 py-3 sm:px-6">125/400</td><td class="px-4 py-3 sm:px-6">200X150</td><td class="px-4 py-3 sm:px-6">105</td><td class="px-4 py-3 sm:px-6">1450</td><td class="px-4 py-3 sm:px-6">510</td><td class="px-4 py-3 sm:px-6">50</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">2</td><td class="px-4 py-3 sm:px-6">FCAP150 3H</td><td class="px-4 py-3 sm:px-6">125/400</td><td class="px-4 py-3 sm:px-6">200X150</td><td class="px-4 py-3 sm:px-6">112</td><td class="px-4 py-3 sm:px-6">1800</td><td class="px-4 py-3 sm:px-6">633.10</td><td class="px-4 py-3 sm:px-6">77.05</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">3</td><td class="px-4 py-3 sm:px-6">FCAP200 3H</td><td class="px-4 py-3 sm:px-6">150/400</td><td class="px-4 py-3 sm:px-6">200X200</td><td class="px-4 py-3 sm:px-6">150</td><td class="px-4 py-3 sm:px-6">1450</td><td class="px-4 py-3 sm:px-6">700</td><td class="px-4 py-3 sm:px-6">65</td>
+                            </tr>
+                            <tr class="bg-white hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-4 py-3 sm:px-6 font-medium text-gray-900 whitespace-nowrap">4</td><td class="px-4 py-3 sm:px-6">FCAP200 3H</td><td class="px-4 py-3 sm:px-6">150/400</td><td class="px-4 py-3 sm:px-6">200X200</td><td class="px-4 py-3 sm:px-6">180</td><td class="px-4 py-3 sm:px-6">1800</td><td class="px-4 py-3 sm:px-6">850</td><td class="px-4 py-3 sm:px-6">90</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
       </section>
 
@@ -390,16 +561,6 @@
             ]}
         ];
 
-        const CURVES = [
-          { title: 'Size: 100mm @ 2900 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA%201.png' },
-          { title: 'Size: 150mm @ 1450 RPM (Medium Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA2.png' },
-          { title: 'Size: 150mm @ 1450 RPM (High Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA3.png' },
-          { title: 'Size: 200mm @ 1450 RPM (Medium Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA4.png' },
-          { title: 'Size: 200mm @ 1450 RPM (High Head)', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA5.png' },
-          { title: 'Size: 250mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA6.png' },
-          { title: 'Size: 300mm @ 1450 RPM', imageUrl: 'https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/DIA7.png' },
-        ];
-
         // --- Animations on Scroll ---
         const animatedSections = document.querySelectorAll('.animate-on-scroll');
         const observer = new IntersectionObserver((entries) => {
@@ -459,7 +620,6 @@
         const specsContentArea = document.getElementById('specs-content-area');
         
         function updateSpecsContent(specId) {
-            // Update button active state
             document.querySelectorAll('#specs-selector button').forEach(btn => {
                 btn.classList.toggle('bg-orange-600', btn.dataset.id === specId);
                 btn.classList.toggle('text-white', btn.dataset.id === specId);
@@ -467,15 +627,12 @@
                 btn.classList.toggle('text-slate-700', btn.dataset.id !== specId);
                 btn.classList.toggle('shadow-md', btn.dataset.id === specId);
             });
-
-            // Update content display
              document.querySelectorAll('#specs-content-area > div').forEach(contentDiv => {
                 contentDiv.classList.toggle('hidden', contentDiv.dataset.id !== `content-${specId}`);
              });
         }
 
         SPECS.forEach((spec, index) => {
-            // Create selector button
             const button = document.createElement('button');
             button.className = 'w-full flex items-center p-4 rounded-lg text-left font-semibold cursor-pointer transition-all duration-300 border border-gray-200 hover:shadow-md';
             button.dataset.id = spec.id;
@@ -483,7 +640,6 @@
             button.onclick = () => updateSpecsContent(spec.id);
             specsSelector.appendChild(button);
             
-            // Create content panel
             const contentDiv = document.createElement('div');
             contentDiv.className = 'bg-white p-8 rounded-xl border border-gray-200 shadow-lg';
             contentDiv.dataset.id = `content-${spec.id}`;
@@ -497,60 +653,10 @@
         
         if (SPECS.length > 0) updateSpecsContent(SPECS[0].id);
 
-        // --- Curves Carousel ---
-        const curvesCarousel = document.getElementById('curves-carousel');
-        const curvesDotsContainer = document.getElementById('curves-dots');
-        let currentCurveIndex = 0;
-
-        function updateCurvesCarousel() {
-            if (curvesCarousel) {
-                curvesCarousel.style.transform = `translateX(-${currentCurveIndex * 100}%)`;
-            }
-            document.querySelectorAll('#curves-dots button').forEach((dot, index) => {
-                dot.classList.toggle('bg-orange-600', index === currentCurveIndex);
-                dot.classList.toggle('w-8', index === currentCurveIndex);
-                dot.classList.toggle('bg-gray-300', index !== currentCurveIndex);
-                dot.classList.toggle('w-3', index !== currentCurveIndex);
-            });
-        }
-        
-        curvesCarousel.innerHTML = '';
-        curvesDotsContainer.innerHTML = '';
-
-        CURVES.forEach((curve, index) => {
-            const slideDiv = document.createElement('div');
-            slideDiv.className = 'w-full flex-shrink-0';
-            slideDiv.innerHTML = `
-              <div class="bg-white overflow-hidden group">
-                  <div class="p-4 bg-slate-800"><h3 class="text-center font-semibold text-white text-lg tracking-wider">${curve.title}</h3></div>
-                  <img src="${curve.imageUrl}" alt="${curve.title}" class="w-full h-auto object-cover">
-              </div>
-            `;
-            curvesCarousel.appendChild(slideDiv);
-
-            const dot = document.createElement('button');
-            dot.className = 'h-3 rounded-full transition-all duration-300 hover:bg-orange-400';
-            dot.setAttribute('aria-label', `Go to curve ${index + 1}`);
-            dot.onclick = () => { currentCurveIndex = index; updateCurvesCarousel(); };
-            curvesDotsContainer.appendChild(dot);
-        });
-
-        document.getElementById('curve-prev-btn').onclick = () => {
-            currentCurveIndex = (currentCurveIndex === 0) ? CURVES.length - 1 : currentCurveIndex - 1;
-            updateCurvesCarousel();
-        };
-        document.getElementById('curve-next-btn').onclick = () => {
-            currentCurveIndex = (currentCurveIndex === CURVES.length - 1) ? 0 : currentCurveIndex + 1;
-            updateCurvesCarousel();
-        };
-        
-        if (CURVES.length > 0) updateCurvesCarousel();
-
         // --- Contact Form ---
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          // Replace with actual form submission logic (e.g., fetch to an API)
           alert("Thank you for your message! We will get back to you shortly.");
           contactForm.reset();
         });
@@ -558,6 +664,118 @@
         // --- Footer Year ---
         document.getElementById('footer-year').textContent = new Date().getFullYear();
     });
+    </script>
+    <script>
+        // Common configuration for all charts
+        const commonChartConfig = {
+            type: 'scatter', 
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top', 
+                        labels: {
+                            font: {
+                                family: "'Poppins', sans-serif"
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Pump Performance Comparison (Max Flow vs. Max Head)',
+                        font: { size: 16, weight: 'bold', family: "'Poppins', sans-serif" }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.dataset.label || '';
+                                const flow = context.parsed.x;
+                                const head = context.parsed.y;
+                                return `${label}: Flow: ${flow} m³/hr, Head: ${head} m`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Max Flow (m³/hr)',
+                            font: { size: 14, family: "'Poppins', sans-serif" }
+                        },
+                        beginAtZero: true,
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Max Head (m)',
+                            font: { size: 14, family: "'Poppins', sans-serif" }
+                        },
+                        beginAtZero: true,
+                    }
+                }
+            }
+        };
+
+        // Data for LOW HEAD chart
+        const lowHeadChartData = {
+            datasets: [
+                {
+                    label: 'FCAP150H (1450 RPM)', data: [{ x: 389, y: 25 }], backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', pointRadius: 8, pointHoverRadius: 10
+                },
+                {
+                    label: 'FCAP150H (1800 RPM)', data: [{ x: 482.90, y: 38.53 }], backgroundColor: 'rgba(29, 78, 216, 0.7)', borderColor: 'rgba(29, 78, 216, 1)', pointRadius: 8, pointHoverRadius: 10
+                },
+                {
+                    label: 'FCAP200H (1450 RPM)', data: [{ x: 490, y: 23.3 }], backgroundColor: 'rgba(239, 68, 68, 0.7)', borderColor: 'rgba(239, 68, 68, 1)', pointRadius: 8, pointHoverRadius: 10
+                },
+                {
+                    label: 'FCAP200H (1800 RPM)', data: [{ x: 608.28, y: 35.91 }], backgroundColor: 'rgba(185, 28, 28, 0.7)', borderColor: 'rgba(185, 28, 28, 1)', pointRadius: 8, pointHoverRadius: 10
+                }
+            ]
+        };
+
+        // Data for MEDIUM HEAD chart
+        const mediumHeadChartData = {
+            datasets: [
+                { label: 'FCAP100HH (1450 RPM)', data: [{ x: 160, y: 40 }], backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP100HH (1800 RPM)', data: [{ x: 198.83, y: 60.89 }], backgroundColor: 'rgba(29, 78, 216, 0.7)', borderColor: 'rgba(29, 78, 216, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP150HH (1450 RPM)', data: [{ x: 300, y: 55 }], backgroundColor: 'rgba(239, 68, 68, 0.7)', borderColor: 'rgba(239, 68, 68, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP150HH (1800 RPM)', data: [{ x: 372.59, y: 69.35 }], backgroundColor: 'rgba(185, 28, 28, 0.7)', borderColor: 'rgba(185, 28, 28, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP200HH (1450 RPM)', data: [{ x: 600, y: 45 }], backgroundColor: 'rgba(16, 185, 129, 0.7)', borderColor: 'rgba(16, 185, 129, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP200HH (1800 RPM)', data: [{ x: 745.17, y: 69.35 }], backgroundColor: 'rgba(5, 150, 105, 0.7)', borderColor: 'rgba(5, 150, 105, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP250HH (1450 RPM)', data: [{ x: 890, y: 32 }], backgroundColor: 'rgba(245, 158, 11, 0.7)', borderColor: 'rgba(245, 158, 11, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP250HH (1800 RPM)', data: [{ x: 1228.97, y: 46.23 }], backgroundColor: 'rgba(217, 119, 6, 0.7)', borderColor: 'rgba(217, 119, 6, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP300HH (1450 RPM)', data: [{ x: 1350, y: 30 }], backgroundColor: 'rgba(139, 92, 246, 0.7)', borderColor: 'rgba(139, 92, 246, 1)', pointRadius: 8, pointHoverRadius: 10 },
+                { label: 'FCAP300HH (1800 RPM)', data: [{ x: 1675.86, y: 46.23 }], backgroundColor: 'rgba(109, 40, 217, 0.7)', borderColor: 'rgba(109, 40, 217, 1)', pointRadius: 8, pointHoverRadius: 10 },
+            ]
+        };
+
+        // Data for HIGH HEAD chart
+        const highHeadChartData = {
+            datasets: [
+                {
+                    label: 'FCAP150 3H (1450 RPM)', data: [{ x: 510, y: 50 }], backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', pointRadius: 8, pointHoverRadius: 10
+                },
+                {
+                    label: 'FCAP150 3H (1800 RPM)', data: [{ x: 633.10, y: 77.05 }], backgroundColor: 'rgba(29, 78, 216, 0.7)', borderColor: 'rgba(29, 78, 216, 1)', pointRadius: 8, pointHoverRadius: 10
+                },
+                {
+                    label: 'FCAP200 3H (1450 RPM)', data: [{ x: 700, y: 65 }], backgroundColor: 'rgba(239, 68, 68, 0.7)', borderColor: 'rgba(239, 68, 68, 1)', pointRadius: 8, pointHoverRadius: 10
+                },
+                {
+                    label: 'FCAP200 3H (1800 RPM)', data: [{ x: 850, y: 90 }], backgroundColor: 'rgba(185, 28, 28, 0.7)', borderColor: 'rgba(185, 28, 28, 1)', pointRadius: 8, pointHoverRadius: 10
+                }
+            ]
+        };
+
+        // Initialize charts on window load
+        window.onload = function() {
+            new Chart(document.getElementById('lowHeadChart'), { ...commonChartConfig, data: lowHeadChartData });
+            new Chart(document.getElementById('mediumHeadChart'), { ...commonChartConfig, data: mediumHeadChartData });
+            new Chart(document.getElementById('highHeadChart'), { ...commonChartConfig, data: highHeadChartData });
+        };
     </script>
 </body>
 </html>

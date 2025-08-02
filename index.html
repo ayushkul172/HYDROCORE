@@ -98,27 +98,34 @@
         @apply w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-800 focus:outline-none focus:border-orange-500 transition-colors;
       }
       
-      /* Styles for new charts section */
+      /* Styles for tables in charts section */
       table {
           border-collapse: separate;
           border-spacing: 0;
       }
-      thead th:first-child {
-          border-top-left-radius: 0.5rem;
-      }
-      thead th:last-child {
-          border-top-right-radius: 0.5rem;
-      }
-      tbody tr:last-child td:first-child {
-          border-bottom-left-radius: 0.5rem;
-      }
-      tbody tr:last-child td:last-child {
-          border-bottom-right-radius: 0.5rem;
-      }
+      thead th:first-child { border-top-left-radius: 0.5rem; }
+      thead th:last-child { border-top-right-radius: 0.5rem; }
+      tbody tr:last-child td:first-child { border-bottom-left-radius: 0.5rem; }
+      tbody tr:last-child td:last-child { border-bottom-right-radius: 0.5rem; }
       .chart-container {
           position: relative;
-          height: 400px; /* Adjusted height for carousel view */
+          height: 400px;
       }
+
+      /* Fancy Carousel Navigation Button */
+      .carousel-nav-button {
+        @apply absolute top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-orange-700 text-white shadow-lg transition-all duration-300 ease-in-out;
+      }
+      .carousel-nav-button:hover {
+        @apply scale-105 shadow-xl shadow-orange-500/30;
+      }
+      .carousel-nav-button i {
+        @apply text-2xl transition-transform duration-300;
+      }
+      .carousel-nav-button:hover i {
+        @apply scale-110;
+      }
+      
     </style>
 </head>
 <body class="bg-white">
@@ -391,9 +398,13 @@
                     </div>
                   </div>
                 </div>
-                <!-- *** BUTTONS WITH ADJUSTED DISTANCE *** -->
-                <button id="curve-prev-btn" class="absolute top-1/2 -left-4 lg:-left-16 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Previous curve"><i class="fas fa-chevron-left"></i></button>
-                <button id="curve-next-btn" class="absolute top-1/2 -right-4 lg:-right-16 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Next curve"><i class="fas fa-chevron-right"></i></button>
+                <!-- *** NEW FANCY BUTTONS WITH PROFESSIONAL SPACING *** -->
+                <button id="curve-prev-btn" class="carousel-nav-button -left-4 lg:-left-20" aria-label="Previous curve">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="curve-next-btn" class="carousel-nav-button -right-4 lg:-right-20" aria-label="Next curve">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
             <div id="curves-dots" class="flex justify-center mt-8 space-x-3"></div>
         </div>

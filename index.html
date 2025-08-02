@@ -11,18 +11,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
       :root {
-        --color-primary: #0d47a1; /* Deep Blue */
-        --color-secondary: #1e3a8a;
-        --color-accent: #2563eb; /* Bright Blue */
-        --color-dark: #0f172a; /* Navy/Charcoal */
+        --color-primary: #ea580c;   /* Orange-600 */
+        --color-secondary: #c2410c; /* Orange-700 */
+        --color-accent: #f97316;    /* Orange-500 */
+        --color-dark: #1e293b;      /* Slate-800 */
         --font-heading: 'Teko', sans-serif;
         --font-body: 'Poppins', sans-serif;
       }
 
       body {
         font-family: var(--font-body);
-        background-color: #f8fafc; /* Light gray background */
-        color: #334155; /* Slate gray text */
+        background-color: #ffffff; /* Clean White Background */
+        color: #475569; /* Slate-600 text */
       }
 
       h1, h2, h3, h4, h5, h6 {
@@ -41,15 +41,20 @@
         z-index: -100;
         filter: brightness(0.5);
       }
+      
+      .hero-text-shadow {
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      }
 
       /* Header Styling */
       header {
         transition: background-color 0.4s ease, box-shadow 0.4s ease;
       }
       header.scrolled {
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(8px);
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+        border-bottom: 1px solid #e2e8f0;
       }
 
       /* Animation Styling */
@@ -65,12 +70,12 @@
 
       /* Custom CTA Button */
       .cta-button {
-        @apply bg-blue-600 text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-blue-700 shadow-lg hover:shadow-xl;
+        @apply bg-orange-600 text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-orange-700 shadow-lg hover:shadow-xl;
       }
       
       /* Active state for navigation */
       .nav-link {
-        @apply relative text-gray-700 hover:text-blue-600 transition-colors duration-300;
+        @apply relative text-gray-700 hover:text-orange-600 transition-colors duration-300;
       }
       .nav-link::after {
         content: '';
@@ -89,12 +94,12 @@
 
       /* Custom form inputs */
       .form-input {
-        @apply w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-700 focus:outline-none focus:border-blue-500 transition-colors;
+        @apply w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-800 focus:outline-none focus:border-orange-500 transition-colors;
       }
       
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="bg-white">
 
     <!-- Background Video -->
     <video autoplay muted loop playsinline id="background-video">
@@ -118,7 +123,7 @@
           <a href="#curves" class="nav-link">Performance</a>
         </div>
         <div class="hidden md:block">
-            <a href="#contact" class="bg-white text-blue-600 font-semibold py-2 px-6 border-2 border-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
+            <a href="#contact" class="bg-orange-500 text-white font-semibold py-2 px-6 border-2 border-orange-500 rounded-full hover:bg-orange-600 hover:border-orange-600 transition-all duration-300">
                 Contact Us
             </a>
         </div>
@@ -129,15 +134,15 @@
     <main>
       <!-- Hero Section -->
       <section class="relative h-screen flex items-center justify-center text-white text-center">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
         <div class="relative z-10 px-6 animate-on-scroll is-visible">
-          <h1 class="text-6xl md:text-8xl font-bold uppercase tracking-wider" style="font-family: var(--font-heading);">
+          <h1 class="text-6xl md:text-8xl font-bold uppercase tracking-wider hero-text-shadow">
             Unrivaled Pumping Power
           </h1>
-          <h2 class="text-4xl md:text-6xl font-semibold text-blue-400 mt-2" style="font-family: var(--font-heading);">
+          <h2 class="text-4xl md:text-6xl font-semibold text-orange-400 mt-2 hero-text-shadow" style="font-family: var(--font-heading);">
             Unwavering Reliability
           </h2>
-          <p class="text-xl md:text-2xl font-light mt-6 max-w-4xl mx-auto text-gray-200">
+          <p class="text-xl md:text-2xl font-light mt-6 max-w-4xl mx-auto text-gray-200 hero-text-shadow">
             Flowcore delivers premier surface dewatering pumps, engineered for extreme conditions and peak performance across demanding industries.
           </p>
           <div class="mt-12">
@@ -158,21 +163,21 @@
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="animate-on-scroll">
-                    <h2 class="text-5xl lg:text-6xl font-bold leading-tight">PRECISION IN <span class="text-blue-600">EVERY DROP.</span></h2>
+                    <h2 class="text-5xl lg:text-6xl font-bold leading-tight">PRECISION IN <span class="text-orange-600">EVERY DROP.</span></h2>
                     <p class="mt-6 text-lg text-slate-600 leading-relaxed">
                         Flowcore Hydropumps isn't just a manufacturer; we are your partners in fluid management. We combine robust engineering with innovative technology to create pumps that not only perform but endure. Our commitment is to provide solutions that guarantee operational efficiency and peace of mind, no matter the challenge.
                     </p>
                     <div class="mt-8 pt-6 border-t border-gray-200 flex space-x-8">
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-600" style="font-family: var(--font-heading);">20+</div>
+                            <div class="text-4xl font-bold text-orange-600" style="font-family: var(--font-heading);">20+</div>
                             <div class="text-sm text-slate-500">Years of Expertise</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-600" style="font-family: var(--font-heading);">99%</div>
+                            <div class="text-4xl font-bold text-orange-600" style="font-family: var(--font-heading);">99%</div>
                             <div class="text-sm text-slate-500">Uptime Reliability</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-600" style="font-family: var(--font-heading);">1000+</div>
+                            <div class="text-4xl font-bold text-orange-600" style="font-family: var(--font-heading);">1000+</div>
                             <div class="text-sm text-slate-500">Global Deployments</div>
                         </div>
                     </div>
@@ -185,29 +190,29 @@
       </section>
       
       <!-- Applications Section -->
-      <section id="applications" class="py-24 bg-slate-100">
+      <section id="applications" class="py-24 bg-gray-50">
         <div class="container mx-auto px-6">
           <div class="text-center mb-16 animate-on-scroll">
-              <h2 class="text-5xl md:text-6xl font-bold">ONE PUMP, <span class="text-blue-600">ENDLESS APPLICATIONS</span></h2>
+              <h2 class="text-5xl md:text-6xl font-bold">ONE PUMP, <span class="text-orange-600">ENDLESS APPLICATIONS</span></h2>
               <p class="text-xl text-slate-600 mt-4 max-w-3xl mx-auto">From rugged mines to critical infrastructure, our pumps provide reliable dewatering solutions where they matter most.</p>
           </div>
           <div class="bg-white rounded-2xl shadow-xl overflow-hidden animate-on-scroll">
               <div class="grid grid-cols-1 lg:grid-cols-12">
-                  <div class="lg:col-span-4 bg-slate-50 p-8 border-b lg:border-b-0 lg:border-r border-gray-200">
+                  <div class="lg:col-span-4 bg-white p-8 border-b lg:border-b-0 lg:border-r border-gray-200">
                       <h3 class="text-3xl font-semibold mb-6">SELECT INDUSTRY</h3>
                       <div id="applications-selector" class="space-y-2">
                           <!-- App buttons will be injected by JS -->
                       </div>
                   </div>
-                  <div class="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center">
+                  <div class="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center bg-gray-50/50">
                      <div class="transition-opacity duration-500">
                         <div class="flex items-center mb-6">
-                            <i id="app-details-icon" class="text-6xl text-blue-600 w-16"></i>
+                            <i id="app-details-icon" class="text-6xl text-orange-600 w-16"></i>
                             <h3 id="app-details-title" class="text-5xl font-extrabold ml-6"></h3>
                         </div>
-                        <p id="app-details-description" class="text-gray-600 text-lg mb-8 leading-relaxed"></p>
+                        <p id="app-details-description" class="text-slate-600 text-lg mb-8 leading-relaxed"></p>
                         <div>
-                            <h4 class="text-2xl font-bold mb-4 border-b-2 border-blue-200 pb-2">Key Uses:</h4>
+                            <h4 class="text-2xl font-bold mb-4 border-b-2 border-orange-200 pb-2">Key Uses:</h4>
                             <ul id="app-details-uses" class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                                 <!-- Uses will be injected by JS -->
                             </ul>
@@ -223,21 +228,21 @@
       <section id="products" class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-5xl md:text-6xl font-bold">OUR PRODUCT <span class="text-blue-600">PORTFOLIO</span></h2>
+                <h2 class="text-5xl md:text-6xl font-bold">OUR PRODUCT <span class="text-orange-600">PORTFOLIO</span></h2>
                 <p class="text-xl text-slate-600 mt-4">A showcase of our submersible and autoprime surface pumps.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 items-stretch">
                 <!-- Autoprime Pumps Card -->
-                <div class="bg-slate-50 rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll">
-                    <h3 class="text-4xl font-bold text-blue-700">AutoPrime Surface Pumps</h3>
+                <div class="bg-gray-50 rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll border border-gray-200">
+                    <h3 class="text-4xl font-bold text-slate-800">AutoPrime <span class="text-orange-600">Surface Pumps</span></h3>
                     <p class="text-slate-600 mt-2 mb-6 flex-grow">The workhorse of dewatering. Designed for portability, reliability, and automatic priming for "set and forget" operation.</p>
                     <div class="bg-white p-4 rounded-lg shadow-inner">
                         <img src="https://i.imgur.com/e4744xQ.png" alt="AutoPrime Surface Pump" class="w-full h-auto object-contain rounded-md">
                     </div>
                 </div>
                 <!-- Submersible Pumps Card -->
-                <div class="bg-slate-50 rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll" style="transition-delay: 200ms;">
-                    <h3 class="text-4xl font-bold text-blue-700">Submersible Pumps</h3>
+                <div class="bg-gray-50 rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll border border-gray-200" style="transition-delay: 200ms;">
+                    <h3 class="text-4xl font-bold text-slate-800"><span class="text-orange-600">Submersible</span> Pumps</h3>
                     <p class="text-slate-600 mt-2 mb-6 flex-grow">For applications where suction lift is a challenge. These pumps are built to be submerged and handle tough, abrasive slurries with ease.</p>
                     <div class="bg-white p-4 rounded-lg shadow-inner">
                          <img src="https://i.imgur.com/vH1T8iT.png" alt="Submersible Pump" class="w-full h-auto object-contain rounded-md">
@@ -251,26 +256,26 @@
       <section id="advantage" class="py-24" style="background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), url('https://www.toptal.com/designers/subtlepatterns/uploads/double-bubble-outline.png');">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-5xl md:text-6xl font-bold text-white">THE FLOWCORE <span class="text-blue-400">ADVANTAGE</span></h2>
+                <h2 class="text-5xl md:text-6xl font-bold text-white">THE FLOWCORE <span class="text-orange-400">ADVANTAGE</span></h2>
                 <p class="text-xl text-slate-300 mt-4">Core benefits engineered into every pump we build.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
                 <!-- Advantage Cards -->
-                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 100ms;"><div class="mb-4"><i class="fas fa-plug text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">PLUG & PLAY</h3><p class="text-slate-300">Galvanized steel quick-release couplings for easy, leak-proof connections.</p></div>
-                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 200ms;"><div class="mb-4"><i class="fas fa-cogs text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">MODULAR SEALING</h3><p class="text-slate-300">Twin SS tandem seals (TC vs TC) for superior sealing in abrasive environments.</p></div>
-                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 300ms;"><div class="mb-4"><i class="fas fa-shield-alt text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">ABRASION RESISTANCE</h3><p class="text-slate-300">Nitride hardened impellers & CF8M components for extended life in muddy applications.</p></div>
-                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 400ms;"><div class="mb-4"><i class="fas fa-car-battery text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">CORROSION RESISTANCE</h3><p class="text-slate-300">FRP Coated Casing and SS 304 shaft for maximum longevity against corrosion.</p></div>
-                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 500ms;"><div class="mb-4"><i class="fas fa-trailer text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">TRULY PORTABLE</h3><p class="text-slate-300">Heavy-duty 4-wheeled trolley for effortless towing to multiple site locations.</p></div>
-                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-sm border border-slate-700" style="transition-delay: 600ms;"><div class="mb-4"><i class="fas fa-hand-rock text-5xl text-blue-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">EASY OPERATION</h3><p class="text-slate-300">Tyre coupling ensures consistent performance on any surface, a true site pump.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 100ms;"><div class="mb-4"><i class="fas fa-plug text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">PLUG & PLAY</h3><p class="text-slate-300">Galvanized steel quick-release couplings for easy, leak-proof connections.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 200ms;"><div class="mb-4"><i class="fas fa-cogs text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">MODULAR SEALING</h3><p class="text-slate-300">Twin SS tandem seals (TC vs TC) for superior sealing in abrasive environments.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 300ms;"><div class="mb-4"><i class="fas fa-shield-alt text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">ABRASION RESISTANCE</h3><p class="text-slate-300">Nitride hardened impellers & CF8M components for extended life in muddy applications.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 400ms;"><div class="mb-4"><i class="fas fa-car-battery text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">CORROSION RESISTANCE</h3><p class="text-slate-300">FRP Coated Casing and SS 304 shaft for maximum longevity against corrosion.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 500ms;"><div class="mb-4"><i class="fas fa-trailer text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">TRULY PORTABLE</h3><p class="text-slate-300">Heavy-duty 4-wheeled trolley for effortless towing to multiple site locations.</p></div>
+                <div class="bg-slate-800/50 rounded-xl p-8 text-center transition-all duration-300 transform hover:-translate-y-2 hover:bg-slate-700/70 backdrop-blur-md border border-slate-700" style="transition-delay: 600ms;"><div class="mb-4"><i class="fas fa-hand-rock text-5xl text-orange-400"></i></div><h3 class="text-2xl font-bold text-white mb-2">EASY OPERATION</h3><p class="text-slate-300">Tyre coupling ensures consistent performance on any surface, a true site pump.</p></div>
             </div>
         </div>
       </section>
 
       <!-- Technical Specifications Section -->
-      <section id="specs" class="py-24 bg-white">
+      <section id="specs" class="py-24 bg-gray-50">
         <div class="container mx-auto px-6">
           <div class="text-center mb-16 animate-on-scroll">
-              <h2 class="text-5xl md:text-6xl font-bold">CORE TECHNICAL <span class="text-blue-600">SPECIFICATIONS</span></h2>
+              <h2 class="text-5xl md:text-6xl font-bold">CORE TECHNICAL <span class="text-orange-600">SPECIFICATIONS</span></h2>
               <p class="text-xl text-slate-600 mt-4">The engineering details that guarantee performance.</p>
           </div>
           <div class="grid md:grid-cols-12 gap-8 max-w-6xl mx-auto animate-on-scroll">
@@ -289,10 +294,10 @@
       </section>
 
       <!-- Standard Curves Section -->
-       <section id="curves" class="py-24 bg-slate-100">
+       <section id="curves" class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-5xl md:text-6xl font-bold">REFERENCE PERFORMANCE <span class="text-blue-600">CURVES</span></h2>
+                <h2 class="text-5xl md:text-6xl font-bold">REFERENCE PERFORMANCE <span class="text-orange-600">CURVES</span></h2>
                 <p class="text-xl text-slate-600 mt-4">Standard selection charts for our pump range.</p>
             </div>
             <div class="relative max-w-4xl mx-auto animate-on-scroll">
@@ -301,8 +306,8 @@
                     <!-- Curve slides will be injected here by JS -->
                   </div>
                 </div>
-                <button id="curve-prev-btn" class="absolute top-1/2 -left-5 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Previous curve"><i class="fas fa-chevron-left"></i></button>
-                <button id="curve-next-btn" class="absolute top-1/2 -right-5 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Next curve"><i class="fas fa-chevron-right"></i></button>
+                <button id="curve-prev-btn" class="absolute top-1/2 -left-5 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Previous curve"><i class="fas fa-chevron-left"></i></button>
+                <button id="curve-next-btn" class="absolute top-1/2 -right-5 transform -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all z-10 shadow-lg" aria-label="Next curve"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div id="curves-dots" class="flex justify-center mt-8 space-x-3">
                 <!-- Dots will be injected by JS -->
@@ -311,27 +316,27 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-24 bg-white">
+      <section id="contact" class="py-24 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-5xl md:text-6xl font-bold">GET IN <span class="text-blue-600">TOUCH</span></h2>
+                <h2 class="text-5xl md:text-6xl font-bold">GET IN <span class="text-orange-600">TOUCH</span></h2>
                 <p class="text-xl text-slate-600 mt-4">Have a question or need a custom quote? We're ready to help.</p>
             </div>
-            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 bg-slate-50 p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 bg-white p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll">
                 <div class="flex flex-col justify-center">
-                     <h3 class="text-4xl font-bold text-blue-800 mb-6">Contact Information</h3>
+                     <h3 class="text-4xl font-bold text-slate-800 mb-6">Contact Information</h3>
                      <div class="space-y-6 text-slate-700 text-lg">
-                         <p class="flex items-start"><i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-4 w-5 text-center"></i><span>PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, NEAR JAIBIR FARM HOUSE, FARIDABAD, Haryana, India - 121005</span></p>
-                         <p class="flex items-center"><i class="fas fa-phone-alt text-blue-600 mr-4 w-5 text-center"></i><span>+91- 9220620030 (Sales)</span></p>
-                         <p class="flex items-center"><i class="fas fa-envelope text-blue-600 mr-4 w-5 text-center"></i><span>flowcorehydropumps@gmail.com</span></p>
+                         <p class="flex items-start"><i class="fas fa-map-marker-alt text-orange-600 mt-1 mr-4 w-5 text-center"></i><span>PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, NEAR JAIBIR FARM HOUSE, FARIDABAD, Haryana, India - 121005</span></p>
+                         <p class="flex items-center"><i class="fas fa-phone-alt text-orange-600 mr-4 w-5 text-center"></i><span>+91- 9220620030 (Sales)</span></p>
+                         <p class="flex items-center"><i class="fas fa-envelope text-orange-600 mr-4 w-5 text-center"></i><span>flowcorehydropumps@gmail.com</span></p>
                      </div>
                      <div class="mt-8 pt-6 border-t border-gray-200">
                         <h4 class="text-2xl font-bold text-slate-800 mb-4">Connect With Us</h4>
                         <div class="flex space-x-4">
-                            <a href="#" aria-label="Facebook" class="text-slate-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
-                            <a href="#" aria-label="Twitter" class="text-slate-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="LinkedIn" class="text-slate-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" aria-label="YouTube" class="text-slate-500 hover:text-blue-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Facebook" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="YouTube" class="text-slate-500 hover:text-orange-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
                         </div>
                      </div>
                 </div>
@@ -339,7 +344,7 @@
                     <div><label for="name" class="block font-medium text-slate-700 mb-1">Full Name</label><input type="text" name="name" id="name" required class="form-input" placeholder="John Doe" /></div>
                     <div><label for="email" class="block font-medium text-slate-700 mb-1">Email Address</label><input type="email" name="email" id="email" required class="form-input" placeholder="john.doe@example.com" /></div>
                     <div><label for="company" class="block font-medium text-slate-700 mb-1">Company (Optional)</label><input type="text" name="company" id="company" class="form-input" placeholder="Your Company Inc." /></div>
-                    <div><label for="message" class="block font-medium text-slate-700 mb-1">Message</label><textarea name="message" id="message" rows="4" required class="w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-700 focus:outline-none focus:border-blue-500 transition-colors" placeholder="How can we help you?"></textarea></div>
+                    <div><label for="message" class="block font-medium text-slate-700 mb-1">Message</label><textarea name="message" id="message" rows="4" required class="w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-800 focus:outline-none focus:border-orange-500 transition-colors" placeholder="How can we help you?"></textarea></div>
                     <div><button type="submit" class="w-full cta-button">Send Inquiry</button></div>
                 </form>
             </div>
@@ -352,9 +357,9 @@
     <footer class="bg-slate-900 text-white">
       <div class="container mx-auto px-6 py-16">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
-          <div class="md:col-span-2"><h3 class="text-3xl font-bold mb-4 text-blue-300">FLOWCORE HYDROPUMPS PVT. LTD.</h3><p class="text-slate-400">PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, <br />NEAR JAIBIR FARM HOUSE, FARIDABAD, <br />Haryana, India - 121005</p></div>
-          <div><h3 class="text-2xl font-bold mb-4 text-blue-300">Quick Links</h3><ul class="space-y-2"><li class="text-slate-400 hover:text-white transition-colors"><a href="#applications">Applications</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#products">Products</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#advantage">Advantage</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#specs">Specifications</a></li></ul></div>
-          <div><h3 class="text-2xl font-bold mb-4 text-blue-300">Connect</h3><div class="flex space-x-4 justify-center md:justify-start"><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-facebook"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-twitter"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-linkedin"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-youtube"></i></a></div></div>
+          <div class="md:col-span-2"><h3 class="text-3xl font-bold mb-4 text-orange-400">FLOWCORE HYDROPUMPS PVT. LTD.</h3><p class="text-slate-400">PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, <br />NEAR JAIBIR FARM HOUSE, FARIDABAD, <br />Haryana, India - 121005</p></div>
+          <div><h3 class="text-2xl font-bold mb-4 text-orange-400">Quick Links</h3><ul class="space-y-2"><li class="text-slate-400 hover:text-white transition-colors"><a href="#applications">Applications</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#products">Products</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#advantage">Advantage</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#specs">Specifications</a></li></ul></div>
+          <div><h3 class="text-2xl font-bold mb-4 text-orange-400">Connect</h3><div class="flex space-x-4 justify-center md:justify-start"><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-facebook"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-twitter"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-linkedin"></i></a><a href="#" class="text-slate-400 hover:text-white text-2xl transition-colors"><i class="fab fa-youtube"></i></a></div></div>
         </div>
         <div class="border-t border-slate-800 mt-12 pt-8 text-center text-slate-500 text-sm"><p>© <span id="footer-year"></span> Flowcore Hydropumps Private Limited. All Rights Reserved.</p></div>
       </div>
@@ -425,13 +430,13 @@
 
         function updateApplicationContent(index) {
           const app = APPLICATIONS[index];
-          appIcon.className = `${app.icon} text-6xl text-blue-600 w-16`;
+          appIcon.className = `${app.icon} text-6xl text-orange-600 w-16`;
           appTitle.textContent = app.title;
           appDesc.textContent = app.description;
-          appUses.innerHTML = app.uses.map(use => `<li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span class="text-gray-700">${use}</span></li>`).join('');
+          appUses.innerHTML = app.uses.map(use => `<li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span class="text-slate-700">${use}</span></li>`).join('');
           
           document.querySelectorAll('#applications-selector button').forEach((btn, i) => {
-             btn.classList.toggle('bg-blue-600', i === index);
+             btn.classList.toggle('bg-orange-600', i === index);
              btn.classList.toggle('text-white', i === index);
              btn.classList.toggle('bg-white', i !== index);
              btn.classList.toggle('text-slate-600', i !== index);
@@ -440,7 +445,7 @@
         
         APPLICATIONS.forEach((app, index) => {
             const button = document.createElement('button');
-            button.className = 'w-full flex items-center p-4 rounded-lg text-left cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md hover:bg-blue-50';
+            button.className = 'w-full flex items-center p-4 rounded-lg text-left cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md hover:bg-orange-50';
             button.setAttribute('data-index', index);
             button.innerHTML = `<i class="${app.icon} text-2xl w-10 text-center"></i><span class="ml-4 font-semibold">${app.title}</span>`;
             button.onclick = () => updateApplicationContent(index);
@@ -456,10 +461,11 @@
         function updateSpecsContent(specId) {
             // Update button active state
             document.querySelectorAll('#specs-selector button').forEach(btn => {
-                btn.classList.toggle('bg-blue-600', btn.dataset.id === specId);
+                btn.classList.toggle('bg-orange-600', btn.dataset.id === specId);
                 btn.classList.toggle('text-white', btn.dataset.id === specId);
-                 btn.classList.toggle('bg-slate-100', btn.dataset.id !== specId);
+                btn.classList.toggle('bg-white', btn.dataset.id !== specId);
                 btn.classList.toggle('text-slate-700', btn.dataset.id !== specId);
+                btn.classList.toggle('shadow-md', btn.dataset.id === specId);
             });
 
             // Update content display
@@ -471,21 +477,21 @@
         SPECS.forEach((spec, index) => {
             // Create selector button
             const button = document.createElement('button');
-            button.className = 'w-full flex items-center p-4 rounded-lg text-left font-semibold cursor-pointer transition-colors duration-300';
+            button.className = 'w-full flex items-center p-4 rounded-lg text-left font-semibold cursor-pointer transition-all duration-300 border border-gray-200 hover:shadow-md';
             button.dataset.id = spec.id;
-            button.innerHTML = `<i class="fas ${spec.icon} text-2xl w-10 text-center"></i><span class="ml-4 text-xl">${spec.title}</span>`;
+            button.innerHTML = `<i class="fas ${spec.icon} text-2xl w-10 text-center text-orange-600"></i><span class="ml-4 text-xl">${spec.title}</span>`;
             button.onclick = () => updateSpecsContent(spec.id);
             specsSelector.appendChild(button);
             
             // Create content panel
             const contentDiv = document.createElement('div');
-            contentDiv.className = 'bg-slate-50 p-8 rounded-xl border border-slate-200';
+            contentDiv.className = 'bg-white p-8 rounded-xl border border-gray-200 shadow-lg';
             contentDiv.dataset.id = `content-${spec.id}`;
             let detailsHTML = '';
             if (spec.details.length > 0) {
-                detailsHTML = `<ul class="space-y-3 mt-6 pt-6 border-t border-slate-200">${spec.details.map(d => `<li class="flex justify-between items-center text-md"><strong class="text-slate-800">${d.name}</strong><span class="text-right text-slate-600 bg-slate-200 px-3 py-1 rounded-full text-sm">${d.value}</span></li>`).join('')}</ul>`;
+                detailsHTML = `<ul class="space-y-3 mt-6 pt-6 border-t border-gray-200">${spec.details.map(d => `<li class="flex justify-between items-center text-md"><strong class="text-slate-800">${d.name}</strong><span class="text-right text-slate-600 bg-gray-200 px-3 py-1 rounded-full text-sm font-medium">${d.value}</span></li>`).join('')}</ul>`;
             }
-            contentDiv.innerHTML = `<h3 class="text-4xl font-bold text-blue-700">${spec.title}</h3><p class="mt-4 text-lg text-slate-600 leading-relaxed">${spec.description}</p>${detailsHTML}`;
+            contentDiv.innerHTML = `<h3 class="text-4xl font-bold text-slate-800">${spec.title}</h3><p class="mt-4 text-lg text-slate-600 leading-relaxed">${spec.description}</p>${detailsHTML}`;
             specsContentArea.appendChild(contentDiv);
         });
         
@@ -501,7 +507,7 @@
                 curvesCarousel.style.transform = `translateX(-${currentCurveIndex * 100}%)`;
             }
             document.querySelectorAll('#curves-dots button').forEach((dot, index) => {
-                dot.classList.toggle('bg-blue-600', index === currentCurveIndex);
+                dot.classList.toggle('bg-orange-600', index === currentCurveIndex);
                 dot.classList.toggle('w-8', index === currentCurveIndex);
                 dot.classList.toggle('bg-gray-300', index !== currentCurveIndex);
                 dot.classList.toggle('w-3', index !== currentCurveIndex);
@@ -523,7 +529,7 @@
             curvesCarousel.appendChild(slideDiv);
 
             const dot = document.createElement('button');
-            dot.className = 'h-3 rounded-full transition-all duration-300 hover:bg-blue-400';
+            dot.className = 'h-3 rounded-full transition-all duration-300 hover:bg-orange-400';
             dot.setAttribute('aria-label', `Go to curve ${index + 1}`);
             dot.onclick = () => { currentCurveIndex = index; updateCurvesCarousel(); };
             curvesDotsContainer.appendChild(dot);

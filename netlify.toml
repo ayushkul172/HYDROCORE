@@ -1,2 +1,4 @@
 [build]
-  publish = "."
+base = "client"
+publish = "dist"
+command = "npm run build"

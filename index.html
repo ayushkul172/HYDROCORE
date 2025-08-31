@@ -69,6 +69,24 @@
         transform: translateY(0);
       }
 
+      /* A more creative animation for the intro image.
+         This class is added to an .animate-on-scroll element
+         to give it a different animation. */
+      .intro-image-container {
+        /* Override the default starting transform */
+        transform: translateY(20px) scale(0.9) rotate(-4deg);
+        /* Use a bouncier, longer transition and add box-shadow for the glow */
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 1s ease-in-out;
+        /* Start with a subtle shadow and no glow */
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(249, 115, 22, 0);
+      }
+      .intro-image-container.is-visible {
+        /* Override the default ending transform */
+        transform: translateY(0) scale(1) rotate(0deg);
+        /* Add the standard shadow-2xl from Tailwind and the orange glow */
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25), 0 0 40px -5px var(--color-accent);
+      }
+
       /* Custom CTA Button */
       .cta-button {
         @apply bg-orange-600 text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-orange-700 shadow-lg hover:shadow-xl;
@@ -126,7 +144,7 @@
       <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
         <div>
           <a href="#">
-            <img src="https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/logo.563Z.png" alt="Flowcore Hydropumps Logo" class="h-16 w-auto">
+            <img src="https://github.com/ayushkul172/HYDROCORE/raw/main/Final%20logo.PNG" alt="Flowcore Hydropumps Logo" class="h-16 w-auto">
           </a>
         </div>
         <div class="hidden md:flex items-center space-x-8">
@@ -195,8 +213,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="animate-on-scroll" style="transition-delay: 200ms;">
-                    <img src="https://i.imgur.com/x4R7ezt.png" alt="Flowcore Pumps" class="rounded-xl shadow-2xl">
+                <div class="animate-on-scroll intro-image-container rounded-xl" style="transition-delay: 200ms;">
+                  <img src="https://github.com/ayushkul172/HYDROCORE/raw/main/FlowcorePUMP.458Z.png"
+                       alt="Flowcore Pumps"
+                       class="rounded-xl shadow-2xl mx-auto" />
                 </div>
             </div>
         </div>
@@ -247,8 +267,7 @@
                       <h3 class="text-4xl font-bold text-slate-800">AutoPrime <span class="text-orange-600">Surface Pumps</span></h3>
                       <p class="text-slate-600 mt-2 mb-6 flex-grow">The workhorse of dewatering. Designed for portability, reliability, and automatic priming for "set and forget" operation.</p>
                       <div class="bg-white p-4 rounded-lg shadow-inner">
-                          <img src="https://i.imgur.com/e4744xQ.png" alt="AutoPrime Surface Pump" class="w-full h-auto object-contain rounded-md">
-                      </div>
+<img src="https://github.com/ayushkul172/HYDROCORE/raw/main/Autoprimepumpimage.PNG" alt="AutoPrime Surface Pump" class="w-full h-auto object-contain rounded-md">                      </div>
                   </div>
               </a>
                 <!-- Submersible Pumps Card -->

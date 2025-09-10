@@ -1,4 +1,26 @@
+[build]
+  command = "npm run build"
+  publish = "dist"   # or "build" if you’re using Create React App
+
+# 1. Specific static product page
 [[redirects]]
   from = "/Autoprime-Surface-Pumps"
   to = "/Autoprime.html"
+  status = 200
+
+# 2. (Optional) If you have more static product pages, list them here
+[[redirects]]
+  from = "/Semisubmersible"
+  to = "/SEMISUBMSERSIBLE.html"
+  status = 200
+
+[[redirects]]
+  from = "/Product-Webpage"
+  to = "/Product%20webpage.html"
+  status = 200
+
+# 3. Catch-all for SPA dynamic routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200

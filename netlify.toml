@@ -1,3 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Static HTML page
 [[redirects]]
   from = "/Autoprime.html"
   to = "/Autoprime.html"
@@ -6,4 +11,15 @@
 [[redirects]]
   from = "/Autoprime-Surface-Pumps"
   to = "/Autoprime.html"
+  status = 200
+
+[[redirects]]
+  from = "/Product-Page"
+  to = "/Product%20webpage.html"
+  status = 200
+
+# Catch-all for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200

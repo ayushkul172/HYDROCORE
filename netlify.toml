@@ -1,6 +1,7 @@
-  from = "/Autoprime.html"
-  to = "/pages/Autoprime.html" # Adjust this path if necessary
-  status = 200
+[[redirects]]
+from = "/Autoprime.html"
+to = "/pages/Autoprime.html" # Adjust this path if necessary
+status = 200
 
 [[redirects]]
   from = "/*"

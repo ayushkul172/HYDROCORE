@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/Autoprime" # <-- Match the exact URL you are clicking
-  to = "/Autoprime.html"            # <-- The file you want to serve
+  from = "/Autoprime.html"
+  to = "/Autoprime.html"
   status = 200
 
 [[redirects]]

@@ -1,5 +1,4 @@
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/Autoprime-Surface-Pumps"
+  to = "/Autoprime.html"
   status = 200
- 

@@ -1,15 +1,2 @@
 [build]
   publish = "public"
-
-# Handle specific HTML files
-[[redirects]]
-  from = "/Autoprime.html"
-  to = "/Autoprime.html"
-  status = 200
-  force = false
-
-# Fallback for other routes
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

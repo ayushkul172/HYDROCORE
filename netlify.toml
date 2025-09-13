@@ -1,59 +1,15 @@
 [build]
   publish = "public"
-  command = "echo 'Static site - no build command needed'"
 
-[build.environment]
-  NODE_VERSION = "18"
-
-# Handle routing for HTML files
+# Handle specific HTML files
 [[redirects]]
   from = "/Autoprime.html"
   to = "/Autoprime.html"
   status = 200
   force = false
 
-[[redirects]]
-  from = "/autoprime.html"
-  to = "/Autoprime.html"
-  status = 301
-
-# Handle all other routes (fallback to index.html for SPA behavior)
+# Fallback for other routes
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  conditions = {Role = [""], Country = [""]}
-
-# Headers for better caching and security
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-
-[[headers]]
-  for = "*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"

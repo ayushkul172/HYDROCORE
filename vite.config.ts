@@ -11,5 +11,8 @@ export default defineConfig({
         { src: 'Product webpage.html', dest: '' }
       ]
     })
-  ]
+  ],
+  build: {
+    outDir: 'dist' // ✅ Ensures Vite outputs to "dist"
+  }
 })

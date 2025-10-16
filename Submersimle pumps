@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FLOWCORE HYDROPUMPS PVT. LTD. | Dewatering Pumps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #ea580c;
+            --color-secondary: #c2410c;
+            --color-accent: #f97316;
+            --color-dark: #1e293b;
+            --font-heading: 'Teko', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        body {
+            font-family: var(--font-body);
+            background-color: #f8fafc;
+            color: #475569;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--color-dark);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .cta-button {
+            @apply bg-orange-600 text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-orange-700 shadow-xl hover:shadow-2xl;
+        }
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/Autoprimepump.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeSlideIn {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeSlideIn 1.5s ease-in-out forwards;
+        }
+        .nav-link {
+            @apply relative text-slate-600 font-medium transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-orange-500 after:transition-all after:duration-300 hover:text-orange-500 hover:after:w-full;
+        }
+        .card-glow {
+            transition: all 0.3s ease;
+        }
+        .card-glow:hover {
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.2), 0 5px 10px rgba(249, 115, 22, 0.1);
+            transform: translateY(-5px);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #ea580c, #c2410c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .icon-list-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .icon-list-item i {
+            color: var(--color-primary);
+        }
+        .faq-accordion-item-header {
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+        .faq-accordion-item-header:hover {
+            color: var(--color-primary);
+        }
+        .faq-accordion-item-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding-left: 1.5rem;
+        }
+        .faq-accordion-item-body.active {
+            max-height: 500px;
+            transition: max-height 0.4s ease-in;
+            padding-top: 1rem;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-icon.rotate {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <a href="#">
+                    <img src="https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/Final%20logo.PNG" alt="FLOWCORE HYDROPUMPS PVT. LTD. Logo" class="h-14 w-auto">
+                </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#applications" class="nav-link">Applications</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#advantage" class="nav-link">Advantage</a>
+                <a href="#specs" class="nav-link">Specifications</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="#contact" class="bg-orange-500 text-white font-semibold py-2 px-6 border-2 border-orange-500 rounded-full hover:bg-orange-600 hover:border-orange-600 transition-all duration-300 shadow-md">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+        <div class="relative z-10 text-center text-white p-6 max-w-6xl mx-auto">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 drop-shadow-lg animate-fade-in tracking-wider" style="animation-delay: 0.2s; color: #ff8c42; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                DEWATERING EXPERTS
+            </h1>
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 drop-shadow-lg opacity-0 animate-fade-in" style="animation-delay: 0.4s; color: #ff8c42;">
+                Submersible & Auto-Prime Solutions
+            </h2>
+            <p class="text-lg md:text-xl max-w-4xl mx-auto drop-shadow-md opacity-0 animate-fade-in mb-8" style="animation-delay: 0.6s;">
+                Flowcore delivers premier dewatering solutions with submersible pumps for underwater applications and auto-prime surface pumps for versatile site operations, ensuring reliable performance across all conditions.
+            </p>
+            <div class="mt-8 opacity-0 animate-fade-in" style="animation-delay: 0.8s;">
+                <a href="#products" class="inline-flex items-center text-white text-lg font-semibold hover:text-orange-500 transition-colors duration-300">
+                    Discover Our Solutions <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-3xl opacity-50"></i>
+        </div>
+    </section>
+
+    <main class="py-20">
+        <div class="container mx-auto px-6">
+
+            <!-- Applications Section -->
+            <section id="applications" class="mb-20">
+                <h2 class="text-5xl font-bold mb-12 text-center text-gradient">Applications</h2>
+                <div class="bg-white p-8 rounded-3xl shadow-xl border-2 border-slate-100 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="flex flex-col items-center text-center p-4">
+                        <i class="fas fa-hard-hat text-5xl text-orange-600 mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-2">Construction</h3>
+                        <p class="text-slate-600">Foundation dewatering, trench dewatering, and construction site water management solutions.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <i class="fas fa-mountain text-5xl text-orange-600 mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-2">Mining & Quarry</h3>
+                        <p class="text-slate-600">Dewatering open-pit mines, quarries, and mining operations with robust equipment.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <i class="fas fa-city text-5xl text-orange-600 mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-2">Municipalities</h3>
+                        <p class="text-slate-600">Municipal sewage treatment, drainage systems, and emergency flood response.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <i class="fas fa-industry text-5xl text-orange-600 mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-2">Industrial</h3>
+                        <p class="text-slate-600">Industrial wastewater treatment, process fluid transfer, and plant maintenance.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <i class="fas fa-cloud-showers-heavy text-5xl text-orange-600 mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-2">Flood Control</h3>
+                        <p class="text-slate-600">Emergency response for flood mitigation and high rainfall events.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4">
+                        <i class="fas fa-water text-5xl text-orange-600 mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-2">Tunneling</h3>
+                        <p class="text-slate-600">Underground excavation, metro construction, and tunnel dewatering projects.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Categories Section -->
+            <section id="products" class="mb-20">
+                <h2 class="text-5xl font-bold mb-12 text-center text-gradient">Our Product Range</h2>
+                
+                <!-- Pump Product Series -->
+                <div class="mb-16">
+                    <h3 class="text-4xl font-bold mb-8 text-center text-slate-800">Complete Pump Range</h3>
+                    <div class="grid lg:grid-cols-2 xl:grid-cols-5 gap-6">
+                        
+                        <!-- CDW Dewatering -->
+                        <div class="bg-white border-2 border-slate-100 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition duration-300 card-glow">
+                            <div class="aspect-square w-full mb-4 rounded-xl border border-gray-200 overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-50 to-orange-100">
+                                <i class="fas fa-water text-5xl text-orange-600 opacity-20"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-orange-600 mb-3">Dewatering Pump CDW</h4>
+                            <div class="text-sm text-slate-600 mb-4">
+                                <p><strong>Flow:</strong> 450 - 8500 LPM</p>
+                                <p><strong>Head:</strong> 15.5 - 86.5 M</p>
+                                <p><strong>Power:</strong> 1.5 - 50 HP</p>
+                                <p><strong>Solids:</strong> 4-12 mm</p>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-xs font-semibold text-slate-700 mb-2">Key Features:</p>
+                                <ul class="text-xs text-slate-600 space-y-1">
+                                    <li>• 100% Water & Oil proof cable</li>
+                                    <li>• Class H motor protection</li>
+                                    <li>• High corrosion resistance</li>
+                                    <li>• Optimized efficiency design</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- CDW High Head -->
+                        <div class="bg-white border-2 border-slate-100 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition duration-300 card-glow">
+                            <div class="aspect-square w-full mb-4 rounded-xl border border-gray-200 overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-50 to-orange-100">
+                                <i class="fas fa-mountain text-5xl text-orange-600 opacity-20"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-orange-600 mb-3">Dewatering Pump CDW High Head</h4>
+                            <div class="text-sm text-slate-600 mb-4">
+                                <p><strong>Flow:</strong> 120 - 210 M³/H</p>
+                                <p><strong>Head:</strong> 175 - 190 M</p>
+                                <p><strong>Power:</strong> 100 - 120 HP</p>
+                                <p><strong>Type:</strong> 2-Stage Ultra High</p>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-xs font-semibold text-slate-700 mb-2">Key Features:</p>
+                                <ul class="text-xs text-slate-600 space-y-1">
+                                    <li>• SS316 diffuser & bronze rings</li>
+                                    <li>• Multi-stage design</li>
+                                    <li>• Data cable with sensors</li>
+                                    <li>• Flexible deployment</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- CSW Sewage -->
+                        <div class="bg-white border-2 border-slate-100 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition duration-300 card-glow">
+                            <div class="aspect-square w-full mb-4 rounded-xl border border-gray-200 overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-50 to-orange-100">
+                                <i class="fas fa-recycle text-5xl text-orange-600 opacity-20"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-orange-600 mb-3">Sewage Pump CSW</h4>
+                            <div class="text-sm text-slate-600 mb-4">
+                                <p><strong>Flow:</strong> 775 - 33000 LPM</p>
+                                <p><strong>Head:</strong> 5 - 60 M</p>
+                                <p><strong>Power:</strong> 2 - 200 HP</p>
+                                <p><strong>Solids:</strong> 20-100 mm</p>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-xs font-semibold text-slate-700 mb-2">Applications:</p>
+                                <ul class="text-xs text-slate-600 space-y-1">
+                                    <li>• Municipal sewage systems</li>
+                                    <li>• Treatment plants</li>
+                                    <li>• Industrial complexes</li>
+                                    <li>• Residential buildings</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- CSL Slurry -->
+                        <div class="bg-white border-2 border-slate-100 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition duration-300 card-glow">
+                            <div class="aspect-square w-full mb-4 rounded-xl border border-gray-200 overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-50 to-orange-100">
+                                <i class="fas fa-industry text-5xl text-orange-600 opacity-20"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-orange-600 mb-3">Slurry Pump CSL</h4>
+                            <div class="text-sm text-slate-600 mb-4">
+                                <p><strong>Flow:</strong> 3100 - 4168 LPM</p>
+                                <p><strong>Head:</strong> 32 - 37 M</p>
+                                <p><strong>Power:</strong> Up to 75 HP</p>
+                                <p><strong>Solids:</strong> 70% by weight</p>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-xs font-semibold text-slate-700 mb-2">Key Features:</p>
+                                <ul class="text-xs text-slate-600 space-y-1">
+                                    <li>• 27% chromium content</li>
+                                    <li>• High Chrome steel agitator</li>
+                                    <li>• Dual SiC mechanical seals</li>
+                                    <li>• Hardened volute casting</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- CNC Non-Clog -->
+                        <div class="bg-white border-2 border-slate-100 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition duration-300 card-glow">
+                            <div class="aspect-square w-full mb-4 rounded-xl border border-gray-200 overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-50 to-orange-100">
+                                <i class="fas fa-filter text-5xl text-orange-600 opacity-20"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-orange-600 mb-3">Non-Clog Pump CNC</h4>
+                            <div class="text-sm text-slate-600 mb-4">
+                                <p><strong>Flow:</strong> 1250 - 1500 LPM</p>
+                                <p><strong>Head:</strong> 22 - 30 M</p>
+                                <p><strong>Power:</strong> 6 - 20 HP</p>
+                                <p><strong>Solids:</strong> Up to 70 mm</p>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-xs font-semibold text-slate-700 mb-2">Key Features:</p>
+                                <ul class="text-xs text-slate-600 space-y-1">
+                                    <li>• Truly non-clog design</li>
+                                    <li>• Bottom discharge system</li>
+                                    <li>• Lightweight & compact</li>
+                                    <li>• Heavy sludge handling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+            
+            <!-- Advantage Section -->
+            <section id="advantage" class="mb-20">
+                <h2 class="text-5xl font-bold mb-12 text-center text-gradient">The Flowcore Advantage</h2>
+                <div class="bg-white p-8 rounded-3xl shadow-xl border-2 border-slate-100 grid md:grid-cols-2 gap-8">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-award text-5xl text-orange-600"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2">ISO 9001:2015 Certified</h3>
+                            <p class="text-slate-600">Quality management system ensuring consistent performance and customer satisfaction across all product lines.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-tools text-5xl text-orange-600"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2">Comprehensive Service</h3>
+                            <p class="text-slate-600">Complete range of accessories, spare parts, and professional installation support for all pump series.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-medal text-5xl text-orange-600"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2">Premium Components</h3>
+                            <p class="text-slate-600">High-quality ball bearings, stainless steel components, and wear-resistant materials for extended service life.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-water text-5xl text-orange-600"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2">Versatile Applications</h3>
+                            <p class="text-slate-600">Complete range covering clean water, sewage, slurry, and abrasive applications with specialized designs.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-bolt text-5xl text-orange-600"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2">Energy Efficiency</h3>
+                            <p class="text-slate-600">Optimized impeller designs and motor configurations deliver maximum performance with minimum power consumption.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-shield-alt text-5xl text-orange-600"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2">One Year Warranty</h3>
+                            <p class="text-slate-600">Comprehensive warranty coverage against manufacturing defects with reliable after-sales support.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Specifications Section -->
+            <section id="specs" class="mb-20">
+                <h2 class="text-5xl font-bold mb-12 text-center text-gradient">Technical Overview</h2>
+                <div class="bg-white p-8 rounded-3xl shadow-xl border-2 border-slate-100 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-4 rounded-xl border border-gray-200">
+                        <h4 class="text-2xl font-semibold mb-2">Submersible Range</h4>
+                        <ul class="text-slate-600 list-disc list-inside">
+                            <li>Flow: 450 LPM to 33,000 LPM</li>
+                            <li>Head: 5 M to 190 M (Ultra High Head)</li>
+                            <li>Power: 1.5 HP to 200 HP</li>
+                            <li>Solids: 4 mm to 100 mm</li>
+                            <li>Applications: Clean to heavy slurry</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-xl border border-gray-200">
+                        <h4 class="text-2xl font-semibold mb-2">Auto-Prime Range</h4>
+                        <ul class="text-slate-600 list-disc list-inside">
+                            <li>Flow: Up to 3500 m³/hr (58,000 LPM)</li>
+                            <li>Head: 2 M to 150 M</li>
+                            <li>Power: 20 HP to 500 HP</li>
+                            <li>Suction: Up to 8.5 M</li>
+                            <li>Drive: Motor or Engine options</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-xl border border-gray-200">
+                        <h4 class="text-2xl font-semibold mb-2">Quality Standards</h4>
+                        <ul class="text-slate-600 list-disc list-inside">
+                            <li>ISO 9001:2015 Certified</li>
+                            <li>H-Class motor insulation</li>
+                            <li>SS316/410 materials available</li>
+                            <li>IP62 rated control panels</li>
+                            <li>Comprehensive testing protocols</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <div class="text-center mt-16">
+                <a href="#contact" class="cta-button">
+                    Request a Quote <i class="fas fa-envelope ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold mb-12 text-center text-gradient">Frequently Asked Questions</h2>
+            <div class="space-y-4 max-w-4xl mx-auto">
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What is Pump Flow rate?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            The pump flow rate is the volume of fluid that a pump can move in a given time period. The Flow rate (Q) can be measured in various units like cubic meter/hour (m³/h), litre/minute (l/m), or gallons per minute (GPM).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What is a Submersible Dewatering Pump?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            A submersible dewatering pump refers to a pump that is used to remove groundwater, rainwater, or floodwater on municipal sites, construction sites, mines, infrastructure sites or basements. It works entirely underwater, and is efficient for rapid evacuation of water.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What is a Pump and its functionality in water?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Water is transported with the help of a pump. With a submersible pump, the device is encapsulated and dipped into the waste water, forcing the water to the surface with the help of interior impellers. It is perfect for deep drainage and industrial works.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>Do Flowcore Pumps offer both water and sludge-based pumping solutions?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Yes. Flowcore is a credible submersible pump manufacturer, and they produce waste water pumps, sewage, slurry and sludge pumps. This involves submersible dewatering pumps, sewage and mud pumps used in various applications.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What type of water is typically removed in dewatering?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Dewatering removes standing water from construction pits, groundwater from excavation sites, rainwater and floodwater, and water from mines. Our submersible dewatering pumps handle all these efficiently.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What type of pumps does Flowcore manufacture?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Flowcore Pumps is among the top pump manufacturers, offering submersible dewatering pumps, submersible sewage pumps, submersible mud pumps, slurry pumps, non-clog industrial pumps, and auto-prime surface pumps.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What is a Submersible Sewage Pump and its Uses?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Submersible sewage pumps handle soft solids and sludge in sewage water. They are perfect for municipal sewage systems, treatment plants and drainage systems.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What is the pump Head, and why does it matter?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            The pump head refers to the height that a pump can lift water. As the head increases, more water will reach a greater vertical distance because the pump can push it up. It is essential when choosing a submersible pump for applications in deep pits or high-rise buildings.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What is the Delivery Head in a Submersible Pump?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Delivery head refers to the vertical height between the pump outlet and the point of discharge. It assists in determining the required pump capacity and energy consumption.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>How does Head and Flow relate to pump performance?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            It is an inverse relationship. When the flow increases, the head tends to decrease. The correct proportion provides the best results for your pumping application.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What sizes do Flowcore offer in Submersible Pumps?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Flowcore pumps range from 4 to 16 inches in size, with flow capacities up to 5000 m³/hr. The pumps serve different needs, from light-duty to heavy industrial purposes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>Can Flowcore Pumps provide flow rates greater than 1000 m³/hr?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Yes. We offer a range of submersible pumps with capacity exceeding 1000 m³/hr, designed for large quantities of water in dewatering activities such as large-scale mining and industrial applications.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>What is the standard warranty on Flowcore pumps?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Every Flowcore pump comes with 12 months warranty covering manufacturing defects. There is provision for extended coverage on services and warranty for long-term operations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>How does Flowcore handle after-sales support?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            We provide on-site installation and servicing, remote diagnostics, spare part availability, and Annual Maintenance Contracts (AMCs). As a reliable pump supplier, our support ensures your systems stay running.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>Are Flowcore Pumps ISO certified?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Yes. Flowcore Pumps holds ISO 9001:2015 quality certification, ensuring products meet international standards and undergo manufacturing processes of the highest quality.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="faq-accordion-item-header flex justify-between items-center text-2xl font-semibold text-slate-800">
+                        <h3>Where is Flowcore Pumps' factory located?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-accordion-item-body">
+                        <p class="text-slate-600">
+                            Our manufacturing facility is strategically located to serve global markets with reliable support and service across UAE, Saudi Arabia, India, Qatar, Kuwait, Bahrain, and Nigeria.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12" id="contact">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-4xl font-bold mb-4 text-orange-500">Contact Us</h3>
+            <p class="text-lg max-w-2xl mx-auto mb-6">
+                Ready to learn how our submersible and auto-prime pumps can meet your specific needs? Reach out to our team of experts today.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                <p class="flex items-center space-x-2"><i class="fas fa-phone-alt text-orange-500"></i><span>+91 7678480063</span></p>
+                <p class="flex items-center space-x-2"><i class="fas fa-envelope text-orange-500"></i><span>flowcorehydropumps@gmail.com</span></p>
+            </div>
+            <div class="mt-8">
+                <p class="text-sm text-gray-400">FLOWCORE HYDROPUMPS PVT. LTD.</p>
+                <p class="text-sm text-gray-400 mt-2">© 2025 Flowcore Hydropumps. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const faqHeaders = document.querySelectorAll('.faq-accordion-item-header');
+
+        faqHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const body = header.nextElementSibling;
+                const icon = header.querySelector('.faq-icon');
+
+                faqHeaders.forEach(otherHeader => {
+                    if (otherHeader !== header) {
+                        otherHeader.nextElementSibling.classList.remove('active');
+                        otherHeader.querySelector('.faq-icon').classList.remove('rotate');
+                    }
+                });
+
+                body.classList.toggle('active');
+                icon.classList.toggle('rotate');
+            });
+        });
+    </script>
+    
+</body>
+</html>

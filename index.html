@@ -690,52 +690,11 @@
         </div>
     </div>
 
-    <!-- AI Chatbot -->
-    <div class="chatbot-container">
-        <!-- Chatbot Button -->
-        <div id="chatbot-btn" class="chatbot-button">
-            <i class="fas fa-comments text-white text-2xl"></i>
-        </div>
-        
-        <!-- Chatbot Window -->
-        <div id="chatbot-window" class="chatbot-window">
-            <!-- Header -->
-            <div class="chatbot-header">
-                <div class="flex items-center gap-3">
-                    <div class="bot-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg">Flowcore Assistant</h3>
-                        <p class="text-xs opacity-90">Online • Typically replies instantly</p>
-                    </div>
-                </div>
-                <button id="chatbot-close" class="text-white hover:bg-white/20 rounded-full p-2 transition-colors">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            
-            <!-- Messages Area -->
-            <div id="chatbot-messages" class="chatbot-messages"></div>
-            
-            <!-- Input Area -->
-            <div class="chatbot-input-area">
-                <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Type your message..." />
-            </div>
-        </div>
-    </div>
-
     <!-- Background Video -->
     <video autoplay muted loop playsinline id="background-video">
       <source src="https://raw.githubusercontent.com/ayushkul172/HYDROCORE/main/Generated%20File%20July%2017%2C%202025%20-%2011_20AM.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    
-    <!-- DEBUG: Test Button (Remove this after testing) -->
-    <button onclick="document.getElementById('permanent-lead-popup').classList.remove('hidden'); document.getElementById('permanent-lead-popup').classList.add('flex');" 
-            style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; background: red; color: white; padding: 15px 25px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-        🧪 TEST: Show Lead Popup
-    </button>
 
     <!-- Header -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
@@ -1086,6 +1045,41 @@
       </div>
     </footer>
 
+    <!-- AI Chatbot (Moved here to ensure visibility) -->
+    <div id="chatbot-container-main" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999;">
+        <!-- Chatbot Button -->
+        <div id="chatbot-btn-main" style="width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); box-shadow: 0 4px 20px rgba(255, 107, 53, 0.8); display: flex; align-items: center; justify-content: center; cursor: pointer; animation: pulse-chat 2s infinite;">
+            <i class="fas fa-comments text-white" style="font-size: 32px;"></i>
+        </div>
+        
+        <!-- Chatbot Window -->
+        <div id="chatbot-window-main" style="position: fixed; bottom: 100px; right: 20px; width: 380px; max-width: calc(100vw - 40px); height: 600px; max-height: calc(100vh - 120px); background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); display: none; flex-direction: column; overflow: hidden;">
+            <!-- Header -->
+            <div style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 20px; display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-robot" style="font-size: 20px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: bold; font-size: 18px; margin: 0;">Flowcore Assistant</h3>
+                        <p style="font-size: 12px; opacity: 0.9; margin: 0;">Online • Replies instantly</p>
+                    </div>
+                </div>
+                <button id="chatbot-close-main" style="background: rgba(255,255,255,0.2); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-times" style="font-size: 18px;"></i>
+                </button>
+            </div>
+            
+            <!-- Messages Area -->
+            <div id="chatbot-messages-main" style="flex: 1; overflow-y: auto; padding: 20px; background: #f8fafc;"></div>
+            
+            <!-- Input Area -->
+            <div style="padding: 15px; background: white; border-top: 1px solid #e2e8f0;">
+                <input type="text" id="chatbot-input-main" placeholder="Type your message..." style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 25px; outline: none; font-size: 14px;" />
+            </div>
+        </div>
+    </div>
+
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         console.log('Page loaded - Popup system initializing...');
@@ -1254,11 +1248,27 @@
         });
 
         // ===== CHATBOT SYSTEM =====
-        const chatbotBtn = document.getElementById('chatbot-btn');
-        const chatbotWindow = document.getElementById('chatbot-window');
-        const chatbotClose = document.getElementById('chatbot-close');
-        const chatbotMessages = document.getElementById('chatbot-messages');
-        const chatbotInput = document.getElementById('chatbot-input');
+        console.log('🤖 Initializing Chatbot System...');
+        
+        const chatbotBtn = document.getElementById('chatbot-btn-main');
+        const chatbotWindow = document.getElementById('chatbot-window-main');
+        const chatbotClose = document.getElementById('chatbot-close-main');
+        const chatbotMessages = document.getElementById('chatbot-messages-main');
+        const chatbotInput = document.getElementById('chatbot-input-main');
+        
+        console.log('Chatbot elements:', {
+            button: chatbotBtn !== null,
+            window: chatbotWindow !== null,
+            messages: chatbotMessages !== null,
+            input: chatbotInput !== null
+        });
+        
+        if (!chatbotBtn) {
+            console.error('❌ Chatbot button NOT found!');
+            return;
+        }
+        
+        console.log('✅ Chatbot initialized successfully!');
         
         let chatState = 'greeting';
         let userData = {};
@@ -1330,9 +1340,14 @@
         
         // Chatbot Functions
         function toggleChatbot() {
-            chatbotWindow.classList.toggle('active');
-            if (chatbotWindow.classList.contains('active') && chatbotMessages.children.length === 0) {
-                setTimeout(() => initChat(), 500);
+            console.log('Toggle chatbot clicked');
+            if (chatbotWindow.style.display === 'none' || chatbotWindow.style.display === '') {
+                chatbotWindow.style.display = 'flex';
+                if (chatbotMessages.children.length === 0) {
+                    setTimeout(() => initChat(), 300);
+                }
+            } else {
+                chatbotWindow.style.display = 'none';
             }
         }
         
@@ -1342,18 +1357,25 @@
         
         function addBotMessage(text, options = null) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = 'chat-message message-bot';
+            messageDiv.style.marginBottom = '15px';
+            messageDiv.style.display = 'flex';
+            messageDiv.style.gap = '10px';
+            messageDiv.style.animation = 'slideIn 0.3s ease';
             
             let content = `
-                <div class="bot-avatar"><i class="fas fa-robot"></i></div>
-                <div>
-                    <div class="message-bubble">${text.replace(/\n/g, '<br>')}</div>
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; flex-shrink: 0;">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div style="max-width: 75%;">
+                    <div style="background: white; color: #334155; padding: 12px 16px; border-radius: 18px; border-bottom-left-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); word-wrap: break-word;">
+                        ${text.replace(/\n/g, '<br>')}
+                    </div>
             `;
             
             if (options && options.length > 0) {
-                content += '<div class="chat-options">';
+                content += '<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">';
                 options.forEach(option => {
-                    content += `<button class="chat-option-btn" onclick="handleOptionClick('${option.replace(/'/g, "\\'")}')">${option}</button>`;
+                    content += `<button class="chat-option-btn" onclick="handleOptionClick('${option.replace(/'/g, "\\'")}' )" style="background: white; border: 2px solid #ff6b35; color: #ff6b35; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 500;">${option}</button>`;
                 });
                 content += '</div>';
             }
@@ -1366,22 +1388,32 @@
         
         function addUserMessage(text) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = 'chat-message message-user';
-            messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
+            messageDiv.style.marginBottom = '15px';
+            messageDiv.style.display = 'flex';
+            messageDiv.style.justifyContent = 'flex-end';
+            messageDiv.innerHTML = `
+                <div style="max-width: 75%; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 12px 16px; border-radius: 18px; border-bottom-right-radius: 4px; word-wrap: break-word;">
+                    ${text}
+                </div>
+            `;
             chatbotMessages.appendChild(messageDiv);
             scrollToBottom();
         }
         
         function showTypingIndicator() {
             const typingDiv = document.createElement('div');
-            typingDiv.className = 'chat-message message-bot';
             typingDiv.id = 'typing-indicator';
+            typingDiv.style.marginBottom = '15px';
+            typingDiv.style.display = 'flex';
+            typingDiv.style.gap = '10px';
             typingDiv.innerHTML = `
-                <div class="bot-avatar"><i class="fas fa-robot"></i></div>
-                <div class="typing-indicator">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; flex-shrink: 0;">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div style="display: flex; gap: 4px; padding: 12px 16px; background: white; border-radius: 18px; width: fit-content; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <div class="typing-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #ff6b35;"></div>
+                    <div class="typing-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #ff6b35;"></div>
+                    <div class="typing-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #ff6b35;"></div>
                 </div>
             `;
             chatbotMessages.appendChild(typingDiv);

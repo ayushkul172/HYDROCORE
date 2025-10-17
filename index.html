@@ -1472,29 +1472,49 @@
         }
         
         async function saveLeadData() {
+            console.log('💾 Saving chatbot lead data...');
+            console.log('Current userData:', userData);
+            
             const leadData = {
                 name: userData.name || 'Not provided',
                 phone: userData.phone || 'Not provided',
                 email: userData.email || 'Not provided',
                 company: 'Collected via Chatbot',
                 pump_type: userData.pump_type || 'Not specified',
-                message: `Application: ${userData.application || 'Not specified'}\nMessage: ${userData.message || 'None'}`,
+                message: `Application: ${userData.application || 'Not specified'} | Additional: ${userData.message || 'None'}`,
                 source: 'Chatbot',
                 timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
             };
             
+            console.log('📤 Sending to Google Sheets:', leadData);
+            
             const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyfAUrKWNwl7blEbhJF5HcAmGSMulKivBIZziX1P75Dch6tBlBtmGFYgFgW3r2L9zJd/exec';
             
             try {
-                await fetch(GOOGLE_SHEETS_URL, {
+                const response = await fetch(GOOGLE_SHEETS_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                    },
                     body: JSON.stringify(leadData)
                 });
-                console.log('Chatbot lead saved:', leadData);
+                
+                console.log('✅ Chatbot lead sent successfully!');
+                console.log('Response:', response);
+                
+                // Also show success in chat
+                setTimeout(() => {
+                    addBotMessage('✅ Your information has been saved! Our team will contact you within 24 hours. 🎉');
+                }, 500);
+                
             } catch (error) {
-                console.error('Error saving chatbot lead:', error);
+                console.error('❌ Error saving chatbot lead:', error);
+                
+                // Show error in chat
+                setTimeout(() => {
+                    addBotMessage('⚠️ There was a technical issue saving your data. Please call us directly at +91-76784 80063 or email flowcorehydropumps@gmail.com');
+                }, 500);
             }
         }
         

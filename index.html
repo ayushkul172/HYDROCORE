@@ -12,18 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
       :root {
-        --color-primary: #ea580c;   /* Orange-600 */
-        --color-secondary: #c2410c; /* Orange-700 */
-        --color-accent: #f97316;    /* Orange-500 */
-        --color-dark: #1e293b;      /* Slate-800 */
+        --color-primary: #ea580c;
+        --color-secondary: #c2410c;
+        --color-accent: #f97316;
+        --color-dark: #1e293b;
         --font-heading: 'Teko', sans-serif;
         --font-body: 'Poppins', sans-serif;
       }
 
       body {
         font-family: var(--font-body);
-        background-color: #ffffff; /* Clean White Background */
-        color: #475569; /* Slate-600 text */
+        background-color: #ffffff;
+        color: #475569;
       }
 
       h1, h2, h3, h4, h5, h6 {
@@ -47,7 +47,6 @@
         text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
       }
 
-      /* Header Styling */
       header {
         transition: background-color 0.4s ease, box-shadow 0.4s ease;
       }
@@ -58,7 +57,6 @@
         border-bottom: 1px solid #e2e8f0;
       }
 
-      /* Animation Styling */
       .animate-on-scroll {
         opacity: 0;
         transform: translateY(30px);
@@ -69,30 +67,20 @@
         transform: translateY(0);
       }
 
-      /* A more creative animation for the intro image.
-         This class is added to an .animate-on-scroll element
-         to give it a different animation. */
       .intro-image-container {
-        /* Override the default starting transform */
         transform: translateY(20px) scale(0.9) rotate(-4deg);
-        /* Use a bouncier, longer transition and add box-shadow for the glow */
         transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 1s ease-in-out;
-        /* Start with a subtle shadow and no glow */
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(249, 115, 22, 0);
       }
       .intro-image-container.is-visible {
-        /* Override the default ending transform */
         transform: translateY(0) scale(1) rotate(0deg);
-        /* Add the standard shadow-2xl from Tailwind and the orange glow */
         box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25), 0 0 40px -5px var(--color-accent);
       }
 
-      /* Custom CTA Button */
       .cta-button {
         @apply bg-orange-600 text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-orange-700 shadow-lg hover:shadow-xl;
       }
       
-      /* Active state for navigation */
       .nav-link {
         @apply relative text-gray-700 hover:text-orange-600 transition-colors duration-300;
       }
@@ -111,12 +99,10 @@
         width: 100%;
       }
 
-      /* Custom form inputs */
       .form-input {
         @apply w-full bg-transparent border-b-2 border-gray-300 py-2 px-1 text-gray-800 focus:outline-none focus:border-orange-500 transition-colors;
       }
       
-      /* Styles for tables in charts section */
       table {
           border-collapse: separate;
           border-spacing: 0;
@@ -129,9 +115,261 @@
           position: relative;
           height: 400px;
       }
+      
+      /* Diwali Popup Styles */
+      .popup-overlay {
+          backdrop-filter: blur(5px);
+          animation: fadeIn 0.3s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+      }
+      
+      .popup-content {
+          transform: scale(0.8) translateY(20px);
+          opacity: 0;
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .popup-visible {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+      }
+      
+      @keyframes sparkle {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.2); }
+      }
+      
+      .sparkle {
+          animation: sparkle 1.5s ease-in-out infinite;
+      }
+      
+      @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+      }
+      
+      .float-animation {
+          animation: float 3s ease-in-out infinite;
+      }
+      
+      .diwali-gradient {
+          background: linear-gradient(135deg, #ff9933 0%, #ff6b35 25%, #f7931e 50%, #ffd700 75%, #ff9933 100%);
+          background-size: 200% 200%;
+          animation: gradientShift 3s ease infinite;
+      }
+      
+      @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+      }
+      
+      .diya-glow {
+          box-shadow: 0 0 20px rgba(255, 153, 51, 0.6), 0 0 40px rgba(255, 107, 53, 0.4);
+      }
+      
+      .popup-bg-pattern {
+          background: linear-gradient(135deg, #fff5e6 0%, #ffe4b3 50%, #ffd280 100%);
+      }
+      
+      @keyframes firework {
+          0% { transform: scale(0) rotate(0deg); opacity: 1; }
+          100% { transform: scale(1) rotate(180deg); opacity: 0; }
+      }
+      
+      .firework {
+          animation: firework 2s ease-out infinite;
+      }
+      
+      @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(255, 153, 51, 0.4); }
+          50% { box-shadow: 0 0 40px rgba(255, 153, 51, 0.8), 0 0 60px rgba(255, 215, 0, 0.6); }
+      }
+      
+      .pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+      }
+      
+      .feature-card-gradient {
+          background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 50%, #ffcc80 100%);
+          border: 2px solid transparent;
+          background-clip: padding-box;
+          position: relative;
+      }
+      
+      .feature-card-gradient::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(135deg, #ff9933, #ffd700, #ff6b35);
+          border-radius: inherit;
+          z-index: -1;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+      }
+      
+      .feature-card-gradient:hover::before {
+          opacity: 1;
+      }
+      
+      @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+      }
+      
+      .shimmer {
+          background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+          background-size: 1000px 100%;
+          animation: shimmer 3s infinite;
+      }
     </style>
 </head>
 <body class="bg-white">
+
+    <!-- Diwali Popup -->
+    <div id="diwali-popup" class="hidden fixed inset-0 z-[9999] items-center justify-center">
+        <div id="popup-overlay" class="absolute inset-0 bg-gradient-to-br from-black/70 via-orange-900/30 to-black/70 popup-overlay"></div>
+        <div class="popup-content relative popup-bg-pattern rounded-3xl shadow-2xl max-w-2xl w-11/12 md:w-full mx-4 overflow-hidden border-4 border-orange-400">
+            <!-- Animated Corner Decorations -->
+            <div class="absolute top-0 left-0 w-24 h-24">
+                <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-500 opacity-30 rounded-br-full"></div>
+                <i class="fas fa-spa text-orange-500 text-5xl absolute top-2 left-2 sparkle" style="animation-delay: 0s;"></i>
+            </div>
+            <div class="absolute top-0 right-0 w-24 h-24">
+                <div class="absolute inset-0 bg-gradient-to-bl from-yellow-400 to-orange-500 opacity-30 rounded-bl-full"></div>
+                <i class="fas fa-spa text-yellow-500 text-5xl absolute top-2 right-2 sparkle" style="animation-delay: 0.3s;"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 w-24 h-24">
+                <div class="absolute inset-0 bg-gradient-to-tr from-orange-400 to-yellow-500 opacity-30 rounded-tr-full"></div>
+                <i class="fas fa-spa text-orange-400 text-5xl absolute bottom-2 left-2 sparkle" style="animation-delay: 0.6s;"></i>
+            </div>
+            <div class="absolute bottom-0 right-0 w-24 h-24">
+                <div class="absolute inset-0 bg-gradient-to-tl from-orange-400 to-yellow-500 opacity-30 rounded-tl-full"></div>
+                <i class="fas fa-spa text-yellow-400 text-5xl absolute bottom-2 right-2 sparkle" style="animation-delay: 0.9s;"></i>
+            </div>
+            
+            <!-- Firework Effects -->
+            <div class="absolute top-10 left-1/4 text-yellow-300 opacity-60">
+                <i class="fas fa-star text-3xl firework" style="animation-delay: 0s;"></i>
+            </div>
+            <div class="absolute top-16 right-1/4 text-orange-300 opacity-60">
+                <i class="fas fa-star text-2xl firework" style="animation-delay: 0.5s;"></i>
+            </div>
+            <div class="absolute bottom-20 left-1/3 text-red-300 opacity-60">
+                <i class="fas fa-star text-3xl firework" style="animation-delay: 1s;"></i>
+            </div>
+            
+            <!-- Close Button -->
+            <button id="close-diwali-popup" class="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center bg-gradient-to-br from-white to-orange-50 hover:from-orange-50 hover:to-orange-100 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 group border-2 border-orange-400 pulse-glow">
+                <i class="fas fa-times text-orange-600 text-2xl group-hover:rotate-90 transition-transform duration-300"></i>
+            </button>
+            
+            <!-- Header with Enhanced Gradient -->
+            <div class="diwali-gradient text-white py-10 px-6 text-center relative overflow-hidden border-b-4 border-yellow-300">
+                <!-- Shimmer Effect -->
+                <div class="absolute inset-0 shimmer"></div>
+                
+                <!-- Star Decorations -->
+                <div class="absolute inset-0">
+                    <div class="absolute top-3 left-12 text-yellow-200 animate-pulse"><i class="fas fa-star text-3xl"></i></div>
+                    <div class="absolute top-6 right-20 text-yellow-100 animate-pulse" style="animation-delay: 0.3s;"><i class="fas fa-star text-2xl"></i></div>
+                    <div class="absolute bottom-4 left-24 text-yellow-200 animate-pulse" style="animation-delay: 0.6s;"><i class="fas fa-star text-xl"></i></div>
+                    <div class="absolute bottom-6 right-16 text-yellow-100 animate-pulse" style="animation-delay: 0.9s;"><i class="fas fa-star text-3xl"></i></div>
+                    <div class="absolute top-1/2 left-8 text-white/30"><i class="fas fa-dharmachakra text-4xl" style="animation: spin 20s linear infinite;"></i></div>
+                    <div class="absolute top-1/2 right-8 text-white/30"><i class="fas fa-dharmachakra text-4xl" style="animation: spin 20s linear infinite reverse;"></i></div>
+                </div>
+                
+                <div class="relative z-10">
+                    <div class="flex justify-center mb-5 space-x-8">
+                        <i class="fas fa-dharmachakra text-6xl float-animation diya-glow drop-shadow-2xl" style="animation-delay: 0s; color: #ffd700;"></i>
+                        <i class="fas fa-fire-flame-curved text-7xl float-animation diya-glow drop-shadow-2xl" style="animation-delay: 0.3s; color: #ff6b35;"></i>
+                        <i class="fas fa-dharmachakra text-6xl float-animation diya-glow drop-shadow-2xl" style="animation-delay: 0.6s; color: #ffd700;"></i>
+                    </div>
+                    <h2 class="text-6xl md:text-7xl font-bold mb-3 drop-shadow-lg" style="font-family: var(--font-heading); text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 20px rgba(255,215,0,0.5);">
+                        🎊 DIWALI SPECIAL 🎊
+                    </h2>
+                    <p class="text-2xl md:text-3xl font-bold drop-shadow-md" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">शुभ दीपावली | Happy Diwali 2025</p>
+                    <div class="mt-4 inline-block bg-yellow-400 text-orange-900 px-6 py-2 rounded-full font-bold text-lg animate-pulse shadow-xl">
+                        ✨ LIMITED TIME OFFER ✨
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content with Enhanced Styling -->
+            <div class="p-8 md:p-10 relative">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #ff9933 1px, transparent 1px); background-size: 20px 20px;"></div>
+                
+                <div class="text-center mb-8 relative z-10">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text text-transparent" style="font-family: var(--font-heading);">
+                        ILLUMINATE YOUR PROJECT WITH 
+                        <br/>CUSTOMIZED PRICING
+                    </h3>
+                    <p class="text-lg md:text-xl text-slate-700 leading-relaxed font-medium">
+                        🪔 Celebrate the Festival of Lights with <span class="font-bold text-orange-600">exclusive deals</span> on our premium hydropumps! 
+                        Get <span class="font-bold text-orange-600">personalized pricing</span> tailored to your specific project requirements.
+                    </p>
+                </div>
+                
+                <!-- Enhanced Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 relative z-10">
+                    <div class="feature-card-gradient p-5 rounded-2xl text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 transform">
+                        <div class="bg-gradient-to-br from-orange-500 to-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                            <i class="fas fa-tags text-3xl text-white"></i>
+                        </div>
+                        <p class="font-bold text-lg text-slate-800">Special Diwali<br/>Discounts</p>
+                        <p class="text-sm text-orange-700 mt-1">Up to 25% OFF</p>
+                    </div>
+                    <div class="feature-card-gradient p-5 rounded-2xl text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 transform" style="transition-delay: 0.1s;">
+                        <div class="bg-gradient-to-br from-yellow-500 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                            <i class="fas fa-user-tie text-3xl text-white"></i>
+                        </div>
+                        <p class="font-bold text-lg text-slate-800">Customized<br/>Solutions</p>
+                        <p class="text-sm text-orange-700 mt-1">Tailored for You</p>
+                    </div>
+                    <div class="feature-card-gradient p-5 rounded-2xl text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 transform" style="transition-delay: 0.2s;">
+                        <div class="bg-gradient-to-br from-red-500 to-orange-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                            <i class="fas fa-clock text-3xl text-white"></i>
+                        </div>
+                        <p class="font-bold text-lg text-slate-800">Limited Time<br/>Only</p>
+                        <p class="text-sm text-orange-700 mt-1">Hurry! Ends Soon</p>
+                    </div>
+                </div>
+                
+                <!-- Enhanced CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 relative z-10">
+                    <a href="#contact" onclick="document.getElementById('close-diwali-popup').click();" class="w-full sm:w-auto bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 text-white font-bold py-5 px-10 rounded-full text-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl flex items-center justify-center group relative overflow-hidden border-2 border-yellow-400">
+                        <span class="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-transparent shimmer"></span>
+                        <i class="fas fa-paper-plane mr-3 group-hover:translate-x-1 transition-transform text-2xl"></i>
+                        <span class="relative">Get Custom Quote Now</span>
+                    </a>
+                    <a href="tel:+917678480063" class="w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-orange-400 text-slate-900 font-bold py-5 px-10 rounded-full text-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl flex items-center justify-center group border-2 border-orange-600">
+                        <i class="fas fa-phone-alt mr-3 group-hover:rotate-12 transition-transform text-2xl"></i>
+                        Call Now - Save Big!
+                    </a>
+                </div>
+                
+                <!-- Enhanced Footer Note -->
+                <div class="text-center relative z-10">
+                    <div class="inline-block bg-gradient-to-r from-orange-100 via-yellow-100 to-orange-100 px-6 py-3 rounded-2xl border-2 border-orange-300 shadow-lg">
+                        <p class="text-sm font-semibold text-slate-700">
+                            <i class="fas fa-gift text-orange-500 mr-2 text-lg animate-bounce"></i>
+                            Offer valid till <span class="text-orange-600 font-bold">October 31st, 2025</span>
+                            <br/>
+                            <span class="text-xs text-slate-600">Terms & conditions apply. Don't miss out on festive savings!</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Background Video -->
     <video autoplay muted loop playsinline id="background-video">
@@ -426,7 +664,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- *** NEW FANCY BUTTONS *** -->
                 <button id="curve-prev-btn" class="absolute top-1/2 -left-6 lg:-left-24 z-20 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-slate-800 to-black shadow-xl transition-all duration-300 ease-in-out focus:outline-none hover:scale-110 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]" aria-label="Previous curve">
                     <i class="fa-solid fa-chevron-left text-2xl text-orange-400"></i>
                 </button>
@@ -480,7 +717,6 @@
           <div class="md:col-span-2">
             <h3 class="text-3xl font-bold mb-4 text-orange-400">FLOWCORE HYDROPUMPS PVT. LTD.</h3>
             <p class="text-slate-400">PLOT NO.5, GROUND FLOOR, NANGLA GUJRAN, <br />NEAR JAIBIR FARM HOUSE, FARIDABAD, <br />Haryana, India - 121005</p>
-            <!-- *** REGISTRATION NUMBER ADDED HERE *** -->
             <p class="text-slate-400 mt-4"><strong class="font-semibold text-slate-300">Registration Number:</strong> 06AAGCF4537L1ZE</p>
           </div>
           <div><h3 class="text-2xl font-bold mb-4 text-orange-400">Quick Links</h3><ul class="space-y-2"><li class="text-slate-400 hover:text-white transition-colors"><a href="#applications">Applications</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#products">Products</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#advantage">Advantage</a></li><li class="text-slate-400 hover:text-white transition-colors"><a href="#specs">Specifications</a></li></ul></div>
@@ -492,6 +728,31 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Diwali Popup Logic
+        const diwaliPopup = document.getElementById('diwali-popup');
+        const closePopupBtn = document.getElementById('close-diwali-popup');
+        const popupOverlay = document.getElementById('popup-overlay');
+        
+        // Show popup after a short delay
+        setTimeout(() => {
+            diwaliPopup.classList.remove('hidden');
+            diwaliPopup.classList.add('flex');
+            setTimeout(() => {
+                diwaliPopup.querySelector('.popup-content').classList.add('popup-visible');
+            }, 50);
+        }, 1000);
+        
+        // Close popup function
+        const closeDiwaliPopup = () => {
+            diwaliPopup.querySelector('.popup-content').classList.remove('popup-visible');
+            setTimeout(() => {
+                diwaliPopup.classList.add('hidden');
+                diwaliPopup.classList.remove('flex');
+            }, 300);
+        };
+        
+        closePopupBtn.addEventListener('click', closeDiwaliPopup);
+        popupOverlay.addEventListener('click', closeDiwaliPopup);
 
         const APPLICATIONS = [
           {title: 'Oil & Gas', description: 'Pipelines for crude oil or natural gas are dewatered to ensure quality, prevent hydrates, and protect from corrosion. Robust pumps are also used for ballasting.', icon: 'fa-solid fa-gas-pump', uses: ['Ballasting', 'Pipeline hydrostatic test', 'Drilling', 'Pipeline flushing']},

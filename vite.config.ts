@@ -8,7 +8,8 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         { src: 'Autoprime.html', dest: '' },
-        { src: 'Product webpage.html', dest: '' }
+        { src: 'Product webpage.html', dest: '' },
+        { src: 'Submersimle.html', dest: '' }
       ]
     })
   ],

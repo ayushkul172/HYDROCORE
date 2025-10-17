@@ -238,6 +238,205 @@
           opacity: 1;
       }
       
+      /* Chatbot Styles */
+      .chatbot-container {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 9997;
+          font-family: var(--font-body);
+      }
+      
+      .chatbot-button {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+          box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          animation: pulse-chat 2s infinite;
+      }
+      
+      .chatbot-button:hover {
+          transform: scale(1.1);
+          box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+      }
+      
+      @keyframes pulse-chat {
+          0%, 100% { box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4); }
+          50% { box-shadow: 0 4px 20px rgba(255, 107, 53, 0.8), 0 0 0 10px rgba(255, 107, 53, 0.1); }
+      }
+      
+      .chatbot-window {
+          position: fixed;
+          bottom: 90px;
+          right: 20px;
+          width: 380px;
+          max-width: calc(100vw - 40px);
+          height: 600px;
+          max-height: calc(100vh - 120px);
+          background: white;
+          border-radius: 20px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          transform: scale(0.8) translateY(20px);
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      
+      .chatbot-window.active {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+          pointer-events: all;
+      }
+      
+      .chatbot-header {
+          background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+          color: white;
+          padding: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+      }
+      
+      .chatbot-messages {
+          flex: 1;
+          overflow-y: auto;
+          padding: 20px;
+          background: #f8fafc;
+      }
+      
+      .chat-message {
+          margin-bottom: 15px;
+          animation: slideIn 0.3s ease;
+      }
+      
+      @keyframes slideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .message-bot {
+          display: flex;
+          gap: 10px;
+      }
+      
+      .message-user {
+          display: flex;
+          justify-content: flex-end;
+      }
+      
+      .message-bubble {
+          max-width: 75%;
+          padding: 12px 16px;
+          border-radius: 18px;
+          word-wrap: break-word;
+      }
+      
+      .message-bot .message-bubble {
+          background: white;
+          color: #334155;
+          border-bottom-left-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      
+      .message-user .message-bubble {
+          background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+          color: white;
+          border-bottom-right-radius: 4px;
+      }
+      
+      .bot-avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 18px;
+          flex-shrink: 0;
+      }
+      
+      .chat-options {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 10px;
+      }
+      
+      .chat-option-btn {
+          background: white;
+          border: 2px solid #ff6b35;
+          color: #ff6b35;
+          padding: 8px 16px;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 14px;
+          font-weight: 500;
+      }
+      
+      .chat-option-btn:hover {
+          background: #ff6b35;
+          color: white;
+          transform: translateY(-2px);
+      }
+      
+      .chatbot-input-area {
+          padding: 15px;
+          background: white;
+          border-top: 1px solid #e2e8f0;
+      }
+      
+      .chatbot-input {
+          width: 100%;
+          padding: 12px 16px;
+          border: 2px solid #e2e8f0;
+          border-radius: 25px;
+          outline: none;
+          font-size: 14px;
+          transition: border-color 0.3s ease;
+      }
+      
+      .chatbot-input:focus {
+          border-color: #ff6b35;
+      }
+      
+      .typing-indicator {
+          display: flex;
+          gap: 4px;
+          padding: 12px 16px;
+          background: white;
+          border-radius: 18px;
+          width: fit-content;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      
+      .typing-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #ff6b35;
+          animation: typing 1.4s infinite;
+      }
+      
+      .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+      .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+      
+      @keyframes typing {
+          0%, 60%, 100% { transform: translateY(0); }
+          30% { transform: translateY(-10px); }
+      }
+      
       @keyframes shimmer {
           0% { background-position: -1000px 0; }
           100% { background-position: 1000px 0; }
@@ -487,6 +686,41 @@
                         <i class="fas fa-phone-alt mr-2"></i>+91-76784 80063
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <!-- Chatbot Button -->
+        <div id="chatbot-btn" class="chatbot-button">
+            <i class="fas fa-comments text-white text-2xl"></i>
+        </div>
+        
+        <!-- Chatbot Window -->
+        <div id="chatbot-window" class="chatbot-window">
+            <!-- Header -->
+            <div class="chatbot-header">
+                <div class="flex items-center gap-3">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">Flowcore Assistant</h3>
+                        <p class="text-xs opacity-90">Online • Typically replies instantly</p>
+                    </div>
+                </div>
+                <button id="chatbot-close" class="text-white hover:bg-white/20 rounded-full p-2 transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Messages Area -->
+            <div id="chatbot-messages" class="chatbot-messages"></div>
+            
+            <!-- Input Area -->
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Type your message..." />
             </div>
         </div>
     </div>
@@ -868,31 +1102,44 @@
         
         // Check if user has already submitted the permanent form
         const hasSubmitted = localStorage.getItem('flowcore_lead_submitted');
-        const diwaliClosed = sessionStorage.getItem('diwali_popup_closed');
         
         console.log('Has submitted lead?', hasSubmitted);
-        console.log('Diwali closed in session?', diwaliClosed);
         
         // Function to show permanent popup
         function showPermanentPopup() {
-            console.log('Showing permanent lead popup...');
-            permanentPopup.classList.remove('hidden');
-            permanentPopup.classList.add('flex');
+            console.log('=== ATTEMPTING TO SHOW PERMANENT POPUP ===');
+            const popup = document.getElementById('permanent-lead-popup');
+            console.log('Popup element found:', popup !== null);
+            
+            if (popup) {
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
+                console.log('Popup classes after update:', popup.className);
+                console.log('=== PERMANENT POPUP SHOULD BE VISIBLE NOW ===');
+            } else {
+                console.error('ERROR: Permanent popup element not found in DOM!');
+            }
         }
         
         // STEP 1: Show Diwali popup first (after 2 seconds)
         setTimeout(() => {
-            console.log('Showing Diwali popup...');
-            diwaliPopup.classList.remove('hidden');
-            diwaliPopup.classList.add('flex');
-            setTimeout(() => {
-                diwaliPopup.querySelector('.popup-content').classList.add('popup-visible');
-            }, 50);
-        }, 2000); // Diwali popup appears after 2 seconds
+            console.log('--- Showing Diwali popup ---');
+            const diwaliEl = document.getElementById('diwali-popup');
+            if (diwaliEl) {
+                diwaliEl.classList.remove('hidden');
+                diwaliEl.classList.add('flex');
+                setTimeout(() => {
+                    const content = diwaliEl.querySelector('.popup-content');
+                    if (content) {
+                        content.classList.add('popup-visible');
+                    }
+                }, 50);
+            }
+        }, 2000);
         
         // Close Diwali popup and show permanent popup after 3 seconds
         const closeDiwaliPopup = () => {
-            console.log('Closing Diwali popup...');
+            console.log('--- User closed Diwali popup ---');
             const popupContent = diwaliPopup.querySelector('.popup-content');
             if (popupContent) {
                 popupContent.classList.remove('popup-visible');
@@ -901,23 +1148,21 @@
             setTimeout(() => {
                 diwaliPopup.classList.add('hidden');
                 diwaliPopup.classList.remove('flex');
+                console.log('Diwali popup hidden');
                 
-                // Mark Diwali popup as closed for this session
-                sessionStorage.setItem('diwali_popup_closed', 'true');
-                console.log('Diwali popup closed. Waiting 3 seconds...');
-                
-                // STEP 2: Show permanent lead popup 3 seconds after Diwali popup closes
+                // STEP 2: Show permanent lead popup after delay
+                console.log('--- Starting 3 second countdown to show lead popup ---');
                 setTimeout(() => {
-                    console.log('Checking if should show lead popup...');
-                    console.log('hasSubmitted:', hasSubmitted);
+                    console.log('--- 3 seconds passed! ---');
+                    console.log('Checking hasSubmitted:', hasSubmitted);
                     
-                    if (!hasSubmitted) {
-                        console.log('Showing lead popup NOW!');
-                        showPermanentPopup();
+                    if (hasSubmitted) {
+                        console.log('❌ User already submitted - skipping lead popup');
                     } else {
-                        console.log('User already submitted - not showing lead popup');
+                        console.log('✅ User has NOT submitted - showing lead popup now!');
+                        showPermanentPopup();
                     }
-                }, 3000); // 3 seconds delay between popups
+                }, 3000);
             }, 300);
         };
         
@@ -1005,6 +1250,233 @@
                 alert('⚠️ There was an error submitting your request. Please call us directly at +91-76784 80063');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
+            }
+        });
+
+        // ===== CHATBOT SYSTEM =====
+        const chatbotBtn = document.getElementById('chatbot-btn');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input');
+        
+        let chatState = 'greeting';
+        let userData = {};
+        
+        const CHATBOT_FLOW = {
+            greeting: {
+                message: "👋 Hello! I'm your Flowcore Assistant. I'm here to help you find the perfect pump solution!\n\nMay I know your name?",
+                nextState: 'name',
+                inputType: 'text'
+            },
+            name: {
+                message: (name) => `Nice to meet you, ${name}! 😊\n\nWhat's the best phone number to reach you?`,
+                nextState: 'phone',
+                inputType: 'tel',
+                validate: (input) => input.trim().length > 0
+            },
+            phone: {
+                message: "Great! And your email address?",
+                nextState: 'email',
+                inputType: 'email',
+                validate: (input) => /^[0-9]{10}$/.test(input.replace(/\D/g, ''))
+            },
+            email: {
+                message: "Perfect! Which type of pump are you interested in?",
+                nextState: 'pump_type',
+                inputType: 'options',
+                options: [
+                    'AutoPrime Surface Pumps',
+                    'Submersible Pumps',
+                    'Not sure - need help choosing'
+                ],
+                validate: (input) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input)
+            },
+            pump_type: {
+                message: (type) => type === 'Not sure - need help choosing' ? 
+                    "No problem! Let me help you choose.\n\nWhat will you use the pump for?" :
+                    `Excellent choice! ${type} are great for many applications.\n\nWhat industry or application is this for?`,
+                nextState: 'application',
+                inputType: 'options',
+                options: [
+                    'Mining & Quarry',
+                    'Construction',
+                    'Oil & Gas',
+                    'Municipalities',
+                    'Agriculture',
+                    'Industrial',
+                    'Flood Control',
+                    'Other'
+                ]
+            },
+            application: {
+                message: "Got it! Any specific requirements or questions about the pumps?",
+                nextState: 'message',
+                inputType: 'text'
+            },
+            message: {
+                message: "Thank you so much! 🎉\n\nI've collected all your information. Our team will send you a customized quote within 24 hours!\n\nWould you like to:",
+                nextState: 'final',
+                inputType: 'options',
+                options: [
+                    '📞 Call us now: +91-76784 80063',
+                    '📧 Email: flowcorehydropumps@gmail.com',
+                    '📄 Download Product Catalogue',
+                    '✅ That\'s all, thank you!'
+                ],
+                saveData: true
+            }
+        };
+        
+        // Chatbot Functions
+        function toggleChatbot() {
+            chatbotWindow.classList.toggle('active');
+            if (chatbotWindow.classList.contains('active') && chatbotMessages.children.length === 0) {
+                setTimeout(() => initChat(), 500);
+            }
+        }
+        
+        function initChat() {
+            addBotMessage(CHATBOT_FLOW.greeting.message);
+        }
+        
+        function addBotMessage(text, options = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message message-bot';
+            
+            let content = `
+                <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                <div>
+                    <div class="message-bubble">${text.replace(/\n/g, '<br>')}</div>
+            `;
+            
+            if (options && options.length > 0) {
+                content += '<div class="chat-options">';
+                options.forEach(option => {
+                    content += `<button class="chat-option-btn" onclick="handleOptionClick('${option.replace(/'/g, "\\'")}')">${option}</button>`;
+                });
+                content += '</div>';
+            }
+            
+            content += '</div>';
+            messageDiv.innerHTML = content;
+            chatbotMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+        
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message message-user';
+            messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
+            chatbotMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+        
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message message-bot';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatbotMessages.appendChild(typingDiv);
+            scrollToBottom();
+        }
+        
+        function removeTypingIndicator() {
+            const typing = document.getElementById('typing-indicator');
+            if (typing) typing.remove();
+        }
+        
+        function scrollToBottom() {
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        
+        function processUserInput(input) {
+            if (!input.trim()) return;
+            
+            addUserMessage(input);
+            chatbotInput.value = '';
+            
+            // Validate input
+            const currentFlow = CHATBOT_FLOW[chatState];
+            if (currentFlow.validate && !currentFlow.validate(input)) {
+                setTimeout(() => {
+                    let errorMsg = '';
+                    if (chatState === 'phone') errorMsg = '⚠️ Please enter a valid 10-digit phone number.';
+                    else if (chatState === 'email') errorMsg = '⚠️ Please enter a valid email address.';
+                    else errorMsg = '⚠️ Please provide valid information.';
+                    addBotMessage(errorMsg);
+                }, 500);
+                return;
+            }
+            
+            // Store user data
+            userData[chatState] = input;
+            
+            // Save to Google Sheets if needed
+            if (currentFlow.saveData) {
+                saveLeadData();
+            }
+            
+            // Move to next state
+            showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator();
+                chatState = currentFlow.nextState;
+                
+                const nextFlow = CHATBOT_FLOW[chatState];
+                if (nextFlow) {
+                    const message = typeof nextFlow.message === 'function' ? 
+                        nextFlow.message(input) : nextFlow.message;
+                    addBotMessage(message, nextFlow.options);
+                }
+            }, 1000);
+        }
+        
+        async function saveLeadData() {
+            const leadData = {
+                name: userData.name || 'Not provided',
+                phone: userData.phone || 'Not provided',
+                email: userData.email || 'Not provided',
+                company: 'Collected via Chatbot',
+                pump_type: userData.pump_type || 'Not specified',
+                message: `Application: ${userData.application || 'Not specified'}\nMessage: ${userData.message || 'None'}`,
+                source: 'Chatbot',
+                timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+            };
+            
+            const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyfAUrKWNwl7blEbhJF5HcAmGSMulKivBIZziX1P75Dch6tBlBtmGFYgFgW3r2L9zJd/exec';
+            
+            try {
+                await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(leadData)
+                });
+                console.log('Chatbot lead saved:', leadData);
+            } catch (error) {
+                console.error('Error saving chatbot lead:', error);
+            }
+        }
+        
+        window.handleOptionClick = function(option) {
+            processUserInput(option);
+        };
+        
+        // Event Listeners
+        chatbotBtn.addEventListener('click', toggleChatbot);
+        chatbotClose.addEventListener('click', toggleChatbot);
+        
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                processUserInput(chatbotInput.value);
             }
         });
 

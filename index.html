@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -887,18 +888,26 @@
         // Close Diwali popup and show permanent popup after 3 seconds
         const closeDiwaliPopup = () => {
             console.log('Closing Diwali popup...');
-            diwaliPopup.querySelector('.popup-content').classList.remove('popup-visible');
+            const popupContent = diwaliPopup.querySelector('.popup-content');
+            if (popupContent) {
+                popupContent.classList.remove('popup-visible');
+            }
+            
             setTimeout(() => {
                 diwaliPopup.classList.add('hidden');
                 diwaliPopup.classList.remove('flex');
                 
                 // Mark Diwali popup as closed for this session
                 sessionStorage.setItem('diwali_popup_closed', 'true');
+                console.log('Diwali popup closed. Waiting 3 seconds...');
                 
                 // STEP 2: Show permanent lead popup 3 seconds after Diwali popup closes
-                console.log('Waiting 3 seconds before showing lead popup...');
                 setTimeout(() => {
+                    console.log('Checking if should show lead popup...');
+                    console.log('hasSubmitted:', hasSubmitted);
+                    
                     if (!hasSubmitted) {
+                        console.log('Showing lead popup NOW!');
                         showPermanentPopup();
                     } else {
                         console.log('User already submitted - not showing lead popup');
@@ -906,6 +915,19 @@
                 }, 3000); // 3 seconds delay between popups
             }, 300);
         };
+        
+        // Also handle clicking the Diwali popup buttons
+        const diwaliButtons = diwaliPopup.querySelectorAll('a[href="#contact"], a[href^="tel:"]');
+        diwaliButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // If it's the "Get Custom Quote" button, prevent default and show lead popup instead
+                if (btn.getAttribute('href') === '#contact') {
+                    e.preventDefault();
+                    closeDiwaliPopup();
+                }
+                // Phone calls can proceed normally
+            });
+        });
         
         closePopupBtn.addEventListener('click', closeDiwaliPopup);
         popupOverlay.addEventListener('click', closeDiwaliPopup);

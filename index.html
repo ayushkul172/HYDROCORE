@@ -116,57 +116,7 @@
           height: 400px;
       }
       
-      /* Diwali Popup Styles */
-      .popup-overlay {
-          backdrop-filter: blur(5px);
-          animation: fadeIn 0.3s ease-in-out;
-      }
-      
-      @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-      }
-      
-      .popup-content {
-          transform: scale(0.8) translateY(20px);
-          opacity: 0;
-          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-      
-      .popup-visible {
-          transform: scale(1) translateY(0);
-          opacity: 1;
-      }
-      
-      @keyframes sparkle {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.2); }
-      }
-      
-      .sparkle {
-          animation: sparkle 1.5s ease-in-out infinite;
-      }
-      
-      @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-      }
-      
-      .float-animation {
-          animation: float 3s ease-in-out infinite;
-      }
-      
-      .diwali-gradient {
-          background: linear-gradient(135deg, #ff9933 0%, #ff6b35 25%, #f7931e 50%, #ffd700 75%, #ff9933 100%);
-          background-size: 200% 200%;
-          animation: gradientShift 3s ease infinite;
-      }
-      
-      @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-      }
+
       
       .diya-glow {
           box-shadow: 0 0 20px rgba(255, 153, 51, 0.6), 0 0 40px rgba(255, 107, 53, 0.4);
@@ -451,143 +401,7 @@
 </head>
 <body class="bg-white">
 
-    <!-- Diwali Popup -->
-    <div id="diwali-popup" class="hidden fixed inset-0 z-[9999] items-center justify-center">
-        <div id="popup-overlay" class="absolute inset-0 bg-gradient-to-br from-black/70 via-orange-900/30 to-black/70 popup-overlay"></div>
-        <div class="popup-content relative popup-bg-pattern rounded-3xl shadow-2xl max-w-2xl w-11/12 md:w-full mx-4 overflow-hidden border-4 border-orange-400">
-            <!-- Animated Corner Decorations -->
-            <div class="absolute top-0 left-0 w-24 h-24">
-                <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-500 opacity-30 rounded-br-full"></div>
-                <i class="fas fa-spa text-orange-500 text-5xl absolute top-2 left-2 sparkle" style="animation-delay: 0s;"></i>
-            </div>
-            <div class="absolute top-0 right-0 w-24 h-24">
-                <div class="absolute inset-0 bg-gradient-to-bl from-yellow-400 to-orange-500 opacity-30 rounded-bl-full"></div>
-                <i class="fas fa-spa text-yellow-500 text-5xl absolute top-2 right-2 sparkle" style="animation-delay: 0.3s;"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 w-24 h-24">
-                <div class="absolute inset-0 bg-gradient-to-tr from-orange-400 to-yellow-500 opacity-30 rounded-tr-full"></div>
-                <i class="fas fa-spa text-orange-400 text-5xl absolute bottom-2 left-2 sparkle" style="animation-delay: 0.6s;"></i>
-            </div>
-            <div class="absolute bottom-0 right-0 w-24 h-24">
-                <div class="absolute inset-0 bg-gradient-to-tl from-orange-400 to-yellow-500 opacity-30 rounded-tl-full"></div>
-                <i class="fas fa-spa text-yellow-400 text-5xl absolute bottom-2 right-2 sparkle" style="animation-delay: 0.9s;"></i>
-            </div>
-            
-            <!-- Firework Effects -->
-            <div class="absolute top-10 left-1/4 text-yellow-300 opacity-60">
-                <i class="fas fa-star text-3xl firework" style="animation-delay: 0s;"></i>
-            </div>
-            <div class="absolute top-16 right-1/4 text-orange-300 opacity-60">
-                <i class="fas fa-star text-2xl firework" style="animation-delay: 0.5s;"></i>
-            </div>
-            <div class="absolute bottom-20 left-1/3 text-red-300 opacity-60">
-                <i class="fas fa-star text-3xl firework" style="animation-delay: 1s;"></i>
-            </div>
-            
-            <!-- Close Button -->
-            <button id="close-diwali-popup" class="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center bg-gradient-to-br from-white to-orange-50 hover:from-orange-50 hover:to-orange-100 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 group border-2 border-orange-400 pulse-glow">
-                <i class="fas fa-times text-orange-600 text-2xl group-hover:rotate-90 transition-transform duration-300"></i>
-            </button>
-            
-            <!-- Header with Enhanced Gradient -->
-            <div class="diwali-gradient text-white py-10 px-6 text-center relative overflow-hidden border-b-4 border-yellow-300">
-                <!-- Shimmer Effect -->
-                <div class="absolute inset-0 shimmer"></div>
-                
-                <!-- Star Decorations -->
-                <div class="absolute inset-0">
-                    <div class="absolute top-3 left-12 text-yellow-200 animate-pulse"><i class="fas fa-star text-3xl"></i></div>
-                    <div class="absolute top-6 right-20 text-yellow-100 animate-pulse" style="animation-delay: 0.3s;"><i class="fas fa-star text-2xl"></i></div>
-                    <div class="absolute bottom-4 left-24 text-yellow-200 animate-pulse" style="animation-delay: 0.6s;"><i class="fas fa-star text-xl"></i></div>
-                    <div class="absolute bottom-6 right-16 text-yellow-100 animate-pulse" style="animation-delay: 0.9s;"><i class="fas fa-star text-3xl"></i></div>
-                    <div class="absolute top-1/2 left-8 text-white/30"><i class="fas fa-dharmachakra text-4xl" style="animation: spin 20s linear infinite;"></i></div>
-                    <div class="absolute top-1/2 right-8 text-white/30"><i class="fas fa-dharmachakra text-4xl" style="animation: spin 20s linear infinite reverse;"></i></div>
-                </div>
-                
-                <div class="relative z-10">
-                    <div class="flex justify-center mb-5 space-x-8">
-                        <i class="fas fa-dharmachakra text-6xl float-animation diya-glow drop-shadow-2xl" style="animation-delay: 0s; color: #ffd700;"></i>
-                        <i class="fas fa-fire-flame-curved text-7xl float-animation diya-glow drop-shadow-2xl" style="animation-delay: 0.3s; color: #ff6b35;"></i>
-                        <i class="fas fa-dharmachakra text-6xl float-animation diya-glow drop-shadow-2xl" style="animation-delay: 0.6s; color: #ffd700;"></i>
-                    </div>
-                    <h2 class="text-6xl md:text-7xl font-bold mb-3 drop-shadow-lg" style="font-family: var(--font-heading); text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 20px rgba(255,215,0,0.5);">
-                        🎊 DIWALI SPECIAL 🎊
-                    </h2>
-                    <p class="text-2xl md:text-3xl font-bold drop-shadow-md" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">शुभ दीपावली | Happy Diwali 2025</p>
-                    <div class="mt-4 inline-block bg-yellow-400 text-orange-900 px-6 py-2 rounded-full font-bold text-lg animate-pulse shadow-xl">
-                        ✨ LIMITED TIME OFFER ✨
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Content with Enhanced Styling -->
-            <div class="p-8 md:p-10 relative">
-                <!-- Background Pattern -->
-                <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #ff9933 1px, transparent 1px); background-size: 20px 20px;"></div>
-                
-                <div class="text-center mb-8 relative z-10">
-                    <h3 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text text-transparent" style="font-family: var(--font-heading);">
-                        ILLUMINATE YOUR PROJECT WITH 
-                        <br/>CUSTOMIZED PRICING
-                    </h3>
-                    <p class="text-lg md:text-xl text-slate-700 leading-relaxed font-medium">
-                        🪔 Celebrate the Festival of Lights with <span class="font-bold text-orange-600">exclusive deals</span> on our premium hydropumps! 
-                        Get <span class="font-bold text-orange-600">personalized pricing</span> tailored to your specific project requirements.
-                    </p>
-                </div>
-                
-                <!-- Enhanced Features Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 relative z-10">
-                    <div class="feature-card-gradient p-5 rounded-2xl text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 transform">
-                        <div class="bg-gradient-to-br from-orange-500 to-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                            <i class="fas fa-tags text-3xl text-white"></i>
-                        </div>
-                        <p class="font-bold text-lg text-slate-800">Special Diwali<br/>Discounts</p>
-                        <p class="text-sm text-orange-700 mt-1">Up to 25% OFF</p>
-                    </div>
-                    <div class="feature-card-gradient p-5 rounded-2xl text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 transform" style="transition-delay: 0.1s;">
-                        <div class="bg-gradient-to-br from-yellow-500 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                            <i class="fas fa-user-tie text-3xl text-white"></i>
-                        </div>
-                        <p class="font-bold text-lg text-slate-800">Customized<br/>Solutions</p>
-                        <p class="text-sm text-orange-700 mt-1">Tailored for You</p>
-                    </div>
-                    <div class="feature-card-gradient p-5 rounded-2xl text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 transform" style="transition-delay: 0.2s;">
-                        <div class="bg-gradient-to-br from-red-500 to-orange-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                            <i class="fas fa-clock text-3xl text-white"></i>
-                        </div>
-                        <p class="font-bold text-lg text-slate-800">Limited Time<br/>Only</p>
-                        <p class="text-sm text-orange-700 mt-1">Hurry! Ends Soon</p>
-                    </div>
-                </div>
-                
-                <!-- Enhanced CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 relative z-10">
-                    <a href="PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="w-full sm:w-auto bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 text-white font-bold py-5 px-10 rounded-full text-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl flex items-center justify-center group relative overflow-hidden border-2 border-yellow-400">
-                        <span class="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-transparent shimmer"></span>
-                        <i class="fas fa-paper-plane mr-3 group-hover:translate-x-1 transition-transform text-2xl"></i>
-                        <span class="relative">Get Custom Quote Now</span>
-                    </a>
-                    <a href="tel:+917678480063" class="w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-orange-400 text-slate-900 font-bold py-5 px-10 rounded-full text-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl flex items-center justify-center group border-2 border-orange-600">
-                        <i class="fas fa-phone-alt mr-3 group-hover:rotate-12 transition-transform text-2xl"></i>
-                        Call Now - Save Big!
-                    </a>
-                </div>
-                
-                <!-- Enhanced Footer Note -->
-                <div class="text-center relative z-10">
-                    <div class="inline-block bg-gradient-to-r from-orange-100 via-yellow-100 to-orange-100 px-6 py-3 rounded-2xl border-2 border-orange-300 shadow-lg">
-                        <p class="text-sm font-semibold text-slate-700">
-                            <i class="fas fa-gift text-orange-500 mr-2 text-lg animate-bounce"></i>
-                            Offer valid till <span class="text-orange-600 font-bold">October 31st, 2025</span>
-                            <br/>
-                            <span class="text-xs text-slate-600">Terms & conditions apply. Don't miss out on festive savings!</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Permanent Lead Capture Popup (Shows for ALL visitors) -->
     <div id="permanent-lead-popup" class="hidden fixed inset-0 z-[9998] items-center justify-center">
@@ -1089,11 +903,6 @@
         const closePermanentBtn = document.getElementById('close-permanent-popup');
         const permanentLeadForm = document.getElementById('permanent-lead-form');
         
-        // Diwali Popup Logic
-        const diwaliPopup = document.getElementById('diwali-popup');
-        const closePopupBtn = document.getElementById('close-diwali-popup');
-        const popupOverlay = document.getElementById('popup-overlay');
-        
         // Check if user has already submitted the permanent form
         const hasSubmitted = localStorage.getItem('flowcore_lead_submitted');
         
@@ -1115,66 +924,13 @@
             }
         }
         
-        // STEP 1: Show Diwali popup first (after 2 seconds)
+        // STEP 1: Show permanent popup after 2 seconds
         setTimeout(() => {
-            console.log('--- Showing Diwali popup ---');
-            const diwaliEl = document.getElementById('diwali-popup');
-            if (diwaliEl) {
-                diwaliEl.classList.remove('hidden');
-                diwaliEl.classList.add('flex');
-                setTimeout(() => {
-                    const content = diwaliEl.querySelector('.popup-content');
-                    if (content) {
-                        content.classList.add('popup-visible');
-                    }
-                }, 50);
+            console.log('--- Showing permanent popup ---');
+            if (!hasSubmitted) {
+                showPermanentPopup();
             }
         }, 2000);
-        
-        // Close Diwali popup and show permanent popup after 3 seconds
-        const closeDiwaliPopup = () => {
-            console.log('--- User closed Diwali popup ---');
-            const popupContent = diwaliPopup.querySelector('.popup-content');
-            if (popupContent) {
-                popupContent.classList.remove('popup-visible');
-            }
-            
-            setTimeout(() => {
-                diwaliPopup.classList.add('hidden');
-                diwaliPopup.classList.remove('flex');
-                console.log('Diwali popup hidden');
-                
-                // STEP 2: Show permanent lead popup after delay
-                console.log('--- Starting 3 second countdown to show lead popup ---');
-                setTimeout(() => {
-                    console.log('--- 3 seconds passed! ---');
-                    console.log('Checking hasSubmitted:', hasSubmitted);
-                    
-                    if (hasSubmitted) {
-                        console.log('❌ User already submitted - skipping lead popup');
-                    } else {
-                        console.log('✅ User has NOT submitted - showing lead popup now!');
-                        showPermanentPopup();
-                    }
-                }, 3000);
-            }, 300);
-        };
-        
-        // Also handle clicking the Diwali popup buttons
-        const diwaliButtons = diwaliPopup.querySelectorAll('a[href="#contact"], a[href^="tel:"]');
-        diwaliButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                // If it's the "Get Custom Quote" button, prevent default and show lead popup instead
-                if (btn.getAttribute('href') === '#contact') {
-                    e.preventDefault();
-                    closeDiwaliPopup();
-                }
-                // Phone calls can proceed normally
-            });
-        });
-        
-        closePopupBtn.addEventListener('click', closeDiwaliPopup);
-        popupOverlay.addEventListener('click', closeDiwaliPopup);
         
         // Close permanent popup
         const closePermanentPopup = () => {
